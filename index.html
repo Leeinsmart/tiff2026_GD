@@ -113,6 +113,22 @@ nav a:hover,nav a:focus-visible{color:var(--accent); border-bottom-color:var(--a
 .chip.bg{background:var(--info-soft); color:var(--info)}
 .chip.hot{background:var(--urgent-soft); color:var(--urgent)}
 
+/* ---------- internal execution tools ---------- */
+.internal{
+  margin:22px 0 0; padding:12px 16px; border:1px solid var(--line); border-radius:8px;
+  background:var(--info-soft); color:var(--info); font-size:13.5px;
+}
+.internal b{color:var(--ink)}
+.tasklist{list-style:none; margin:8px 0 14px; padding:0; border-top:1px solid var(--line)}
+.tasklist li{padding:9px 2px; border-bottom:1px solid var(--line); font-size:14.5px}
+.tasklist li.done{text-decoration:line-through; opacity:.55}
+.tasklist input[type=checkbox]{
+  accent-color:var(--accent); width:16px; height:16px; margin-right:10px; vertical-align:-2px;
+}
+.status-table td:first-child{font-weight:700; white-space:nowrap}
+.status-table .chip{margin:1px 2px}
+.owner{font-size:12px; color:var(--muted); white-space:nowrap}
+
 /* ---------- sections ---------- */
 section{padding-top:48px}
 h2{
@@ -256,7 +272,9 @@ summary .docmeta{flex:none}
 #toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
 a[href^="mailto:"]{cursor:copy}
 </style>
+</head>
 
+<body>
 <div class="wrap">
 
 <header class="hero">
@@ -271,10 +289,12 @@ a[href^="mailto:"]{cursor:copy}
     <div class="fact"><div class="k">大會窗口</div><div class="v">Tiffin Shing（Film Coordinator）</div></div>
   </div>
 
-  <div class="alert">
-    <b>最急：場次更改請求今天截止。</b>暫定場次若要調整，須於 <b>7/22（三）上午 10 點（多倫多時間）＝台灣今晚 22:00</b> 前寄到 <a href="mailto:schedules@tiff.net">schedules@tiff.net</a>。確認版場次最遲 7/27 寄達，之後不再受理更改。<a class="src" href="#doc-schedule-p1">出處：場次函</a>
-    <div class="small">目前暫定的前兩場公開放映為 9/17、9/18，相隔 24 小時，與大會提供的 2 晚住宿相符——若無問題可不必回信。</div>
+  <div class="alert" id="status-alert">
+    <b id="status-title">目前狀態：等待場次時限判定。</b><span id="status-copy">暫定場次的更改窗口為 <b>7/22（三）上午 10 點（多倫多）＝台灣 22:00</b>；確認版預定最遲 7/27 寄達。</span><a class="src" href="#doc-schedule-p1">出處：場次函</a>
+    <div class="small" id="status-detail">前兩場公開放映暫定為 9/17、9/18；住宿日期仍須由 Tiffin 另行書面確認，不能由場次自行推定。</div>
   </div>
+
+  <div class="internal"><b>內部工作頁：</b>本頁供劇組執行使用。護照號碼、生日、證件影本、私人電話與藝人安全動線請放在受控文件，不要寫進本 HTML，也不要把內部版公開轉傳。</div>
 
   <div class="legend">
     <span>本頁資訊分三級：</span>
@@ -285,12 +305,13 @@ a[href^="mailto:"]{cursor:copy}
 </header>
 
 <nav>
-  <a href="#timeline">關鍵時程</a>
-  <a href="#screenings">放映場次</a>
-  <a href="#questions">九大問題</a>
-  <a href="#asks">待問清單</a>
-  <a href="#cases">參考案例</a>
-  <a href="#contacts">聯絡窗口</a>
+  <a href="#timeline">時程</a>
+  <a href="#screenings">場次</a>
+  <a href="#roles">角色任務</a>
+  <a href="#operations">執行表</a>
+  <a href="#asks">待確認</a>
+  <a href="#flights">班機</a>
+  <a href="#contacts">窗口</a>
   <a href="#docs">官方文件</a>
   <div class="searchwrap"><input id="q" type="search" placeholder="搜尋指南＋官方文件…" aria-label="全站搜尋"></div>
 </nav>
@@ -301,19 +322,19 @@ a[href^="mailto:"]{cursor:copy}
   <p class="sub">全部出自大會文件與信件。勾選可標記完成（存在這台裝置上）。日期為多倫多時間。</p>
   <ul class="tl">
     <li data-k="t1"><span class="d">7/20</span><span class="t"><label><input type="checkbox">官方公布入選 · 影片頁上線 · 註冊表送出（PR 欄可先空白）</label></span></li>
-    <li data-k="t2" class="hot"><span class="d">7/22 10:00</span><span class="t"><label><input type="checkbox">場次更改請求截止（<a href="mailto:schedules@tiff.net">schedules@tiff.net</a>）</label><small>台灣時間 7/22 晚上 10 點</small></span></li>
+    <li data-k="t2" class="hot" id="schedule-deadline"><span class="d">7/22 10:00</span><span class="t"><label><input type="checkbox">場次更改請求截止（<a href="mailto:schedules@tiff.net">schedules@tiff.net</a>）</label><small>多倫多時間；台灣時間 7/22 晚上 10 點。逾時後改為追蹤確認版，不再標示「今天截止」。</small></span></li>
     <li data-k="t3"><span class="d">7/24</span><span class="t"><label><input type="checkbox">Film Rights Survey：回報各地區版權銷售現況（供買家排片）</label></span></li>
-    <li data-k="t4"><span class="d">7/27 前</span><span class="t"><label><input type="checkbox">收到確認版場次表（含各位演員 Q&A 日期，可據此敲行程）</label></span></li>
+    <li data-k="t4"><span class="d">7/27 前</span><span class="t"><label><input type="checkbox">收到確認版場次表（含各位演員 Q&amp;A 日期，可據此敲行程）</label></span></li>
     <li data-k="t5"><span class="d">8 月初</span><span class="t"><label><input type="checkbox">Venue Liaison 對接：紅毯、後台名單、隨行人員、保安細節</label></span></li>
     <li data-k="t6"><span class="d">8/6</span><span class="t"><label><input type="checkbox">Market 場館廣告優先預訂截止（自費，<a href="mailto:themarketsales@tiff.net">themarketsales@tiff.net</a>）</label></span></li>
     <li data-k="t7"><span class="d">8/8 前</span><span class="t"><label><input type="checkbox">大會提供 DKDM 憑證資訊（若 DCP 加密）</label></span></li>
-    <li data-k="t8"><span class="d">8/11</span><span class="t"><label><input type="checkbox">影片頁公開 PR 資訊——公關公司資料最晚此前補交</label></span></li>
+    <li data-k="t8"><span class="d">8/11</span><span class="t"><label><input type="checkbox">影片頁預定公開 PR 資訊</label><small>不是文件明載的補交截止；Publicity Contacts Confirmation 真正期限須向 TIFF 確認。</small></span></li>
     <li data-k="t9"><span class="d">8/12</span><span class="t"><label><input type="checkbox">首兩場公開放映票券配額作業（<a href="mailto:protocol@tiff.net">protocol@tiff.net</a>）</label></span></li>
     <li data-k="t10"><span class="d">8/14</span><span class="t"><label><input type="checkbox">Market 加場（私人放映）優先預訂截止（自費）</label></span></li>
     <li data-k="t11"><span class="d">8/17</span><span class="t"><label><input type="checkbox">製片 1 名＋銷售代理 1 名免費證件登記（<a href="mailto:registration@tiff.net">registration@tiff.net</a>）</label></span></li>
     <li data-k="t12"><span class="d">8/21</span><span class="t"><label><input type="checkbox">DCP 交片截止——逾期或缺 DKDM 收 CAD $350＋13% 稅</label></span></li>
     <li data-k="t13"><span class="d">8 月底</span><span class="t"><label><input type="checkbox">Publicist Pass 註冊（大會主動聯繫 7 月填報的公關窗口）</label></span></li>
-    <li data-k="t14"><span class="d">9/8</span><span class="t"><label><input type="checkbox">票券開放換票（線上或 Press & Market 票口）</label></span></li>
+    <li data-k="t14"><span class="d">9/8</span><span class="t"><label><input type="checkbox">票券開放換票（線上或 Press &amp; Market 票口）</label></span></li>
     <li data-k="t15"><span class="d">9/10–20</span><span class="t"><label><input type="checkbox">影展。抵達前 5 天以上預訂機場接送</label></span></li>
   </ul>
 </section>
@@ -361,8 +382,9 @@ a[href^="mailto:"]{cursor:copy}
       </ul>
       <h4>旅行證件（每位團員自理）</h4>
       <ul>
-        <li>護照效期確認；<span class="chip bg">補充背景</span> 台灣護照入境加拿大免簽證但需線上申請 <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" target="_blank" rel="noopener">eTA</a>（各國規定見<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html" target="_blank" rel="noopener">加拿大官方入境規定</a>，邀請函附的連結）</li>
+        <li>逐人確認護照效期、國籍與加拿大身分；持外交部核發且載有身分證字號的台灣護照、搭機入境者，通常需用<b>實際搭機的同一本護照</b>申請 <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" target="_blank" rel="noopener">eTA</a>。加拿大公民、永久居民、雙重國籍與其他國籍規則不同，須用<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/check-visa-eta.html" target="_blank" rel="noopener">官方工具逐人確認</a>。</li>
         <li>需要簽證者：大會可出<b>簽證支持信</b>，加拿大移民署特殊活動代碼 <b>26TIFF</b><a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
+        <li><span class="chip hot">需確認</span> eTA／訪客簽證不等於工作許可。導演、演員、製片、行銷、公關、社群攝影等工作內容不同，出發前應依<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/business/visitors-events-conferences.html" target="_blank" rel="noopener">加拿大商務訪客規則</a>逐人確認是否屬 business visitor、免工作許可類別或需要其他文件；不確定時請向 TIFF／IRCC 或移民專業人士書面確認。</li>
       </ul>
       <h4>行政表單</h4>
       <ul>
@@ -401,9 +423,9 @@ a[href^="mailto:"]{cursor:copy}
           </ul>
         </div>
         <div class="panel">
-          <h5>要自費（文件明載）</h5>
+          <h5>目前先編入自費預算</h5>
           <ul>
-            <li>受邀者以外所有人的機票、住宿</li>
+            <li>目前書面招待未涵蓋者的機票、住宿（若 TIFF 後續增列招待再沖回預算）</li>
             <li>兩位受邀者超過 2–3 晚的延住</li>
             <li>額外證件（可折扣價加購）</li>
             <li>DCP 製作費；逾期交片罰 CAD $350＋13% 稅<a class="src" href="#doc-terms-p16">出處：條款附錄B</a></li>
@@ -422,10 +444,10 @@ a[href^="mailto:"]{cursor:copy}
     <div class="body">
       <p>「去」本身沒有人數上限——差別在<b>誰有大會招待、誰有證件</b>。</p>
       <ul>
-        <li><span class="chip doc">文件明載</span> 官方受邀＋全套招待：<b>2 位</b>（導演阮鳳儀、葉舒華），邀請不可轉讓<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
+        <li><span class="chip doc">文件明載</span> 官方 Guest Invitation：<b>2 位</b>（導演阮鳳儀、葉舒華），邀請不可轉讓；但招待內容不同——導演有 CAD $2,700 機票補助＋3 晚住宿，舒華的現有邀請只有 2 晚住宿、沒有書面機票補助<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
         <li><span class="chip doc">文件明載</span> 免費證件：<b>製片 1 名＋銷售代理 1 名</b>（執行製片不符資格、不可轉讓，8/17 前登記）<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
         <li><span class="chip ask">已去信詢問</span> 另外 6 位主創（陳雪、蔡凡熙、兩位製片、統籌、行銷 ANLI）的 badge，與 11 位隨行人員（經紀、妝髮、保鑣等）的進出證——待大會回覆</li>
-        <li><span class="chip doc">文件明載</span> 隨行團隊即使沒有影展 badge，紅毯、後台、Green Room 的進出是由 <b>Venue Liaison</b> 在 8 月初以「stage party／entourage／保安名單」處理——妝髮保鑣走這條線即可工作<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+        <li><span class="chip doc">文件明載</span> 紅毯、後台、Green Room 的 stage party／entourage／保安名單由 <b>Venue Liaison</b> 在 8 月初確認。這是<b>送審管道，不是進場保證</b>；妝髮、經紀、保鑣與攝影師均須列名並取得書面核准後才能依指定範圍工作<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
         <li><span class="chip doc">文件明載</span> 製作與銷售團隊其他成員可用<b>折扣價加購</b> Market 證件（<a href="https://www.tiff.net/industry/" target="_blank" rel="noopener">tiff.net/industry</a>）<a class="src" href="#doc-terms-p12">出處：條款附錄A</a></li>
       </ul>
       <h4>Guest Pass 內含權益</h4>
@@ -442,9 +464,9 @@ a[href^="mailto:"]{cursor:copy}
     <div class="body">
       <ul>
         <li><span class="chip doc">文件明載</span> 住大會 <b>Hospitality Partner 合作飯店</b>，由 Film Coordinator（Tiffin）代訂；文件未指明飯店名稱與星級<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
-        <li><span class="chip doc">文件明載</span> 額度：導演最多 3 晚、舒華最多 2 晚；想延住可請大會依空房協助加訂，<b>費用自付</b><a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
+        <li><span class="chip doc">文件明載</span> 額度：導演最多 3 晚、舒華最多 2 晚；想延住可請大會依空房協助加訂，額外費用先按自付編列<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
         <li><span class="chip ask">已去信詢問</span> 三位演員經紀約要求五星飯店——等級與加房都已在信中提出，待回覆</li>
-        <li>住宿日期會配合必出席的前兩場放映（暫定 9/17、9/18）由 Tiffin 安排；其餘團隊自行訂房，越早越好——影展期間多倫多市中心房價高、房源緊<span class="chip bg">補充背景</span></li>
+        <li><span class="chip hot">不可自行推定</span> 文件只承諾晚數，尚未確認飯店、入住日與退房日；即使前兩場暫定為 9/17、9/18，也須等 Tiffin 書面回覆後才能認定招待涵蓋哪些夜晚。其餘團隊可先找可取消房價，但不要把「約 9/16–19」當成大會承諾。</li>
       </ul>
     </div>
   </details>
@@ -453,11 +475,11 @@ a[href^="mailto:"]{cursor:copy}
     <summary><span class="qn">Q6</span>哪些重要環節要出席？<span class="arrow">›</span></summary>
     <div class="body">
       <ul>
-        <li><span class="chip doc">文件明載</span> <b>鐵則：前兩場公開放映</b>（暫定 9/17 首映、9/18 第二場）——含映前介紹＋映後 Q&A，可能還有媒體活動。這是邀請函所有招待的<b>前提條件</b>，導演與受邀演員都適用<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a><a class="src" href="#doc-terms-p3">條款 §VII</a></li>
+        <li><span class="chip doc">文件明載</span> <b>鐵則：前兩場公開放映</b>（暫定 9/17 首映、9/18 第二場）——含映前介紹＋映後 Q&amp;A，可能還有媒體活動。這是邀請函所有招待的<b>前提條件</b>，導演與受邀演員都適用<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a><a class="src" href="#doc-terms-p3">條款 §VII</a></li>
         <li><span class="chip doc">文件明載</span> 紅毯／photo call：SP 單元部分影片會有，含首映場交通安排，<b>8 月大會通知細節</b>——是否有紅毯以屆時通知為準，不要先對外承諾<a class="src" href="#doc-terms-p4">出處：條款 §VII(4)</a></li>
         <li><span class="chip doc">文件明載</span> 9/16 Press &amp; Market 場為業界媒體場，文件未要求出席</li>
         <li><span class="chip doc">文件明載</span> 若拿下 People's Choice：閉幕日（9/20）加映得獎場，得獎者需錄影片感言<a class="src" href="#doc-terms-p5">出處：條款 §X</a></li>
-        <li>行銷須知：介紹、Q&A 與官方活動會被大會<b>錄影並永久使用</b>於其平台與社群（條款 §VII），藝人端請先知會<a class="src" href="#doc-terms-p3">出處：條款 §VII(2)</a></li>
+        <li>行銷須知：介紹、Q&amp;A 與官方活動會被大會<b>錄影並永久使用</b>於其平台與社群（條款 §VII），藝人端請先知會<a class="src" href="#doc-terms-p3">出處：條款 §VII(2)</a></li>
       </ul>
     </div>
   </details>
@@ -491,8 +513,8 @@ a[href^="mailto:"]{cursor:copy}
       <h4>公關系統怎麼運作</h4>
       <ul>
         <li>聘公關公司<b>非必要但大會建議</b>；大會提供歷屆合作的 <a href="https://docs.google.com/spreadsheets/d/1YWVejOxZye2NuFBPLYnU1AICx0KsClvQG1cT62aif3M/edit?gid=1319234648#gid=1319234648" target="_blank" rel="noopener"><b>Publicist Directory 名單</b></a>（Google 試算表，出自 Filmmaker Guide）<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
-        <li>公關公司資料最晚 8/11 前補進影片頁；8 月底大會聯繫註冊 <b>Publicist Pass</b>（有數量上限、不可轉讓；<b>藝人的個人公關也要註冊</b>）<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
-        <li>Publicist Pass 給工作進場權：自家片的 P&M 場與紅毯</li>
+        <li>大會 Email 只說影片頁 PR 資訊在 8/11 才公開，且之後仍可能補交；<b>8/11 不是文件明載的最終截止日</b>。Publicity Contacts Confirmation 的實際截止須再向 Tiffin／Publicist Registration 確認。8 月底大會將聯繫註冊 <b>Publicist Pass</b>（有數量上限、不可轉讓；藝人的個人公關也要註冊）<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
+        <li>Publicist Pass 給工作進場權：自家片的 P&amp;M 場與紅毯</li>
         <li>媒體相關問題：<a href="mailto:proffice@tiff.net">proffice@tiff.net</a></li>
       </ul>
       <h4>賣片與市場（自費項目）</h4>
@@ -533,7 +555,7 @@ a[href^="mailto:"]{cursor:copy}
         <li><span class="chip ask">追蹤回覆</span> 飯店是哪一間、星級（演員 rider 要求五星）；額外房間的免費/折扣方案</li>
         <li><span class="chip ask">追蹤回覆</span> 演員機票有無補助或航空夥伴折扣碼</li>
         <li><span class="chip ask">追蹤回覆</span> 機場接送涵蓋哪些人；飯店↔紅毯/場館接駁有沒有</li>
-        <li><span class="chip ask">追蹤回覆</span> 紅毯、記者會、Q&A 的中英口譯由誰出</li>
+        <li><span class="chip ask">追蹤回覆</span> 紅毯、記者會、Q&amp;A 的中英口譯由誰出</li>
         <li><span class="chip ask">追蹤回覆</span> 8 位主創 badge＋11 位隨行人員進出證怎麼給</li>
         <li><span class="chip ask">追蹤回覆</span> 舒華的經紀與保鑣可否隨行進管制區；大會可否加派保安</li>
         <li><span class="chip hot">尚未提出</span> 若團隊有人非台灣護照／需簽證：簽證支持信申請流程</li>
@@ -553,8 +575,9 @@ a[href^="mailto:"]{cursor:copy}
       <ul>
         <li>首映日<b>到場時間（call time）</b>與進場動線——排當天妝髮時程的依據</li>
         <li>有沒有<b>紅毯／photo call</b>、規格如何</li>
-        <li>台上介紹與 Q&A 的 <b>stage party 人數上限</b></li>
+        <li>台上介紹與 Q&amp;A 的 <b>stage party 人數上限</b></li>
         <li>Green Room／後台名單怎麼報：11 位隨行人員（妝髮、經紀、保鑣、攝影師）走這條線</li>
+        <li>現場攝影／錄影器材、可拍區、禁拍區與素材發布時間；攝影師列名不等於自動取得全部區域權限</li>
         <li>現場保安安排</li>
       </ul>
       <h5 style="margin-top:14px">⑤ <a href="mailto:registration@tiff.net">registration@tiff.net</a> — 證件</h5>
@@ -564,29 +587,244 @@ a[href^="mailto:"]{cursor:copy}
       <h5 style="margin-top:14px">⑥ 公關線（proffice / <a href="mailto:publicistregistration@tiff.net">publicistregistration@tiff.net</a>）</h5>
       <ul>
         <li>本片 <b>Publicist Pass 上限幾張</b>——決定 PR 團隊編制；藝人個人公關也占額度</li>
+        <li><b>Publicity Contacts Confirmation 的真正截止日</b>——8/11 是影片頁公開 PR 資訊的日期，不是文件明載的最終補交期限</li>
         <li>大會與媒體端的訪問安排（junket）如何對接——通常由自聘 publicist 主導</li>
+      </ul>
+      <h5 style="margin-top:14px">⑦ DCP／技術 — <a href="mailto:slandry@tiff.net">slandry@tiff.net</a> / <a href="mailto:technical@tiff.net">technical@tiff.net</a></h5>
+      <ul>
+        <li>Deluxe 安全上傳連結、內部 QC 完成日、是否加密與 DKDM 負責人；大會不接受一般進度查詢，收到技術異常通知則須立即回覆</li>
       </ul>
     </div>
   </div>
 
   <div class="callout" style="margin-top:16px">
-    <b>建議的規劃順序：</b>① 今天先把演員名單與需求寄給 Tiffin（她已在等）→ ② 7/27 收到確認場次，鎖定藝人檔期與進出日期 → ③ 拿到 Tiffin 對機票/飯店/證件的回覆後，訂自費機票與加訂房 → ④ 8 月初 Venue Liaison＋Protocol 啟動後，敲首映日細部流程與票量 → ⑤ 據此排妝髮、訪問、隨行人員班表。
+    <b>建議的規劃順序：</b>① 立即把演員名單與需求寄給 Tiffin（她已在等）→ ② 7/27 收到確認場次，鎖定藝人檔期與進出日期 → ③ 拿到 Tiffin 對機票/飯店/證件的回覆後，訂自費機票與加訂房 → ④ 8 月初 Venue Liaison＋Protocol 啟動後，敲首映日細部流程與票量 → ⑤ 據此排妝髮、訪問、隨行人員班表。
   </div>
 </section>
 
+<section id="roles">
+  <h2><span class="no">05</span>五個角色的工作清單</h2>
+  <p class="sub">每個角色只看自己的段落也能開始工作。勾選狀態會存在這台裝置；「完成」代表內部已處理，不代表 TIFF 已核准。</p>
+
+  <details open>
+    <summary><span class="qn">全員</span>先建立共同作業規則<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul class="tasklist">
+        <li data-k="r-all-1"><label><input type="checkbox">指定一位總窗口對 TIFF 發信，其他人先在內部整併問題，避免不同窗口收到互相矛盾的要求。</label></li>
+        <li data-k="r-all-2"><label><input type="checkbox">建立「人員 × 任務」責任表：每件事只設一位最終負責人，另列協作者與核准者。</label></li>
+        <li data-k="r-all-3"><label><input type="checkbox">建立劇組共用行事曆，所有日期同時標示 Toronto EDT 與 Taipei UTC+8，會議邀請也寫明時區。</label></li>
+        <li data-k="r-all-4"><label><input type="checkbox">建立內部工作群組與緊急群組；緊急群組只處理航班、健康、保安、證件與場次異動。</label></li>
+        <li data-k="r-all-5"><label><input type="checkbox">確認哪些資料可公開、哪些只能在內部受控文件保存；護照、生日、私人電話與安全動線不放本頁。</label></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">行銷</span>ANLI／Marketing Lead<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul class="tasklist">
+        <li data-k="r-mkt-1"><label><input type="checkbox">寫一頁參展目標：台灣曝光、國際媒體、北美買家、海外發行與獎項，各自設定可量化成果。</label></li>
+        <li data-k="r-mkt-2"><label><input type="checkbox">定稿中英文核心訊息：一句話簡介、30 秒口述版、導演論述、世界首映與 SP 單元的正確說法。</label></li>
+        <li data-k="r-mkt-3"><label><input type="checkbox">建立所有素材的版本／權利／核准表：劇照、預告、片花、海報、音樂、攝影署名與藝人經紀核准。</label></li>
+        <li data-k="r-mkt-4"><label><input type="checkbox">與製片／銷售代理確認 Rights Survey、可售地區、買家名單、Market 會議與會後追蹤負責人。</label></li>
+        <li data-k="r-mkt-5"><label><input type="checkbox">決定是否購買 Market 廣告或加開 Market screening；分別在 8/6、8/14 前完成效益與預算判斷。</label></li>
+        <li data-k="r-mkt-6"><label><input type="checkbox">查明影視局／TAICCA 當期補助資格、可核銷項目、申請期限與憑證格式，不能只靠一般經驗判斷。</label></li>
+        <li data-k="r-mkt-7"><label><input type="checkbox">設定每日成果回報：媒體篇數、訪問完成、社群觸及、買家會議、待追蹤名單與下一步。</label></li>
+      </ul>
+      <p class="note"><b>素材權利：</b>交給 TIFF 的宣傳素材可能被編輯、翻譯並長期使用；預告若日後要下架，須寄信至 materials@tiff.net。交件前應取得完整權利與經紀核准。<a class="src" href="#doc-terms-p5">條款 §IX</a></p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">社群</span>Social Editor／現場內容<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul class="tasklist">
+        <li data-k="r-social-1"><label><input type="checkbox">完成 9/14–9/22 台北／多倫多雙時區內容日曆，區分預排、現場即時與需經紀核准三種貼文。</label></li>
+        <li data-k="r-social-2"><label><input type="checkbox">建立首映 shot list：抵達、妝髮、場館外觀、紅毯、觀眾、Q&amp;A、媒體引言與收工；每項標示拍攝人與授權狀態。</label></li>
+        <li data-k="r-social-3"><label><input type="checkbox">向 Venue Liaison 書面確認可拍區、禁拍區、攝影師／器材進場方式，以及紅毯與後台素材何時可以發布。</label></li>
+        <li data-k="r-social-4"><label><input type="checkbox">檢查帳號管理員、2FA、備援手機、eSIM／漫遊、雲端上傳與充電設備；密碼不要放工作群組。</label></li>
+        <li data-k="r-social-5"><label><input type="checkbox">與經紀團隊約定審稿人與最長回覆時間；超時時哪些低風險內容可先發也要事先寫清楚。</label></li>
+        <li data-k="r-social-6"><label><input type="checkbox">建立危機停發機制：場次變更、藝人健康、安全事件、負面媒體或錯誤資訊出現時，由誰下令暫停排程。</label></li>
+        <li data-k="r-social-7"><label><input type="checkbox">所有貼文使用 #TIFF26、正確 TIFF 帳號與 approved credit；不得自行把大會票券或 pass 當抽獎贈品。</label></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">公關</span>Film Publicist／Talent PR<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul class="tasklist">
+        <li data-k="r-pr-1"><label><input type="checkbox">決定是否聘加拿大／北美 publicist，並向 TIFF 確認 Publicity Contacts Confirmation 真正截止日，不把 8/11 當成硬期限。</label></li>
+        <li data-k="r-pr-2"><label><input type="checkbox">確認本片 Publicist Pass 上限；影片公關、舒華個人公關及其他藝人公關都須列入計算。</label></li>
+        <li data-k="r-pr-3"><label><input type="checkbox">完成中英文 press notes：logline、synopsis、credits、導演／演員 bios、角色表、製作背景、聯絡方式與可用照片連結。</label></li>
+        <li data-k="r-pr-4"><label><input type="checkbox">建立加拿大、國際與台灣媒體分級名單，規劃 embargo、pitch、確認、提醒及會後寄送素材的日期。</label></li>
+        <li data-k="r-pr-5"><label><input type="checkbox">建立訪問單一入口：媒體、時間、語言、形式、地點、議題、攝影需求、藝人核准與最終結果都留紀錄。</label></li>
+        <li data-k="r-pr-6"><label><input type="checkbox">準備導演與演員 talking points、敏感問題 Q&amp;A、不可回答範圍、口譯 glossary 與現場攔訪處理方式。</label></li>
+        <li data-k="r-pr-7"><label><input type="checkbox">建立媒體監測與危機通報：錯誤報導由誰要求更正、重大事件由誰核准聲明、誰通知 TIFF。</label></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">導演</span>Fiona Roan Feng-i<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul class="tasklist">
+        <li data-k="r-dir-1"><label><input type="checkbox">保留前兩場公開放映、映前介紹、映後 Q&amp;A 與可能的媒體活動；其他邀約不能撞期。</label></li>
+        <li data-k="r-dir-2"><label><input type="checkbox">準備 30 秒與 2 分鐘中英文自我介紹、導演論述、創作起點、片名解讀及常見 Q&amp;A。</label></li>
+        <li data-k="r-dir-3"><label><input type="checkbox">確認是否需要口譯、無障礙或行動協助，並把語言與需求寫入登記資料及 Venue Liaison 行程。</label></li>
+        <li data-k="r-dir-4"><label><input type="checkbox">準備獨立 Email 與手機號碼供 Guest Pass／Ticketmaster 使用；現場攜帶政府核發照片證件。</label></li>
+        <li data-k="r-dir-5"><label><input type="checkbox">確認首映服裝、妝髮、交通、call time、stage party、Green Room 名單及紅毯／photo call 是否存在。</label></li>
+        <li data-k="r-dir-6"><label><input type="checkbox">確認理解 TIFF 對活動錄影、剪輯與長期使用的條款；上台前也讓所有同行來賓知情。</label></li>
+        <li data-k="r-dir-7"><label><input type="checkbox">機票開票前取得 CAD $2,700 補助的訂票／核銷方式與可核銷艙等書面答覆。</label></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">製片</span>Producer／總控<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul class="tasklist">
+        <li data-k="r-prod-1"><label><input type="checkbox">建立全團狀態表：姓名以外的護照／簽證敏感資料放在受控文件，本頁只追蹤是否完成。</label></li>
+        <li data-k="r-prod-2"><label><input type="checkbox">完成總預算與付款責任：大會出、公司出、藝人團隊出、待爭取四類分開，另留 10–15% 緊急預備金。</label></li>
+        <li data-k="r-prod-3"><label><input type="checkbox">逐人確認入境文件與工作內容；需要時取得 TIFF／IRCC 或專業人士的書面判斷並備妥邀請函、雇主信及返程證明。</label></li>
+        <li data-k="r-prod-4"><label><input type="checkbox">鎖定 DCP 內部 QC 日：英文字幕、聲音、CPL、命名、片長、畫幅、加密／DKDM 都要早於 8/21 完成。</label></li>
+        <li data-k="r-prod-5"><label><input type="checkbox">向 Steven Landry 取得 Deluxe 安全上傳連結；TIFF 不接受逐件進度詢問，但收到技術修復通知必須立即回覆，否則場次有取消風險。</label></li>
+        <li data-k="r-prod-6"><label><input type="checkbox">確認影片與宣傳素材的音樂、人物、場景、商標與所有權利清除，以及代表劇組接受條款的簽署權限。</label></li>
+        <li data-k="r-prod-7"><label><input type="checkbox">確認製片證、銷售代理證、自家場次票券、額外 pass、Publicist Pass 與 entourage access 各自的申請人和期限。</label></li>
+        <li data-k="r-prod-8"><label><input type="checkbox">購買合適的旅遊／醫療／行李／取消保險，並完成航班取消、藝人健康、badge 遺失、DCP 異常與安全事件備案。</label></li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section id="operations">
+  <h2><span class="no">06</span>全團執行表</h2>
+  <p class="sub">這裡只顯示工作狀態，不存放護照號碼、生日、私人電話或房號。具體姓名與敏感資料應另存權限受控的工作表。</p>
+
+  <h4 style="margin:18px 0 8px; font-size:15px">人員與招待狀態</h4>
+  <div class="tblwrap">
+    <table class="status-table">
+      <thead><tr><th>人員／組別</th><th>現有書面權益</th><th>尚待確認</th><th>內部下一步</th></tr></thead>
+      <tbody>
+        <tr><td>導演阮鳳儀</td><td><span class="chip doc">Guest Pass</span><span class="chip doc">機票 CAD $2,700</span><span class="chip doc">住宿 3 晚</span></td><td>補助流程、飯店與日期、接送、票券、call time</td><td>未取得補助方式前不開不可退票</td></tr>
+        <tr><td>葉舒華</td><td><span class="chip doc">Guest Pass</span><span class="chip doc">住宿 2 晚</span></td><td>機票、飯店與日期、接送、口譯、保安、entourage</td><td>經紀需求整理成一份正式名單</td></tr>
+        <tr><td>陳雪／蔡凡熙</td><td><span class="chip ask">尚無正式邀請</span></td><td>Guest Invitation、機票、住宿、pass、接送</td><td>將姓名、角色及 rider 正式寄給 Tiffin</td></tr>
+        <tr><td>製片／銷售</td><td><span class="chip doc">各 1 張免費 pass</span></td><td>登記人、額外折扣 pass、票券</td><td>8/17 前完成登記</td></tr>
+        <tr><td>行銷／公關／社群</td><td><span class="chip ask">未保證 badge</span></td><td>Publicist Pass 上限、Market pass、P&amp;M／紅毯工作權</td><td>依實際工作拆分證件需求</td></tr>
+        <tr><td>經紀／妝髮／保鑣／攝影</td><td><span class="chip ask">須送 Venue Liaison</span></td><td>後台、Green Room、紅毯與器材權限</td><td>8 月初提交姓名、角色與必要性</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 style="margin:24px 0 8px; font-size:15px">暫定逐日 Run of Show</h4>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>多倫多日期</th><th>暫定安排</th><th>必須補齊</th><th>主要負責</th></tr></thead>
+      <tbody>
+        <tr><td class="num">9/14–15</td><td>分批抵達、入住、時差調整、器材與素材測試</td><td>航班、接送、飯店、房型、入住名單</td><td class="owner">製片／藝人統籌</td></tr>
+        <tr><td class="num">9/16</td><td>11:30–14:00 P&amp;M 時段；媒體與買家工作日</td><td>是否出席、訪問表、口譯、Market 會議</td><td class="owner">公關／行銷</td></tr>
+        <tr class="key"><td class="num">9/17</td><td>世界首映 ★前兩場之一，導演與受邀來賓必出席</td><td>確切開演、call time、紅毯、妝髮、交通、Q&amp;A、票券</td><td class="owner">製片／公關</td></tr>
+        <tr class="key"><td class="num">9/18</td><td>第二場公開放映 ★必出席</td><td>確切開演、call time、交通、Q&amp;A、票券</td><td class="owner">製片／公關</td></tr>
+        <tr><td class="num">9/19</td><td>公開場、補訪問、買家追蹤或部分人員返程</td><td>是否留場、退房與凌晨航班集合時間</td><td class="owner">行銷／製片</td></tr>
+        <tr><td class="num">9/20</td><td>公開場、影展閉幕、獎項與可能加映</td><td>得獎聯絡、影片／感言備案、留守人員</td><td class="owner">製片／行銷</td></tr>
+        <tr><td class="num">9/21–22</td><td>返台、素材備份、媒體與買家 follow-up</td><td>核銷、成效報告、下一輪發行聯絡</td><td class="owner">全組</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note"><b>使用原則：</b>上表是工作骨架，不是大會確認行程。收到 Confirmed Schedule、Protocol、Venue Liaison 和公關安排後，才把每一格換成確切時間、集合地點與聯絡人。</p>
+
+  <h4 style="margin:24px 0 8px; font-size:15px">預算與付款責任</h4>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>項目</th><th>目前可確認</th><th>應先預留</th><th>需取得的文件</th></tr></thead>
+      <tbody>
+        <tr><td>長程機票</td><td>導演補助上限 CAD $2,700；其他未有書面承諾</td><td>全員可退改票價、選位、行李與團體票差額</td><td>補助／核銷規則、發票抬頭</td></tr>
+        <tr><td>住宿</td><td>導演 3 晚、舒華 2 晚；日期與飯店未知</td><td>其他人全程、提早到與延住、稅費、押金</td><td>訂房確認、取消條款、付款人</td></tr>
+        <tr><td>證件／票券</td><td>製片 1＋銷售 1 免費；兩位受邀者 Guest Pass</td><td>額外 Market pass、付費票與 Publicist 人力</td><td>配額、價格、申請截止</td></tr>
+        <tr><td>宣傳／現場</td><td>基本官方曝光、基本防盜錄</td><td>公關、口譯、妝髮、攝影、保安、Market 廣告／加場</td><td>報價、工作範圍、取消條款</td></tr>
+        <tr><td>旅行雜支</td><td>受邀者可能有多倫多機場接送</td><td>保險、eSIM、地面交通、餐費、每日津貼與緊急預備金</td><td>公司核銷規則、收據格式</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <details style="margin-top:20px">
+    <summary><span class="qn">SOS</span>現場突發狀況與通報順序<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul>
+        <li><b>生命安全／立即危險：</b>先打加拿大 911，再通知製片總控與 TIFF 現場人員。</li>
+        <li><b>騷擾或不當行為：</b>先確保當事人安全，可用 TIFF Code of Conduct 管道或 1-833-265-9835 機密通報。<a class="src" href="#doc-guide-p11">指南 P.11</a></li>
+        <li><b>場次、紅毯、後台：</b>Venue Liaison → Film Coordinator；不要由多人同時向不同 TIFF 部門發訊息。</li>
+        <li><b>藝人健康或保安：</b>藝人經紀／保鑣 → 製片總控 → Venue Liaison；社群立即暫停未發布排程。</li>
+        <li><b>DCP 技術：</b>Steven Landry／technical@tiff.net；收到修復通知立即回覆，保留實驗室與 KDM 聯絡人待命。</li>
+        <li><b>航班或行李：</b>航空公司／保險 → 製片旅行負責人 → Tiffin（若影響接送、住房或必出席場次）。</li>
+        <li><b>媒體危機：</b>Publicist 統一事實 → 行銷與製片核准 → 必要時通知 proffice；未核准前其他人不回應。</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section id="flights">
+  <h2><span class="no">07</span>建議班機與時差</h2>
+  <p class="sub"><span class="chip bg">補充背景</span> 航班為 2026/7/22 查詢的現行班表，訂票時請以航空公司為準。原則：<b>7/27 收到確認版場次前先比價鎖位、不要開票</b>；開票後立刻回報 Tiffin（接送需在抵達 5 天前預約）。</p>
+
+  <h4 style="margin:18px 0 8px; font-size:15px">時差怎麼算（9 月）</h4>
+  <ul style="margin:0 0 18px; padding-left:20px">
+    <li>多倫多為夏令時間（EDT，UTC−4），台灣 UTC+8：<b>台北快多倫多整整 12 小時</b>，剛好日夜顛倒——錶面數字相同，早晚互換</li>
+    <li>行銷可以吃到的紅利：<b>首映 9/17 傍晚（多倫多）＝台北 9/18 清晨到上午</b>，紅毯照片與映後迴響剛好趕上台灣 9/18 早上的新聞與社群黃金時段，發稿排程可預先設定</li>
+    <li>向東飛＋12 小時反轉是最難調的時差：藝人建議<b>提早 2–3 天抵達</b>，抵達當晚撐到當地 23:00 再睡、白天多曬太陽、首映日下午不要長午睡</li>
+  </ul>
+
+  <h4 style="margin:18px 0 8px; font-size:15px">直飛航線參考（長榮航空；日期班次須逐日確認）</h4>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>航班</th><th>出發</th><th>抵達</th><th>飛行時間</th></tr></thead>
+      <tbody>
+        <tr><td><b>BR36</b> 台北 → 多倫多</td><td>桃園 TPE 約 19:20（晚間）</td><td>多倫多 YYZ <b>同一天</b> 約 21:35</td><td class="num">約 14 小時 15 分</td></tr>
+        <tr><td><b>BR35</b> 多倫多 → 台北</td><td>多倫多 YYZ 約 01:45（凌晨）</td><td>桃園 TPE <b>隔天</b>清晨約 05:40</td><td class="num">約 15 小時 55 分</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note" style="margin-top:10px"><b>使用方式：</b>表內時刻只供規劃方向，不代表 9 月每一天都有同一班次或完全相同時刻。開票當天須在<a href="https://flights.evaair.com/zh-tw/flights-from-taipei-to-toronto" target="_blank" rel="noopener">長榮官網</a>輸入實際日期，重新確認班號、起降時間、行李、改票／退票條件與團體訂位。回程若是凌晨航班，集合與退房日應按「前一晚」安排。</p>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="panel">
+      <h5>建議去程（配合暫定場次）</h5>
+      <ul>
+        <li><b>建議：9/14（一）BR36</b> → 當地 9/14 晚 21:35 抵達。9/15–16 兩個完整白天調時差＋媒體準備，9/16 中午 P&amp;M 場可自由運用，9/17 傍晚首映時狀態最好</li>
+        <li><b>底線：9/15（二）BR36</b> → 9/15 晚抵達，首映前只剩一個白天，12 小時時差只調一天，藝人上紅毯狀態有風險，不建議更晚</li>
+        <li>隨行技術人員若預算緊，可比藝人晚一天到</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h5>建議回程（依出席深度二選一）</h5>
+      <ul>
+        <li><b>A 案（出席前兩場即返）：9/20（日）凌晨 BR35</b>——9/18 傍晚 Lightbox 場映後結束，9/19 留整天休整或補訪問，9/19 深夜赴機場搭 9/20 01:45 班機，<b>9/21（一）清晨抵台</b></li>
+        <li><b>趕行程版：9/19（六）凌晨 BR35</b>——9/18 映後直接去機場，9/20 清晨抵台；適合部分隨行人員先撤</li>
+        <li><b>B 案（留到閉幕，含 9/19、9/20 加場與 People's Choice 頒獎日）：9/21（一）凌晨 BR35</b>，9/22 清晨抵台</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:14px">
+    <b>與大會招待對齊：</b>招待只承諾導演最多 3 晚、舒華最多 2 晚，確切入住／退房日尚未確認；先找可取消房價，收到 Tiffin 書面確認再定案（<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a>）。導演機票應先問清 CAD $2,700 的訂票／核銷方式。入境文件必須逐人依護照與工作內容判斷，不可用「全員辦 eTA」一概處理。
+  </div>
+
+  <p class="note"><b>備案航線（若直飛滿位或票價過高）：</b>經溫哥華（長榮/華航直飛 YVR 轉加國內線，入境手續在 YVR 辦）、經香港（國泰）、經東京（加航直飛 YYZ）。<b>避免經美國轉機</b>——需另辦美國過境簽證/ESTA、行李提領重掛，大團隊風險高。</p>
+</section>
+
 <section id="cases">
-  <h2><span class="no">05</span>參考案例與類比</h2>
+  <h2><span class="no">08</span>參考案例與類比</h2>
   <p class="sub"><span class="chip bg">補充背景</span> 本節全部來自大會文件以外的一般背景知識，細節請以 <a href="https://www.tiff.net/" target="_blank" rel="noopener">TIFF 官網</a>節目資料庫查證後再對外引用。</p>
   <ul>
-    <li><b>Special Presentations 是什麼位階：</b>TIFF 的明星＋話題作主力單元，規模僅次於 Gala。近年經典如《寄生上流》（2019）、《分手的決心》（2022）、是枝裕和《怪物》（2023）都走過這個單元——多半是坎城後的北美首映。本片以<b>世界首映</b>進 SP，代表 TIFF 把它當「全球第一手」的重點新片，對國際媒體與買家是更強的訊號。</li>
+    <li><b>Special Presentations 的定位：</b>TIFF 沒有公布 Gala 與 Special Presentations 的正式高低排序；實務上 SP 是明星、名導與話題片集中的重要公開單元。歷屆片目可作溝通背景，但不應寫成官方「僅次於 Gala」的保證。本片以<b>世界首映</b>進 SP，對國際媒體與買家仍是清楚且有價值的訊號。</li>
     <li><b>首映場地的意義：</b>暫定首映場 Royal Alexandra Theatre 是千人級歷史劇院，SP 單元的指標場地之一，通常伴隨媒體拍照區；確切紅毯規格等 8 月大會通知。</li>
-    <li><b>People's Choice 的價值：</b>TIFF 沒有評審團大獎，觀眾票選獎就是最高榮譽，歷屆得主（如《綠皮書》《寄生上流》之後的多部）常直通頒獎季。國際片另設 International People's Choice——動員觀眾投票是行銷端可以主動操作的少數獎項。</li>
+    <li><b>People's Choice 的價值：</b>TIFF 同時設有 Platform、加拿大電影與 Short Cuts 等評審獎，不能說「沒有評審團大獎」。People's Choice 是最具國際能見度的觀眾票選獎之一；國際片另設 International People's Choice，本片依 2026 條款符合資格。任何投票動員都應先確認大會規則，避免不當誘因或票券促銷。</li>
     <li><b>台灣團隊常見做法：</b>入選國際 A 級影展主單元後，向<a href="https://www.bamid.gov.tw/" target="_blank" rel="noopener">文化部影視局</a>／<a href="https://taicca.tw/" target="_blank" rel="noopener">TAICCA</a> 申請參展補助（機票、國際行銷費），並由國內發行方同步操作「入選 TIFF」新聞稿與 9 月首映的二波宣傳。</li>
   </ul>
 </section>
 
 <section id="contacts">
-  <h2><span class="no">06</span>聯絡窗口速查</h2>
+  <h2><span class="no">09</span>聯絡窗口速查</h2>
   <p class="sub">大會明確要求：找對信箱，事情才會動。</p>
   <div class="tblwrap">
     <table class="contact">
@@ -608,7 +846,7 @@ a[href^="mailto:"]{cursor:copy}
 </section>
 
 <section id="docs">
-  <h2><span class="no">07</span>官方文件原文</h2>
+  <h2><span class="no">10</span>官方文件原文</h2>
   <p class="sub">大會文件與信件全文照錄（英文原文），頁碼對應 PDF 頁碼。指南各處的「出處」小標籤點了會跳到這裡的對應段落並短暫變色。用上方搜尋框可直接搜文件內文。</p>
 
   <details class="doc" id="doc-email">
@@ -619,7 +857,7 @@ a[href^="mailto:"]{cursor:copy}
         <p>Congratulations on the invitation to have HAPPILY EVER AFTER screen at this year's Toronto International Film Festival! My name is Tiffin and as your Film Coordinator I will be your primary contact for the Festival. Over the summer, I will be assisting you with the film registration process, confirming publicity assets and film info, and supporting the logistics of Fiona Roan Feng-i and Shuhua's attendance. I will also be introducing you to select TIFF reps to support your team's preparation for the Festival.</p>
         <p>Fred has already confirmed the credits for the announcement tomorrow, we're still waiting for the Language of the film, the estimated runtime of the film and one film still.</p>
         <p><b>Publicity Materials:</b> we require your film's publicity materials as soon as possible so that we can meet the publication deadlines for our website and printed programme book. The attached Filmmaker Guide contains a list of publicity materials that we require by July 20.</p>
-        <p><b>Visa / eTA Requirements & Travel Guidelines:</b> At this time it is also pertinent that we know the citizenship of Fiona Roan Feng-i and Shuhua and whether they will require a travel visa. TIFF can assist by providing guests with a Visa Support Letter. Visa-exempt foreign nationals are expected to have an Electronic Travel Authorization (eTA) to fly to or transit through Canada.</p>
+        <p><b>Visa / eTA Requirements &amp; Travel Guidelines:</b> At this time it is also pertinent that we know the citizenship of Fiona Roan Feng-i and Shuhua and whether they will require a travel visa. TIFF can assist by providing guests with a Visa Support Letter. Visa-exempt foreign nationals are expected to have an Electronic Travel Authorization (eTA) to fly to or transit through Canada.</p>
         <p><b>Your Film's Announcement:</b> We ask that you please do not announce your film's participation in our festival until we have made our announcement. Your film will be publicly announced on July 20 10AM Eastern Time.</p>
       </div>
       <div class="docpage" id="doc-email-e2">
@@ -1001,7 +1239,7 @@ window.addEventListener('load',function(){
   var idx=null;
   function buildIndex(){
     idx=[];
-    var sel='#timeline .tl .t, #screenings td, #screenings .note, .body p, .body li, .panel li, .callout, #cases li, .contact td, .alert, .docpage p, .docpage li';
+    var sel='#timeline .tl .t, #screenings td, #screenings .note, .body p, .body li, .panel li, .callout, #cases li, .contact td, .alert, .internal, .docpage p, .docpage li, #flights li, #flights td, #flights .note, #operations td, #operations .note';
     document.querySelectorAll(sel).forEach(function(el){
       var t=el.textContent.replace(/\s+/g,' ').trim();
       if(t.length>3) idx.push({el:el, text:t, low:t.toLowerCase()});
@@ -1080,7 +1318,7 @@ window.addEventListener('load',function(){
   var KEY='tiff2026-checklist';
   var saved={};
   try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
-  document.querySelectorAll('.tl li').forEach(function(li){
+  document.querySelectorAll('li[data-k]').forEach(function(li){
     var k=li.dataset.k, box=li.querySelector('input[type=checkbox]');
     if(!box) return;
     if(saved[k]){ box.checked=true; li.classList.add('done'); }
@@ -1091,6 +1329,32 @@ window.addEventListener('load',function(){
     });
   });
 })();
+
+/* ---------- date-aware hero status ---------- */
+(function(){
+  var title=document.getElementById('status-title');
+  var copy=document.getElementById('status-copy');
+  var detail=document.getElementById('status-detail');
+  var deadlineItem=document.getElementById('schedule-deadline');
+  if(!title||!copy||!detail) return;
+  var now=new Date();
+  var changeDeadline=new Date('2026-07-22T22:00:00+08:00');
+  var confirmedDeadline=new Date('2026-07-28T00:00:00-04:00');
+  if(now<changeDeadline){
+    title.textContent='目前狀態：場次更改窗口尚未截止。';
+    copy.innerHTML='若暫定場次需要調整，須於 <b>7/22（三）上午 10 點（多倫多）＝台灣 22:00</b> 前寄到 <a href="mailto:schedules@tiff.net">schedules@tiff.net</a>；大會不保證接受更改。';
+  }else if(now<confirmedDeadline){
+    title.textContent='目前狀態：場次更改窗口已截止，等待確認版。';
+    copy.innerHTML='確認版場次預定最遲 <b>7/27</b> 寄達；收到後應立刻鎖定藝人檔期、班機與住宿。';
+    if(deadlineItem) deadlineItem.classList.remove('hot');
+  }else{
+    title.textContent='目前狀態：確認版場次原定 7/27 前寄達。';
+    copy.innerHTML='若尚未收到 Confirmed Schedule Letter，請由排程窗口立即追蹤 <a href="mailto:schedules@tiff.net">schedules@tiff.net</a>；之後的所有班機、住宿與 call time 都以確認版及後續通知為準。';
+    if(deadlineItem) deadlineItem.classList.remove('hot');
+  }
+  detail.textContent='前兩場公開放映暫定為 9/17、9/18；住宿日期仍須由 Tiffin 另行書面確認，不能由場次自行推定。';
+})();
 </script>
 
+</body>
 </html>
