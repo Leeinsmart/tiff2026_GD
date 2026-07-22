@@ -125,6 +125,13 @@ nav a:hover,nav a:focus-visible{color:var(--accent); border-bottom-color:var(--a
 .tasklist input[type=checkbox]{
   accent-color:var(--accent); width:16px; height:16px; margin-right:10px; vertical-align:-2px;
 }
+.due{
+  display:inline-block; margin-left:7px; padding:0 8px; border-radius:99px;
+  background:var(--urgent-soft); color:var(--urgent); font-size:11.5px; font-weight:800;
+  white-space:nowrap; vertical-align:1px;
+}
+.due.internal{background:var(--info-soft); color:var(--info)}
+.due.tentative{background:var(--wait-soft); color:var(--wait)}
 .status-table td:first-child{font-weight:700; white-space:nowrap}
 .status-table .chip{margin:1px 2px}
 .owner{font-size:12px; color:var(--muted); white-space:nowrap}
@@ -604,17 +611,17 @@ a[href^="mailto:"]{cursor:copy}
 
 <section id="roles">
   <h2><span class="no">05</span>五個角色的工作清單</h2>
-  <p class="sub">每個角色只看自己的段落也能開始工作。勾選狀態會存在這台裝置；「完成」代表內部已處理，不代表 TIFF 已核准。</p>
+  <p class="sub">勾選結果僅存本機。<span class="due">紅色：大會期限</span><span class="due internal">藍色：完成點</span><span class="due tentative">黃色：暫定／等通知</span></p>
 
   <details open>
     <summary><span class="qn">全員</span>先建立共同作業規則<span class="arrow">›</span></summary>
     <div class="body">
       <ul class="tasklist">
-        <li data-k="r-all-1"><label><input type="checkbox">指定一位總窗口對 TIFF 發信，其他人先在內部整併問題，避免不同窗口收到互相矛盾的要求。</label></li>
-        <li data-k="r-all-2"><label><input type="checkbox">建立「人員 × 任務」責任表：每件事只設一位最終負責人，另列協作者與核准者。</label></li>
-        <li data-k="r-all-3"><label><input type="checkbox">建立劇組共用行事曆，所有日期同時標示 Toronto EDT 與 Taipei UTC+8，會議邀請也寫明時區。</label></li>
-        <li data-k="r-all-4"><label><input type="checkbox">建立內部工作群組與緊急群組；緊急群組只處理航班、健康、保安、證件與場次異動。</label></li>
-        <li data-k="r-all-5"><label><input type="checkbox">確認哪些資料可公開、哪些只能在內部受控文件保存；護照、生日、私人電話與安全動線不放本頁。</label></li>
+        <li data-k="r-all-1"><label><input type="checkbox">指定一位 TIFF 對外總窗口。</label><a class="src" href="#doc-email-e1">出處：歡迎信</a></li>
+        <li data-k="r-all-2"><label><input type="checkbox">建立任務責任表：負責、協作、核准各一人。</label></li>
+        <li data-k="r-all-3"><label><input type="checkbox">建立台北／多倫多雙時區共用行事曆。</label></li>
+        <li data-k="r-all-4"><label><input type="checkbox">建立工作群組與緊急通報群組。</label></li>
+        <li data-k="r-all-5"><label><input type="checkbox">敏感資料另存受控文件，不放本頁。</label></li>
       </ul>
     </div>
   </details>
@@ -623,13 +630,13 @@ a[href^="mailto:"]{cursor:copy}
     <summary><span class="qn">行銷</span>ANLI／Marketing Lead<span class="arrow">›</span></summary>
     <div class="body">
       <ul class="tasklist">
-        <li data-k="r-mkt-1"><label><input type="checkbox">寫一頁參展目標：台灣曝光、國際媒體、北美買家、海外發行與獎項，各自設定可量化成果。</label></li>
-        <li data-k="r-mkt-2"><label><input type="checkbox">定稿中英文核心訊息：一句話簡介、30 秒口述版、導演論述、世界首映與 SP 單元的正確說法。</label></li>
-        <li data-k="r-mkt-3"><label><input type="checkbox">建立所有素材的版本／權利／核准表：劇照、預告、片花、海報、音樂、攝影署名與藝人經紀核准。</label></li>
-        <li data-k="r-mkt-4"><label><input type="checkbox">與製片／銷售代理確認 Rights Survey、可售地區、買家名單、Market 會議與會後追蹤負責人。</label></li>
-        <li data-k="r-mkt-5"><label><input type="checkbox">決定是否購買 Market 廣告或加開 Market screening；分別在 8/6、8/14 前完成效益與預算判斷。</label></li>
-        <li data-k="r-mkt-6"><label><input type="checkbox">查明影視局／TAICCA 當期補助資格、可核銷項目、申請期限與憑證格式，不能只靠一般經驗判斷。</label></li>
-        <li data-k="r-mkt-7"><label><input type="checkbox">設定每日成果回報：媒體篇數、訪問完成、社群觸及、買家會議、待追蹤名單與下一步。</label></li>
+        <li data-k="r-mkt-1"><label><input type="checkbox">設定曝光、媒體、買家、發行與獎項 KPI。</label></li>
+        <li data-k="r-mkt-2"><label><input type="checkbox">定稿中英文核心訊息與 SP／世界首映說法。</label><a class="src" href="#doc-film-inv-p1">出處：影片邀請函</a></li>
+        <li data-k="r-mkt-3"><label><input type="checkbox">完成宣傳素材版本、權利與核准表。<span class="due">交件：邀請後 48 小時</span></label><a class="src" href="#doc-terms-p5">出處：條款 §IX</a></li>
+        <li data-k="r-mkt-4"><label><input type="checkbox">完成 Rights Survey、可售地區與權利方資料。<span class="due">期限：7/24</span></label><a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+        <li data-k="r-mkt-5"><label><input type="checkbox">決定 Market 廣告與加場。<span class="due">廣告：8/6</span><span class="due">加場：8/14</span></label><a class="src" href="#doc-terms-p12">出處：附錄A</a></li>
+        <li data-k="r-mkt-6"><label><input type="checkbox">確認影視局／TAICCA 補助及核銷規則。</label></li>
+        <li data-k="r-mkt-7"><label><input type="checkbox">設定每日媒體、社群與買家成果回報。</label></li>
       </ul>
       <p class="note"><b>素材權利：</b>交給 TIFF 的宣傳素材可能被編輯、翻譯並長期使用；預告若日後要下架，須寄信至 materials@tiff.net。交件前應取得完整權利與經紀核准。<a class="src" href="#doc-terms-p5">條款 §IX</a></p>
     </div>
@@ -639,13 +646,13 @@ a[href^="mailto:"]{cursor:copy}
     <summary><span class="qn">社群</span>Social Editor／現場內容<span class="arrow">›</span></summary>
     <div class="body">
       <ul class="tasklist">
-        <li data-k="r-social-1"><label><input type="checkbox">完成 9/14–9/22 台北／多倫多雙時區內容日曆，區分預排、現場即時與需經紀核准三種貼文。</label></li>
-        <li data-k="r-social-2"><label><input type="checkbox">建立首映 shot list：抵達、妝髮、場館外觀、紅毯、觀眾、Q&amp;A、媒體引言與收工；每項標示拍攝人與授權狀態。</label></li>
-        <li data-k="r-social-3"><label><input type="checkbox">向 Venue Liaison 書面確認可拍區、禁拍區、攝影師／器材進場方式，以及紅毯與後台素材何時可以發布。</label></li>
-        <li data-k="r-social-4"><label><input type="checkbox">檢查帳號管理員、2FA、備援手機、eSIM／漫遊、雲端上傳與充電設備；密碼不要放工作群組。</label></li>
-        <li data-k="r-social-5"><label><input type="checkbox">與經紀團隊約定審稿人與最長回覆時間；超時時哪些低風險內容可先發也要事先寫清楚。</label></li>
-        <li data-k="r-social-6"><label><input type="checkbox">建立危機停發機制：場次變更、藝人健康、安全事件、負面媒體或錯誤資訊出現時，由誰下令暫停排程。</label></li>
-        <li data-k="r-social-7"><label><input type="checkbox">所有貼文使用 #TIFF26、正確 TIFF 帳號與 approved credit；不得自行把大會票券或 pass 當抽獎贈品。</label></li>
+        <li data-k="r-social-1"><label><input type="checkbox">完成 9/14–9/22 雙時區內容日曆。</label></li>
+        <li data-k="r-social-2"><label><input type="checkbox">完成首映拍攝清單與授權狀態。</label></li>
+        <li data-k="r-social-3"><label><input type="checkbox">向 Venue Liaison 確認拍攝、器材與發布權限。<span class="due tentative">時程：8 月初對接後</span></label><a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+        <li data-k="r-social-4"><label><input type="checkbox">檢查帳號權限、2FA、網路、備份與電力。</label></li>
+        <li data-k="r-social-5"><label><input type="checkbox">確認經紀審稿人與回覆時限。</label></li>
+        <li data-k="r-social-6"><label><input type="checkbox">建立危機停發與核准流程。</label></li>
+        <li data-k="r-social-7"><label><input type="checkbox">統一使用 #TIFF26 與官方帳號；票券／pass 不得自行促銷或抽獎。</label><a class="src" href="#doc-guide-p10">出處：指南 P.10</a><a class="src" href="#doc-terms-p4">出處：條款 §VIII</a></li>
       </ul>
     </div>
   </details>
@@ -654,13 +661,13 @@ a[href^="mailto:"]{cursor:copy}
     <summary><span class="qn">公關</span>Film Publicist／Talent PR<span class="arrow">›</span></summary>
     <div class="body">
       <ul class="tasklist">
-        <li data-k="r-pr-1"><label><input type="checkbox">決定是否聘加拿大／北美 publicist，並向 TIFF 確認 Publicity Contacts Confirmation 真正截止日，不把 8/11 當成硬期限。</label></li>
-        <li data-k="r-pr-2"><label><input type="checkbox">確認本片 Publicist Pass 上限；影片公關、舒華個人公關及其他藝人公關都須列入計算。</label></li>
-        <li data-k="r-pr-3"><label><input type="checkbox">完成中英文 press notes：logline、synopsis、credits、導演／演員 bios、角色表、製作背景、聯絡方式與可用照片連結。</label></li>
-        <li data-k="r-pr-4"><label><input type="checkbox">建立加拿大、國際與台灣媒體分級名單，規劃 embargo、pitch、確認、提醒及會後寄送素材的日期。</label></li>
-        <li data-k="r-pr-5"><label><input type="checkbox">建立訪問單一入口：媒體、時間、語言、形式、地點、議題、攝影需求、藝人核准與最終結果都留紀錄。</label></li>
-        <li data-k="r-pr-6"><label><input type="checkbox">準備導演與演員 talking points、敏感問題 Q&amp;A、不可回答範圍、口譯 glossary 與現場攔訪處理方式。</label></li>
-        <li data-k="r-pr-7"><label><input type="checkbox">建立媒體監測與危機通報：錯誤報導由誰要求更正、重大事件由誰核准聲明、誰通知 TIFF。</label></li>
+        <li data-k="r-pr-1"><label><input type="checkbox">決定是否聘北美 publicist；向 TIFF 確認公關資料期限。</label><a class="src" href="#doc-guide-p5">出處：指南 P.5</a><a class="src" href="#doc-email-e3">出處：信件 ✉3</a></li>
+        <li data-k="r-pr-2"><label><input type="checkbox">確認 Publicist Pass 上限與登記名單。<span class="due tentative">時程：8 月底等 TIFF 通知</span></label><a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
+        <li data-k="r-pr-3"><label><input type="checkbox">完成中英文 press kit／press notes。<span class="due">交件：邀請後 48 小時</span></label><a class="src" href="#doc-guide-p4">出處：指南 P.4</a></li>
+        <li data-k="r-pr-4"><label><input type="checkbox">建立台灣、加拿大與國際媒體名單及 pitch 時程。</label></li>
+        <li data-k="r-pr-5"><label><input type="checkbox">建立訪問申請、核准與結果紀錄表。</label></li>
+        <li data-k="r-pr-6"><label><input type="checkbox">完成 talking points、敏感題與口譯詞表。</label></li>
+        <li data-k="r-pr-7"><label><input type="checkbox">建立媒體監測、更正與危機聲明流程。</label></li>
       </ul>
     </div>
   </details>
@@ -669,13 +676,13 @@ a[href^="mailto:"]{cursor:copy}
     <summary><span class="qn">導演</span>Fiona Roan Feng-i<span class="arrow">›</span></summary>
     <div class="body">
       <ul class="tasklist">
-        <li data-k="r-dir-1"><label><input type="checkbox">保留前兩場公開放映、映前介紹、映後 Q&amp;A 與可能的媒體活動；其他邀約不能撞期。</label></li>
-        <li data-k="r-dir-2"><label><input type="checkbox">準備 30 秒與 2 分鐘中英文自我介紹、導演論述、創作起點、片名解讀及常見 Q&amp;A。</label></li>
-        <li data-k="r-dir-3"><label><input type="checkbox">確認是否需要口譯、無障礙或行動協助，並把語言與需求寫入登記資料及 Venue Liaison 行程。</label></li>
-        <li data-k="r-dir-4"><label><input type="checkbox">準備獨立 Email 與手機號碼供 Guest Pass／Ticketmaster 使用；現場攜帶政府核發照片證件。</label></li>
-        <li data-k="r-dir-5"><label><input type="checkbox">確認首映服裝、妝髮、交通、call time、stage party、Green Room 名單及紅毯／photo call 是否存在。</label></li>
-        <li data-k="r-dir-6"><label><input type="checkbox">確認理解 TIFF 對活動錄影、剪輯與長期使用的條款；上台前也讓所有同行來賓知情。</label></li>
-        <li data-k="r-dir-7"><label><input type="checkbox">機票開票前取得 CAD $2,700 補助的訂票／核銷方式與可核銷艙等書面答覆。</label></li>
+        <li data-k="r-dir-1"><label><input type="checkbox">保留前兩場公開放映、映前介紹與映後 Q&amp;A。<span class="due tentative">暫定：9/17、9/18</span></label><a class="src" href="#doc-guest-fiona-p1">出處：導演邀請函</a></li>
+        <li data-k="r-dir-2"><label><input type="checkbox">準備中英文自介、導演論述與常見 Q&amp;A。</label></li>
+        <li data-k="r-dir-3"><label><input type="checkbox">登記口譯、無障礙與行動需求。<span class="due internal">完成點：送出登記表前</span></label><a class="src" href="#doc-checklist-s3">出處：登記表 S3</a></li>
+        <li data-k="r-dir-4"><label><input type="checkbox">準備 Guest Pass 專用 Email、手機與照片證件。</label><a class="src" href="#doc-guest-fiona-p2">出處：邀請函 P.2</a></li>
+        <li data-k="r-dir-5"><label><input type="checkbox">確認 call time、交通、紅毯、stage party 與 Green Room。<span class="due tentative">時程：8 月通知</span></label><a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+        <li data-k="r-dir-6"><label><input type="checkbox">確認所有上台者知悉 TIFF 錄影授權。</label><a class="src" href="#doc-terms-p3">出處：條款 §VII</a></li>
+        <li data-k="r-dir-7"><label><input type="checkbox">取得 CAD $2,700 機票補助書面規則。<span class="due internal">完成點：開票前</span></label><a class="src" href="#doc-guest-fiona-p1">出處：導演邀請函</a></li>
       </ul>
     </div>
   </details>
@@ -684,14 +691,14 @@ a[href^="mailto:"]{cursor:copy}
     <summary><span class="qn">製片</span>Producer／總控<span class="arrow">›</span></summary>
     <div class="body">
       <ul class="tasklist">
-        <li data-k="r-prod-1"><label><input type="checkbox">建立全團狀態表：姓名以外的護照／簽證敏感資料放在受控文件，本頁只追蹤是否完成。</label></li>
-        <li data-k="r-prod-2"><label><input type="checkbox">完成總預算與付款責任：大會出、公司出、藝人團隊出、待爭取四類分開，另留 10–15% 緊急預備金。</label></li>
-        <li data-k="r-prod-3"><label><input type="checkbox">逐人確認入境文件與工作內容；需要時取得 TIFF／IRCC 或專業人士的書面判斷並備妥邀請函、雇主信及返程證明。</label></li>
-        <li data-k="r-prod-4"><label><input type="checkbox">鎖定 DCP 內部 QC 日：英文字幕、聲音、CPL、命名、片長、畫幅、加密／DKDM 都要早於 8/21 完成。</label></li>
-        <li data-k="r-prod-5"><label><input type="checkbox">向 Steven Landry 取得 Deluxe 安全上傳連結；TIFF 不接受逐件進度詢問，但收到技術修復通知必須立即回覆，否則場次有取消風險。</label></li>
-        <li data-k="r-prod-6"><label><input type="checkbox">確認影片與宣傳素材的音樂、人物、場景、商標與所有權利清除，以及代表劇組接受條款的簽署權限。</label></li>
-        <li data-k="r-prod-7"><label><input type="checkbox">確認製片證、銷售代理證、自家場次票券、額外 pass、Publicist Pass 與 entourage access 各自的申請人和期限。</label></li>
-        <li data-k="r-prod-8"><label><input type="checkbox">購買合適的旅遊／醫療／行李／取消保險，並完成航班取消、藝人健康、badge 遺失、DCP 異常與安全事件備案。</label></li>
+        <li data-k="r-prod-1"><label><input type="checkbox">建立全團旅行、證件、住宿與 badge 狀態表。</label></li>
+        <li data-k="r-prod-2"><label><input type="checkbox">完成總預算、付款人與緊急預備金。</label></li>
+        <li data-k="r-prod-3"><label><input type="checkbox">逐人確認護照、入境文件與工作身分。<span class="due internal">完成點：開票前</span></label><a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
+        <li data-k="r-prod-4"><label><input type="checkbox">完成 DCP 字幕、聲音、CPL、命名、畫幅與 DKDM QC。<span class="due">最終交片：8/21</span></label><a class="src" href="#doc-terms-p15">出處：附錄B</a></li>
+        <li data-k="r-prod-5"><label><input type="checkbox">取得 Deluxe 上傳連結並處理技術通知。<span class="due">上傳期限：8/21</span></label><a class="src" href="#doc-terms-p2">出處：條款 §V</a><a class="src" href="#doc-terms-p16">出處：附錄B</a></li>
+        <li data-k="r-prod-6"><label><input type="checkbox">完成影片、音樂、人物、商標與宣傳素材權利清除。<span class="due internal">完成點：交件前</span></label><a class="src" href="#doc-terms-p7">出處：條款 §XI</a></li>
+        <li data-k="r-prod-7"><label><input type="checkbox">完成免費 pass、Publicist Pass 與自家場次票券申請。<span class="due">票券：8/12</span><span class="due">製片／銷售 pass：8/17</span></label><a class="src" href="#doc-guide-p6">出處：指南 P.6</a><a class="src" href="#doc-guide-p7">出處：指南 P.7</a></li>
+        <li data-k="r-prod-8"><label><input type="checkbox">完成保險與航班、健康、證件、DCP、安全備案。</label></li>
       </ul>
     </div>
   </details>
@@ -1065,6 +1072,7 @@ a[href^="mailto:"]{cursor:copy}
         <div class="pgno">P.4 · §VII(4) 首映交通、§VIII 票務、§IX 素材</div>
         <p><b>§VII(3)</b> — The Film will be presented at an in-person venue.</p>
         <p><b>§VII(4)</b> — Guests and directors of all Films in the Gala Presentations programme <b>and some Films in the Special Presentations programme may be offered transportation to the first public screening</b> of the Film. TIFF will provide further logistical details in August 2026.</p>
+        <p><b>§VIII(2)</b> — Market passes, Guest Passes and tickets may not be resold or used for fundraising, promotions, contests, prizes or giveaways without TIFF's prior written consent.</p>
         <p><b>§VIII(3)</b> — Market passes and tickets are non-refundable. Tickets may be exchanged starting September 8. Complimentary day-of tickets may be redeemed daily at 8am starting September 10.</p>
         <p><b>§VIII(7)</b> — TIFF Customer Relations requires government-issued photo ID for in-person support. <b>TIFF does not permit access to accounts on behalf of another person.</b></p>
         <p><b>§IX(2)</b> — The Registrant is responsible for arranging and paying for the shipping of materials. Any shipping charges incurred by TIFF will be billed back to the Registrant.</p>
@@ -1072,6 +1080,7 @@ a[href^="mailto:"]{cursor:copy}
       </div>
       <div class="docpage" id="doc-terms-p5">
         <div class="pgno">P.5 · §IX(5) 素材使用、§X 獎項</div>
+        <p><b>§IX(5)</b> — The Registrant warrants that it possesses all rights needed to provide the Promotional Materials for TIFF's permitted uses and agrees to indemnify TIFF for claims arising from their use.</p>
         <p><b>§IX(5)a</b> — TIFF may display all Film trailers on the TIFF digital signage system, TIFF online video and social channels, at digital publicity events and in cinemas, and may place a TIFF or Festival logo before all trailers. All trailers will remain on TIFF online video channels after the Festival, unless a removal request is emailed to materials@tiff.net.</p>
         <p><b>§IX(5)c</b> — TIFF may print and mount <b>up to a maximum of three (3) posters</b> to be displayed at TIFF's premises, retained in TIFF's archives, gifted to TIFF sponsors, or auctioned to raise funds.</p>
         <p><b>§X(1) People's Choice Award Presented by Rogers</b> — winner selected by a public voting mechanism administered by TIFF. The winner must make the winning Film available to TIFF upon request to be screened for public audiences <b>on the final day of the Festival</b>（含一場付費的志工專場）.</p>
@@ -1087,6 +1096,7 @@ a[href^="mailto:"]{cursor:copy}
       </div>
       <div class="docpage" id="doc-terms-p7">
         <div class="pgno">P.7 · §XI 責任與授權、防盜錄</div>
+        <p><b>§XI(1)</b> — The Film Owners warrant that the Film is original or that all required consents, releases, licences and waivers have been obtained for every person, location, trademark, sound recording, musical composition and other protected work included in the Film.</p>
         <p><b>§XI(3)</b> — <b>TIFF offers basic anti-piracy measures at each screening.</b> Studios, distributors, sales agents and production companies may augment, <b>on a fee-for-service basis</b>, enhanced coverage where trained personnel employ proven industry tools and techniques. Contact your Venue Liaison. While in TIFF's possession, all Films are securely stored.</p>
       </div>
       <div class="docpage" id="doc-terms-p10">
