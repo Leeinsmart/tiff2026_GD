@@ -194,6 +194,67 @@ details[open] summary .arrow{transform:rotate(90deg)}
 a{color:var(--accent-ink)}
 
 footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted)}
+
+/* ---------- citations ---------- */
+.src{
+  display:inline-block; font-size:11.5px; color:var(--muted); text-decoration:none;
+  border:1px solid var(--line); border-radius:99px; padding:0 8px; margin-left:6px;
+  white-space:nowrap; vertical-align:1px;
+}
+.src:hover,.src:focus-visible{color:var(--accent); border-color:var(--accent); outline:none}
+[id]{scroll-margin-top:calc(var(--navh,48px) + 10px)}
+.flash{animation:flashbg 1.8s ease-out 1}
+@keyframes flashbg{0%,55%{background:var(--wait-soft)}100%{background:transparent}}
+@media (prefers-reduced-motion: reduce){.flash{animation:none; background:var(--wait-soft)}}
+
+/* ---------- document library ---------- */
+.docpage{border-top:1px dashed var(--line); padding:12px 0 4px; font-size:14px}
+.docpage:first-of-type{border-top:none}
+.pgno{font-size:11.5px; letter-spacing:.12em; color:var(--accent); font-weight:700; margin:4px 0 6px}
+.docpage p{margin:8px 0}
+.docpage ul{margin:6px 0 10px; padding-left:20px}
+.docpage li{margin:3px 0}
+.docmeta{font-size:12.5px; color:var(--muted); font-weight:400; margin-left:auto; padding-right:10px}
+summary .docmeta{flex:none}
+
+/* ---------- search ---------- */
+.searchwrap{margin-left:auto; display:flex; align-items:center; padding:6px 0 6px 10px}
+.searchwrap input{
+  width:190px; font-size:16px; padding:4px 12px; border:1px solid var(--line);
+  border-radius:99px; background:var(--card); color:var(--ink); font-family:var(--sans);
+}
+.searchwrap input:focus{outline:2px solid var(--accent); outline-offset:-1px}
+@media (max-width:640px){
+  .searchwrap{width:100%; padding:2px 0 8px}
+  .searchwrap input{width:100%}
+}
+#results{
+  position:fixed; top:var(--navh,48px); left:0; right:0; z-index:9; display:none;
+  background:var(--card); border-bottom:2px solid var(--accent);
+  box-shadow:0 12px 28px rgba(0,0,0,.18); max-height:62vh; overflow:auto;
+  padding:4px max(20px, calc((100% - 900px)/2 + 20px)) 8px;
+}
+#results.on{display:block}
+#results .rescount{font-size:12px; color:var(--muted); padding:8px 8px 2px}
+.res{
+  display:block; width:100%; text-align:left; background:none; border:none; cursor:pointer;
+  padding:10px 8px; border-bottom:1px solid var(--line); font-size:14px; color:var(--ink);
+  font-family:var(--sans); line-height:1.6;
+}
+.res:last-child{border-bottom:none}
+.res:hover,.res:focus-visible{background:var(--paper); outline:none}
+.res .where{font-size:11.5px; color:var(--accent); font-weight:700; letter-spacing:.05em; margin-bottom:2px}
+.res mark{background:var(--wait-soft); color:inherit; padding:0 1px}
+
+/* ---------- copy toast ---------- */
+#toast{
+  position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+  background:var(--ink); color:var(--paper); font-size:14px; font-weight:600;
+  padding:10px 20px; border-radius:99px; opacity:0; pointer-events:none;
+  transition:opacity .2s, transform .2s; z-index:20; max-width:90vw;
+}
+#toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
+a[href^="mailto:"]{cursor:copy}
 </style>
 
 <div class="wrap">
@@ -211,7 +272,7 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
   </div>
 
   <div class="alert">
-    <b>最急：場次更改請求今天截止。</b>暫定場次若要調整，須於 <b>7/22（三）上午 10 點（多倫多時間）＝台灣今晚 22:00</b> 前寄到 schedules@tiff.net。確認版場次最遲 7/27 寄達，之後不再受理更改。
+    <b>最急：場次更改請求今天截止。</b>暫定場次若要調整，須於 <b>7/22（三）上午 10 點（多倫多時間）＝台灣今晚 22:00</b> 前寄到 <a href="mailto:schedules@tiff.net">schedules@tiff.net</a>。確認版場次最遲 7/27 寄達，之後不再受理更改。<a class="src" href="#doc-schedule-p1">出處：場次函</a>
     <div class="small">目前暫定的前兩場公開放映為 9/17、9/18，相隔 24 小時，與大會提供的 2 晚住宿相符——若無問題可不必回信。</div>
   </div>
 
@@ -230,23 +291,26 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
   <a href="#asks">待問清單</a>
   <a href="#cases">參考案例</a>
   <a href="#contacts">聯絡窗口</a>
+  <a href="#docs">官方文件</a>
+  <div class="searchwrap"><input id="q" type="search" placeholder="搜尋指南＋官方文件…" aria-label="全站搜尋"></div>
 </nav>
+<div id="results" role="listbox"></div>
 
 <section id="timeline">
   <h2><span class="no">01</span>關鍵時程</h2>
   <p class="sub">全部出自大會文件與信件。勾選可標記完成（存在這台裝置上）。日期為多倫多時間。</p>
   <ul class="tl">
     <li data-k="t1"><span class="d">7/20</span><span class="t"><label><input type="checkbox">官方公布入選 · 影片頁上線 · 註冊表送出（PR 欄可先空白）</label></span></li>
-    <li data-k="t2" class="hot"><span class="d">7/22 10:00</span><span class="t"><label><input type="checkbox">場次更改請求截止（schedules@tiff.net）</label><small>台灣時間 7/22 晚上 10 點</small></span></li>
+    <li data-k="t2" class="hot"><span class="d">7/22 10:00</span><span class="t"><label><input type="checkbox">場次更改請求截止（<a href="mailto:schedules@tiff.net">schedules@tiff.net</a>）</label><small>台灣時間 7/22 晚上 10 點</small></span></li>
     <li data-k="t3"><span class="d">7/24</span><span class="t"><label><input type="checkbox">Film Rights Survey：回報各地區版權銷售現況（供買家排片）</label></span></li>
     <li data-k="t4"><span class="d">7/27 前</span><span class="t"><label><input type="checkbox">收到確認版場次表（含各位演員 Q&A 日期，可據此敲行程）</label></span></li>
     <li data-k="t5"><span class="d">8 月初</span><span class="t"><label><input type="checkbox">Venue Liaison 對接：紅毯、後台名單、隨行人員、保安細節</label></span></li>
-    <li data-k="t6"><span class="d">8/6</span><span class="t"><label><input type="checkbox">Market 場館廣告優先預訂截止（自費，themarketsales@tiff.net）</label></span></li>
+    <li data-k="t6"><span class="d">8/6</span><span class="t"><label><input type="checkbox">Market 場館廣告優先預訂截止（自費，<a href="mailto:themarketsales@tiff.net">themarketsales@tiff.net</a>）</label></span></li>
     <li data-k="t7"><span class="d">8/8 前</span><span class="t"><label><input type="checkbox">大會提供 DKDM 憑證資訊（若 DCP 加密）</label></span></li>
     <li data-k="t8"><span class="d">8/11</span><span class="t"><label><input type="checkbox">影片頁公開 PR 資訊——公關公司資料最晚此前補交</label></span></li>
-    <li data-k="t9"><span class="d">8/12</span><span class="t"><label><input type="checkbox">首兩場公開放映票券配額作業（protocol@tiff.net）</label></span></li>
+    <li data-k="t9"><span class="d">8/12</span><span class="t"><label><input type="checkbox">首兩場公開放映票券配額作業（<a href="mailto:protocol@tiff.net">protocol@tiff.net</a>）</label></span></li>
     <li data-k="t10"><span class="d">8/14</span><span class="t"><label><input type="checkbox">Market 加場（私人放映）優先預訂截止（自費）</label></span></li>
-    <li data-k="t11"><span class="d">8/17</span><span class="t"><label><input type="checkbox">製片 1 名＋銷售代理 1 名免費證件登記（registration@tiff.net）</label></span></li>
+    <li data-k="t11"><span class="d">8/17</span><span class="t"><label><input type="checkbox">製片 1 名＋銷售代理 1 名免費證件登記（<a href="mailto:registration@tiff.net">registration@tiff.net</a>）</label></span></li>
     <li data-k="t12"><span class="d">8/21</span><span class="t"><label><input type="checkbox">DCP 交片截止——逾期或缺 DKDM 收 CAD $350＋13% 稅</label></span></li>
     <li data-k="t13"><span class="d">8 月底</span><span class="t"><label><input type="checkbox">Publicist Pass 註冊（大會主動聯繫 7 月填報的公關窗口）</label></span></li>
     <li data-k="t14"><span class="d">9/8</span><span class="t"><label><input type="checkbox">票券開放換票（線上或 Press & Market 票口）</label></span></li>
@@ -256,7 +320,7 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
 
 <section id="screenings">
   <h2><span class="no">02</span>放映場次（暫定）</h2>
-  <p class="sub">7/19 大會暫定版，<b>尚未確認、仍可能變動</b>，確認版 7/27 前寄達。標紅的前兩場公開放映＝受邀者必須出席的場次。</p>
+  <p class="sub">7/19 大會暫定版，<b>尚未確認、仍可能變動</b>，確認版 7/27 前寄達。<a class="src" href="#doc-schedule-p1">出處：場次函</a>標紅的前兩場公開放映＝受邀者必須出席的場次。</p>
   <div class="tblwrap">
     <table>
       <thead><tr><th>日期</th><th>時段</th><th>性質</th><th>場地</th><th>座位</th></tr></thead>
@@ -279,7 +343,7 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
   <details open>
     <summary><span class="qn">Q1</span>需要準備什麼資料？<span class="arrow">›</span></summary>
     <div class="body">
-      <h4>宣傳素材（原則上邀請後 48 小時內交，已陸續進行）</h4>
+      <h4>宣傳素材（原則上邀請後 48 小時內交，已陸續進行）<a class="src" href="#doc-guide-p4">出處：指南 P.4</a><a class="src" href="#doc-terms-p10">條款附錄A</a></h4>
       <ul>
         <li>中＋英文劇情大綱各一（30–50 字）；導演簡歷（100 字內，含出生地、學歷、代表作）</li>
         <li>橫式劇照 3–5 張（寬高皆 ≥4000px、JPEG、彩色）——首張已交，其餘補齊</li>
@@ -291,18 +355,18 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
       </ul>
       <h4>放映拷貝（DCP）</h4>
       <ul>
-        <li>8/21 前經大會後製夥伴 Deluxe <b>數位上傳</b>（不必從台灣實體寄送——信中已確認）</li>
-        <li>必附<b>英文字幕</b>（建議做成聽障友善 SDH 版）；本片為國語片，<b>不需</b>英文 Open Caption（信中已確認）</li>
-        <li>規格重點：2K/4K、24/25/30fps、5.1 聲道（7.1 須另附 5.1 版）、≤250 Mbps、開頭不得有 bars/slate；加密則需供 DKDM</li>
+        <li>8/21 前經大會後製夥伴 Deluxe <b>數位上傳</b>（不必從台灣實體寄送——信中已確認）<a class="src" href="#doc-email-e3">出處：信件 ✉3</a><a class="src" href="#doc-terms-p2">條款 §V</a></li>
+        <li>必附<b>英文字幕</b>（建議做成聽障友善 SDH 版）；本片為國語片，<b>不需</b>英文 Open Caption（信中已確認）<a class="src" href="#doc-email-e3">出處：信件 ✉3</a></li>
+        <li>規格重點：2K/4K、24/25/30fps、5.1 聲道（7.1 須另附 5.1 版）、≤250 Mbps、開頭不得有 bars/slate、檔名須照 <a href="https://isdcf.com/dcnc/" target="_blank" rel="noopener">ISDCF 命名規範</a>；加密則需供 DKDM<a class="src" href="#doc-terms-p15">出處：條款附錄B</a></li>
       </ul>
       <h4>旅行證件（每位團員自理）</h4>
       <ul>
-        <li>護照效期確認；<span class="chip bg">補充背景</span> 台灣護照入境加拿大免簽證但需線上申請 eTA</li>
-        <li>需要簽證者：大會可出<b>簽證支持信</b>，加拿大移民署特殊活動代碼 <b>26TIFF</b></li>
+        <li>護照效期確認；<span class="chip bg">補充背景</span> 台灣護照入境加拿大免簽證但需線上申請 <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" target="_blank" rel="noopener">eTA</a>（各國規定見<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html" target="_blank" rel="noopener">加拿大官方入境規定</a>，邀請函附的連結）</li>
+        <li>需要簽證者：大會可出<b>簽證支持信</b>，加拿大移民署特殊活動代碼 <b>26TIFF</b><a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
       </ul>
       <h4>行政表單</h4>
       <ul>
-        <li>Film Rights Survey（7/24 前）：回報全球版權銷售現況與各地區權利方聯絡資訊</li>
+        <li>Film Rights Survey（7/24 前）：回報全球版權銷售現況與各地區權利方聯絡資訊<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
         <li>票券需求：8 月初起與 Protocol Office 確認自家場次的票量</li>
       </ul>
     </div>
@@ -313,10 +377,10 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <div class="body">
       <p>大會文件並沒有「與往屆對照」的段落，以下是文件中可見的本屆制度，加上少量背景補充。</p>
       <ul>
-        <li><span class="chip doc">文件明載</span> 所有受邀者證件（Guest Pass）都含 <b>The Market Summit 與全部 Market 場館</b>的進場資格。<span class="chip bg">補充背景</span> TIFF 官方內容市場「TIFF: The Market」2026 年首度全面營運，是本屆最大的新制——賣片、買家排片（Rights Survey）、Market 加場、市場區廣告都掛在它底下。</li>
-        <li><span class="chip doc">文件明載</span> 登記表新增申報：是否使用<b>生成式 AI</b>、是否使用 Adobe 產品。</li>
-        <li><span class="chip doc">文件明載</span> 無障礙要求明確化：非英語片必附英文字幕（鼓勵 SDH）；英語片才需要 OC/CC，與本片無關。</li>
-        <li><span class="chip doc">文件明載</span> 觀眾票選獎除主獎外，設有 <b>International People's Choice Award</b>（非加、非美影片專屬，本片符合資格）。</li>
+        <li><span class="chip doc">文件明載</span> 所有受邀者證件（Guest Pass）都含 <b>The Market Summit 與全部 Market 場館</b>的進場資格。<span class="chip bg">補充背景</span> TIFF 官方內容市場「TIFF: The Market」2026 年首度全面營運，是本屆最大的新制——賣片、買家排片（Rights Survey）、Market 加場、市場區廣告都掛在它底下。<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
+        <li><span class="chip doc">文件明載</span> 登記表新增申報：是否使用<b>生成式 AI</b>、是否使用 Adobe 產品。<a class="src" href="#doc-checklist-s4">出處：登記表 S4</a></li>
+        <li><span class="chip doc">文件明載</span> 無障礙要求明確化：非英語片必附英文字幕（鼓勵 SDH）；英語片才需要 OC/CC，與本片無關。<a class="src" href="#doc-terms-p2">出處：條款 §V</a></li>
+        <li><span class="chip doc">文件明載</span> 觀眾票選獎除主獎外，設有 <b>International People's Choice Award</b>（非加、非美影片專屬，本片符合資格）。<a class="src" href="#doc-terms-p6">出處：條款 §X</a></li>
         <li><span class="chip bg">補充背景</span> 上一屆（2025）是 TIFF 50 週年的擴大慶祝屆，本屆回歸常規；冠名贊助為 Rogers。</li>
       </ul>
     </div>
@@ -329,10 +393,10 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
         <div class="panel">
           <h5>大會出（文件明載）</h5>
           <ul>
-            <li>導演：機票補助 <b>CAD $2,700</b>（東亞出發）＋飯店 <b>3 晚</b></li>
-            <li>舒華：飯店 <b>2 晚</b>（邀請函無機票補助）</li>
+            <li>導演：機票補助 <b>CAD $2,700</b>（東亞出發）＋飯店 <b>3 晚</b><a class="src" href="#doc-guest-fiona-p1">出處：導演邀請函</a></li>
+            <li>舒華：飯店 <b>2 晚</b>（邀請函無機票補助）<a class="src" href="#doc-guest-shuhua-p1">出處：舒華邀請函</a></li>
             <li>兩位受邀者：多倫多市區機場接送、Guest Pass</li>
-            <li>製片 1 名＋銷售代理 1 名：免費證件</li>
+            <li>製片 1 名＋銷售代理 1 名：免費證件<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
             <li>簽證支持信、放映基本防盜錄</li>
           </ul>
         </div>
@@ -342,14 +406,14 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
             <li>受邀者以外所有人的機票、住宿</li>
             <li>兩位受邀者超過 2–3 晚的延住</li>
             <li>額外證件（可折扣價加購）</li>
-            <li>DCP 製作費；逾期交片罰 CAD $350＋13% 稅</li>
-            <li>Market 加場、市場區廣告、自聘公關公司</li>
+            <li>DCP 製作費；逾期交片罰 CAD $350＋13% 稅<a class="src" href="#doc-terms-p16">出處：條款附錄B</a></li>
+            <li>Market 加場、市場區廣告、自聘公關公司<a class="src" href="#doc-terms-p12">出處：條款附錄A</a></li>
             <li>素材運費與關稅（若有實體寄送）</li>
           </ul>
         </div>
       </div>
       <p><span class="chip ask">已去信詢問</span> 以下都是製片 7/21 信中提出、<b>還沒有答案</b>的項目，先別當作有或沒有：演員機票補助或航空公司折扣碼、三位演員的五星飯店等級、額外免費/折扣房、全團機場接送、飯店↔紅毯接駁、中英口譯、額外保安。</p>
-      <p class="callout">預算重點：若大會不補助演員機票，台北↔多倫多長程機票＋隨行 11 人團隊的旅宿會是最大自費項目。<span class="chip bg">補充背景</span> 可查詢文化部影視局、TAICCA 的國際影展參展補助（機票、行銷費），入選 TIFF 主單元通常符合申請門檻——請以當期公告為準。</p>
+      <p class="callout">預算重點：若大會不補助演員機票，台北↔多倫多長程機票＋隨行 11 人團隊的旅宿會是最大自費項目。<span class="chip bg">補充背景</span> 可查詢<a href="https://www.bamid.gov.tw/" target="_blank" rel="noopener">文化部影視局</a>、<a href="https://taicca.tw/" target="_blank" rel="noopener">TAICCA 文策院</a>的國際影展參展補助（機票、行銷費），入選 TIFF 主單元通常符合申請門檻——請以當期公告為準。</p>
     </div>
   </details>
 
@@ -358,17 +422,17 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <div class="body">
       <p>「去」本身沒有人數上限——差別在<b>誰有大會招待、誰有證件</b>。</p>
       <ul>
-        <li><span class="chip doc">文件明載</span> 官方受邀＋全套招待：<b>2 位</b>（導演阮鳳儀、葉舒華），邀請不可轉讓</li>
-        <li><span class="chip doc">文件明載</span> 免費證件：<b>製片 1 名＋銷售代理 1 名</b>（執行製片不符資格、不可轉讓，8/17 前登記）</li>
+        <li><span class="chip doc">文件明載</span> 官方受邀＋全套招待：<b>2 位</b>（導演阮鳳儀、葉舒華），邀請不可轉讓<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
+        <li><span class="chip doc">文件明載</span> 免費證件：<b>製片 1 名＋銷售代理 1 名</b>（執行製片不符資格、不可轉讓，8/17 前登記）<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
         <li><span class="chip ask">已去信詢問</span> 另外 6 位主創（陳雪、蔡凡熙、兩位製片、統籌、行銷 ANLI）的 badge，與 11 位隨行人員（經紀、妝髮、保鑣等）的進出證——待大會回覆</li>
-        <li><span class="chip doc">文件明載</span> 隨行團隊即使沒有影展 badge，紅毯、後台、Green Room 的進出是由 <b>Venue Liaison</b> 在 8 月初以「stage party／entourage／保安名單」處理——妝髮保鑣走這條線即可工作</li>
-        <li><span class="chip doc">文件明載</span> 製作與銷售團隊其他成員可用<b>折扣價加購</b> Market 證件</li>
+        <li><span class="chip doc">文件明載</span> 隨行團隊即使沒有影展 badge，紅毯、後台、Green Room 的進出是由 <b>Venue Liaison</b> 在 8 月初以「stage party／entourage／保安名單」處理——妝髮保鑣走這條線即可工作<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+        <li><span class="chip doc">文件明載</span> 製作與銷售團隊其他成員可用<b>折扣價加購</b> Market 證件（<a href="https://www.tiff.net/industry/" target="_blank" rel="noopener">tiff.net/industry</a>）<a class="src" href="#doc-terms-p12">出處：條款附錄A</a></li>
       </ul>
       <h4>Guest Pass 內含權益</h4>
       <ul>
-        <li>6 張其他影片公開場預售票（每場限 2 張）＋每日 day-of 票＋rush 排隊資格</li>
+        <li>6 張其他影片公開場預售票（每場限 2 張）＋每日 day-of 票＋rush 排隊資格<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
         <li>Press &amp; Market 場次、The Market Summit 與全部 Market 場館進場</li>
-        <li>注意：<b>自家片的票不含在內</b>，須透過 Protocol Office 另外安排（首兩場有免費＋付費配額）；票務帳號綁本人，大會不受理代操作</li>
+        <li>注意：<b>自家片的票不含在內</b>，須透過 Protocol Office 另外安排（首兩場有免費＋付費配額）；票務帳號綁本人，大會不受理代操作<a class="src" href="#doc-guest-shuhua-p2">出處：邀請函 P.2</a></li>
       </ul>
     </div>
   </details>
@@ -377,8 +441,8 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <summary><span class="qn">Q5</span>住在哪？<span class="arrow">›</span></summary>
     <div class="body">
       <ul>
-        <li><span class="chip doc">文件明載</span> 住大會 <b>Hospitality Partner 合作飯店</b>，由 Film Coordinator（Tiffin）代訂；文件未指明飯店名稱與星級</li>
-        <li><span class="chip doc">文件明載</span> 額度：導演最多 3 晚、舒華最多 2 晚；想延住可請大會依空房協助加訂，<b>費用自付</b></li>
+        <li><span class="chip doc">文件明載</span> 住大會 <b>Hospitality Partner 合作飯店</b>，由 Film Coordinator（Tiffin）代訂；文件未指明飯店名稱與星級<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
+        <li><span class="chip doc">文件明載</span> 額度：導演最多 3 晚、舒華最多 2 晚；想延住可請大會依空房協助加訂，<b>費用自付</b><a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
         <li><span class="chip ask">已去信詢問</span> 三位演員經紀約要求五星飯店——等級與加房都已在信中提出，待回覆</li>
         <li>住宿日期會配合必出席的前兩場放映（暫定 9/17、9/18）由 Tiffin 安排；其餘團隊自行訂房，越早越好——影展期間多倫多市中心房價高、房源緊<span class="chip bg">補充背景</span></li>
       </ul>
@@ -389,11 +453,11 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <summary><span class="qn">Q6</span>哪些重要環節要出席？<span class="arrow">›</span></summary>
     <div class="body">
       <ul>
-        <li><span class="chip doc">文件明載</span> <b>鐵則：前兩場公開放映</b>（暫定 9/17 首映、9/18 第二場）——含映前介紹＋映後 Q&A，可能還有媒體活動。這是邀請函所有招待的<b>前提條件</b>，導演與受邀演員都適用</li>
-        <li><span class="chip doc">文件明載</span> 紅毯／photo call：SP 單元部分影片會有，含首映場交通安排，<b>8 月大會通知細節</b>——是否有紅毯以屆時通知為準，不要先對外承諾</li>
+        <li><span class="chip doc">文件明載</span> <b>鐵則：前兩場公開放映</b>（暫定 9/17 首映、9/18 第二場）——含映前介紹＋映後 Q&A，可能還有媒體活動。這是邀請函所有招待的<b>前提條件</b>，導演與受邀演員都適用<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a><a class="src" href="#doc-terms-p3">條款 §VII</a></li>
+        <li><span class="chip doc">文件明載</span> 紅毯／photo call：SP 單元部分影片會有，含首映場交通安排，<b>8 月大會通知細節</b>——是否有紅毯以屆時通知為準，不要先對外承諾<a class="src" href="#doc-terms-p4">出處：條款 §VII(4)</a></li>
         <li><span class="chip doc">文件明載</span> 9/16 Press &amp; Market 場為業界媒體場，文件未要求出席</li>
-        <li><span class="chip doc">文件明載</span> 若拿下 People's Choice：閉幕日（9/20）加映得獎場，得獎者需錄影片感言</li>
-        <li>行銷須知：介紹、Q&A 與官方活動會被大會<b>錄影並永久使用</b>於其平台與社群（條款 §VII），藝人端請先知會</li>
+        <li><span class="chip doc">文件明載</span> 若拿下 People's Choice：閉幕日（9/20）加映得獎場，得獎者需錄影片感言<a class="src" href="#doc-terms-p5">出處：條款 §X</a></li>
+        <li>行銷須知：介紹、Q&A 與官方活動會被大會<b>錄影並永久使用</b>於其平台與社群（條款 §VII），藝人端請先知會<a class="src" href="#doc-terms-p3">出處：條款 §VII(2)</a></li>
       </ul>
     </div>
   </details>
@@ -403,11 +467,11 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <div class="body">
       <ul>
         <li><b>Film Coordinator（Tiffin Shing）</b>：單一窗口，管註冊、素材、受邀者機票住宿、簽證支持</li>
-        <li><b>Venue Liaison</b>（8 月初對接）：進場動線、後台/Green Room 名單、隨行人員、保安、紅毯細節</li>
+        <li><b>Venue Liaison</b>（8 月初對接）：進場動線、後台/Green Room 名單、隨行人員、保安、紅毯細節<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
         <li><b>Protocol Office</b>：自家場次票務配額</li>
-        <li>簽證支持信＋特殊活動代碼 26TIFF；機場接送（出發 5 天前預訂）</li>
+        <li>簽證支持信＋特殊活動代碼 26TIFF；機場接送（出發 5 天前預訂）<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
         <li>受邀者飯店 2–3 晚；導演機票補助 CAD $2,700</li>
-        <li>放映基本防盜錄措施（加強版付費）；無障礙技術支援</li>
+        <li>放映基本防盜錄措施（加強版付費）；無障礙技術支援<a class="src" href="#doc-terms-p7">出處：條款 §XI</a></li>
         <li>行銷公關面的協助見 Q8</li>
       </ul>
     </div>
@@ -418,18 +482,18 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <div class="body">
       <h4>大會給的曝光（文件明載）</h4>
       <ul>
-        <li>影片專頁已於 7/20 上線；節目手冊（印刷）收錄劇組名單</li>
-        <li>預告會上 TIFF 官方影音頻道＋King Street 數位看板（前面可能加掛 TIFF logo，影展後續留）</li>
+        <li>影片專頁已於 7/20 上線；節目手冊（印刷）收錄劇組名單<a class="src" href="#doc-email-e3">出處：信件 ✉3</a></li>
+        <li>預告會上 TIFF 官方影音頻道＋King Street 數位看板（前面可能加掛 TIFF logo，影展後續留）<a class="src" href="#doc-terms-p5">出處：條款 §IX(5)</a></li>
         <li>片花提供媒體做電視、電台、網路報導</li>
-        <li>海報最多印製 3 張於 TIFF 場館展示</li>
-        <li>官方社群 2.5M 受眾：hashtag <b>#TIFF26</b>、帳號 @tiff_net——把全劇組 IG handles 給大會，官方會轉發被 tag 的貼文</li>
+        <li>海報最多印製 3 張於 TIFF 場館展示<a class="src" href="#doc-terms-p5">出處：條款 §IX(5)</a></li>
+        <li>官方社群 2.5M 受眾：hashtag <b>#TIFF26</b>、帳號 <a href="https://www.instagram.com/tiff_net/" target="_blank" rel="noopener">@tiff_net</a>——把全劇組 IG handles 給大會，官方會轉發被 tag 的貼文<a class="src" href="#doc-guide-p10">出處：指南 P.10</a></li>
       </ul>
       <h4>公關系統怎麼運作</h4>
       <ul>
-        <li>聘公關公司<b>非必要但大會建議</b>；大會提供歷屆合作的 <b>Publicist Directory</b> 名單（在 Filmmaker Guide 內連結）</li>
-        <li>公關公司資料最晚 8/11 前補進影片頁；8 月底大會聯繫註冊 <b>Publicist Pass</b>（有數量上限、不可轉讓；<b>藝人的個人公關也要註冊</b>）</li>
+        <li>聘公關公司<b>非必要但大會建議</b>；大會提供歷屆合作的 <a href="https://docs.google.com/spreadsheets/d/1YWVejOxZye2NuFBPLYnU1AICx0KsClvQG1cT62aif3M/edit?gid=1319234648#gid=1319234648" target="_blank" rel="noopener"><b>Publicist Directory 名單</b></a>（Google 試算表，出自 Filmmaker Guide）<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+        <li>公關公司資料最晚 8/11 前補進影片頁；8 月底大會聯繫註冊 <b>Publicist Pass</b>（有數量上限、不可轉讓；<b>藝人的個人公關也要註冊</b>）<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
         <li>Publicist Pass 給工作進場權：自家片的 P&M 場與紅毯</li>
-        <li>媒體相關問題：proffice@tiff.net</li>
+        <li>媒體相關問題：<a href="mailto:proffice@tiff.net">proffice@tiff.net</a></li>
       </ul>
       <h4>賣片與市場（自費項目）</h4>
       <ul>
@@ -443,12 +507,12 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <summary><span class="qn">Q9</span>其他注意事項<span class="arrow">›</span></summary>
     <div class="body">
       <ul>
-        <li><b>世界首映義務：</b>9/17 前不得在任何地方（含線上）公開放映；影展結束（9/20）前不得在加拿大商業放映或上網，違反可能被取消資格</li>
-        <li>交給大會的素材<b>視同最終版</b>直接發布；DCP 也是——8/21 後原則上不收替換版</li>
-        <li>片長、規格若有變動要<b>立刻</b>通知大會，否則可能失去場次</li>
-        <li>所有參加者受 TIFF 行為準則約束，違反可撤證</li>
-        <li>People's Choice 參賽在註冊表勾選；得獎影響大（見下方案例）</li>
-        <li>公開場一律對號入座，公關不得替來賓換位；開演前 15 分鐘未入座，保留席會被釋出</li>
+        <li><b>世界首映義務：</b>9/17 前不得在任何地方（含線上）公開放映；影展結束（9/20）前不得在加拿大商業放映或上網，違反可能被取消資格<a class="src" href="#doc-film-inv-p1">出處：影片邀請函</a><a class="src" href="#doc-terms-p1">條款 §III</a></li>
+        <li>交給大會的素材<b>視同最終版</b>直接發布；DCP 也是——8/21 後原則上不收替換版<a class="src" href="#doc-terms-p4">出處：條款 §IX</a><a class="src" href="#doc-terms-p16">附錄B</a></li>
+        <li>片長、規格若有變動要<b>立刻</b>通知大會，否則可能失去場次<a class="src" href="#doc-terms-p10">出處：條款附錄A</a></li>
+        <li>所有參加者受 <a href="https://tiff.net/code-of-conduct" target="_blank" rel="noopener">TIFF 行為準則</a>與<a href="https://tiff.net/terms-and-conditions" target="_blank" rel="noopener">票務條款</a>約束，違反可撤證</li>
+        <li>People's Choice 參賽在註冊表勾選；得獎影響大（見下方案例）<a class="src" href="#doc-checklist-s7">出處：登記表 S7</a></li>
+        <li>公開場一律對號入座，公關不得替來賓換位；開演前 15 分鐘未入座，保留席會被釋出<a class="src" href="#doc-guide-p7">出處：指南 P.7</a><a class="src" href="#doc-terms-p4">條款 §VIII</a></li>
       </ul>
     </div>
   </details>
@@ -460,10 +524,10 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
 
   <div class="grid2">
     <div class="panel">
-      <h5>① Tiffin Shing（Film Coordinator）— cinshing@tiff.net</h5>
-      <p style="margin:4px 0 8px; font-size:13px; color:var(--muted)">受邀者機票、住宿、簽證都由她統包，是九成問題的窗口。</p>
+      <h5>① Tiffin Shing（Film Coordinator）— <a href="mailto:cinshing@tiff.net">cinshing@tiff.net</a></h5>
+      <p style="margin:4px 0 8px; font-size:13px; color:var(--muted)">受邀者機票、住宿、簽證都由她統包，是九成問題的窗口。<a class="src" href="#doc-email-e3">出處：信件 ✉3</a></p>
       <ul>
-        <li><span class="chip hot">尚未提出</span> <b>正式提交增列出席演員名單與需求</b>——Tiffin 已主動要求「把想出席的演員姓名與需求寄給我」，陳雪、蔡凡熙的名字與 rider 需求至今還沒正式送出，這是目前卡住所有談判的第一步</li>
+        <li><span class="chip hot">尚未提出</span> <b>正式提交增列出席演員名單與需求</b>——Tiffin 已主動要求「把想出席的演員姓名與需求寄給我」，陳雪、蔡凡熙的名字與 rider 需求至今還沒正式送出，這是目前卡住所有談判的第一步<a class="src" href="#doc-email-e3">出處：信件 ✉3</a></li>
         <li><span class="chip hot">尚未提出</span> 導演 CAD $2,700 機票補助的<b>請領方式</b>：大會代訂？實報實銷？可否併入升等票價</li>
         <li><span class="chip hot">尚未提出</span> 招待住宿的<b>確切入住/退房日期</b>（配合 9/17、9/18 兩場必出席場次如何算）</li>
         <li><span class="chip ask">追蹤回覆</span> 飯店是哪一間、星級（演員 rider 要求五星）；額外房間的免費/折扣方案</li>
@@ -476,11 +540,11 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
       </ul>
     </div>
     <div class="panel">
-      <h5>② schedules@tiff.net — 場次</h5>
+      <h5>② <a href="mailto:schedules@tiff.net">schedules@tiff.net</a> — 場次</h5>
       <ul>
         <li><b>確認版場次表</b>（大會承諾 7/27 前寄達；沒收到就追）——所有機票、飯店、藝人檔期都以此為準，收到前不要開票</li>
       </ul>
-      <h5 style="margin-top:14px">③ Protocol Office — protocol@tiff.net（8 月初啟動）</h5>
+      <h5 style="margin-top:14px">③ Protocol Office — <a href="mailto:protocol@tiff.net">protocol@tiff.net</a>（8 月初啟動）</h5>
       <ul>
         <li>首兩場公開放映的<b>免費＋付費票配額各多少張</b>——決定隨行團隊、貴賓能帶幾人進場</li>
         <li>劇組全員（含導演演員本人）進自家場次的取票方式；8/12 前後大會會主動聯繫版權方</li>
@@ -493,11 +557,11 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
         <li>Green Room／後台名單怎麼報：11 位隨行人員（妝髮、經紀、保鑣、攝影師）走這條線</li>
         <li>現場保安安排</li>
       </ul>
-      <h5 style="margin-top:14px">⑤ registration@tiff.net — 證件</h5>
+      <h5 style="margin-top:14px">⑤ <a href="mailto:registration@tiff.net">registration@tiff.net</a> — 證件</h5>
       <ul>
         <li>製片 1＋銷售代理 1 免費證登記（8/17 前）；其他團隊成員<b>加購證件的折扣價格</b></li>
       </ul>
-      <h5 style="margin-top:14px">⑥ 公關線（proffice / publicistregistration@tiff.net）</h5>
+      <h5 style="margin-top:14px">⑥ 公關線（proffice / <a href="mailto:publicistregistration@tiff.net">publicistregistration@tiff.net</a>）</h5>
       <ul>
         <li>本片 <b>Publicist Pass 上限幾張</b>——決定 PR 團隊編制；藝人個人公關也占額度</li>
         <li>大會與媒體端的訪問安排（junket）如何對接——通常由自聘 publicist 主導</li>
@@ -512,12 +576,12 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
 
 <section id="cases">
   <h2><span class="no">05</span>參考案例與類比</h2>
-  <p class="sub"><span class="chip bg">補充背景</span> 本節全部來自大會文件以外的一般背景知識，細節請以 TIFF 官網節目資料庫查證後再對外引用。</p>
+  <p class="sub"><span class="chip bg">補充背景</span> 本節全部來自大會文件以外的一般背景知識，細節請以 <a href="https://www.tiff.net/" target="_blank" rel="noopener">TIFF 官網</a>節目資料庫查證後再對外引用。</p>
   <ul>
     <li><b>Special Presentations 是什麼位階：</b>TIFF 的明星＋話題作主力單元，規模僅次於 Gala。近年經典如《寄生上流》（2019）、《分手的決心》（2022）、是枝裕和《怪物》（2023）都走過這個單元——多半是坎城後的北美首映。本片以<b>世界首映</b>進 SP，代表 TIFF 把它當「全球第一手」的重點新片，對國際媒體與買家是更強的訊號。</li>
     <li><b>首映場地的意義：</b>暫定首映場 Royal Alexandra Theatre 是千人級歷史劇院，SP 單元的指標場地之一，通常伴隨媒體拍照區；確切紅毯規格等 8 月大會通知。</li>
     <li><b>People's Choice 的價值：</b>TIFF 沒有評審團大獎，觀眾票選獎就是最高榮譽，歷屆得主（如《綠皮書》《寄生上流》之後的多部）常直通頒獎季。國際片另設 International People's Choice——動員觀眾投票是行銷端可以主動操作的少數獎項。</li>
-    <li><b>台灣團隊常見做法：</b>入選國際 A 級影展主單元後，向文化部影視局／TAICCA 申請參展補助（機票、國際行銷費），並由國內發行方同步操作「入選 TIFF」新聞稿與 9 月首映的二波宣傳。</li>
+    <li><b>台灣團隊常見做法：</b>入選國際 A 級影展主單元後，向<a href="https://www.bamid.gov.tw/" target="_blank" rel="noopener">文化部影視局</a>／<a href="https://taicca.tw/" target="_blank" rel="noopener">TAICCA</a> 申請參展補助（機票、國際行銷費），並由國內發行方同步操作「入選 TIFF」新聞稿與 9 月首映的二波宣傳。</li>
   </ul>
 </section>
 
@@ -528,19 +592,346 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
     <table class="contact">
       <thead><tr><th>事務</th><th>窗口</th></tr></thead>
       <tbody>
-        <tr><td>總窗口（註冊、素材、受邀者旅宿、簽證）</td><td>Tiffin Shing · <span class="mono">cinshing@tiff.net</span></td></tr>
-        <tr><td>場次更改</td><td><span class="mono">schedules@tiff.net</span></td></tr>
-        <tr><td>自家場次票券</td><td><span class="mono">protocol@tiff.net</span></td></tr>
-        <tr><td>製片／銷售證件</td><td><span class="mono">registration@tiff.net</span></td></tr>
-        <tr><td>公關證件</td><td><span class="mono">publicistregistration@tiff.net</span></td></tr>
-        <tr><td>媒體、影展宣傳</td><td><span class="mono">proffice@tiff.net</span></td></tr>
-        <tr><td>DCP 交片（Deluxe 上傳連結）</td><td>Steven Landry · <span class="mono">slandry@tiff.net</span></td></tr>
-        <tr><td>技術規格</td><td><span class="mono">technical@tiff.net</span></td></tr>
-        <tr><td>Market 廣告 / 加場</td><td><span class="mono">themarketsales@tiff.net</span> / <span class="mono">themarketscreenings@tiff.net</span></td></tr>
-        <tr><td>無障礙需求</td><td><span class="mono">accessibility@tiff.net</span></td></tr>
+        <tr><td>總窗口（註冊、素材、受邀者旅宿、簽證）</td><td>Tiffin Shing · <a class="mono" href="mailto:cinshing@tiff.net">cinshing@tiff.net</a></td></tr>
+        <tr><td>場次更改</td><td><a class="mono" href="mailto:schedules@tiff.net">schedules@tiff.net</a></td></tr>
+        <tr><td>自家場次票券</td><td><a class="mono" href="mailto:protocol@tiff.net">protocol@tiff.net</a></td></tr>
+        <tr><td>製片／銷售證件</td><td><a class="mono" href="mailto:registration@tiff.net">registration@tiff.net</a></td></tr>
+        <tr><td>公關證件</td><td><a class="mono" href="mailto:publicistregistration@tiff.net">publicistregistration@tiff.net</a></td></tr>
+        <tr><td>媒體、影展宣傳</td><td><a class="mono" href="mailto:proffice@tiff.net">proffice@tiff.net</a></td></tr>
+        <tr><td>DCP 交片（Deluxe 上傳連結）</td><td>Steven Landry · <a class="mono" href="mailto:slandry@tiff.net">slandry@tiff.net</a></td></tr>
+        <tr><td>技術規格</td><td><a class="mono" href="mailto:technical@tiff.net">technical@tiff.net</a></td></tr>
+        <tr><td>Market 廣告 / 加場</td><td><a class="mono" href="mailto:themarketsales@tiff.net">themarketsales@tiff.net</a> / <a class="mono" href="mailto:themarketscreenings@tiff.net">themarketscreenings@tiff.net</a></td></tr>
+        <tr><td>無障礙需求</td><td><a class="mono" href="mailto:accessibility@tiff.net">accessibility@tiff.net</a></td></tr>
       </tbody>
     </table>
   </div>
+</section>
+
+<section id="docs">
+  <h2><span class="no">07</span>官方文件原文</h2>
+  <p class="sub">大會文件與信件全文照錄（英文原文），頁碼對應 PDF 頁碼。指南各處的「出處」小標籤點了會跳到這裡的對應段落並短暫變色。用上方搜尋框可直接搜文件內文。</p>
+
+  <details class="doc" id="doc-email">
+    <summary>與 TIFF 信件往來<span class="docmeta">與TIFF信件內容.docx · 4 封</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-email-e1">
+        <div class="pgno">✉ 1 · 2026/7/20 · Tiffin Shing → Linhan（歡迎信）</div>
+        <p>Congratulations on the invitation to have HAPPILY EVER AFTER screen at this year's Toronto International Film Festival! My name is Tiffin and as your Film Coordinator I will be your primary contact for the Festival. Over the summer, I will be assisting you with the film registration process, confirming publicity assets and film info, and supporting the logistics of Fiona Roan Feng-i and Shuhua's attendance. I will also be introducing you to select TIFF reps to support your team's preparation for the Festival.</p>
+        <p>Fred has already confirmed the credits for the announcement tomorrow, we're still waiting for the Language of the film, the estimated runtime of the film and one film still.</p>
+        <p><b>Publicity Materials:</b> we require your film's publicity materials as soon as possible so that we can meet the publication deadlines for our website and printed programme book. The attached Filmmaker Guide contains a list of publicity materials that we require by July 20.</p>
+        <p><b>Visa / eTA Requirements & Travel Guidelines:</b> At this time it is also pertinent that we know the citizenship of Fiona Roan Feng-i and Shuhua and whether they will require a travel visa. TIFF can assist by providing guests with a Visa Support Letter. Visa-exempt foreign nationals are expected to have an Electronic Travel Authorization (eTA) to fly to or transit through Canada.</p>
+        <p><b>Your Film's Announcement:</b> We ask that you please do not announce your film's participation in our festival until we have made our announcement. Your film will be publicly announced on July 20 10AM Eastern Time.</p>
+      </div>
+      <div class="docpage" id="doc-email-e2">
+        <div class="pgno">✉ 2 · 2026/7/20 · Linhan → Tiffin（回覆＋四個問題）</div>
+        <p>1. The language of the film is Mandarin Chinese. 2. The estimated runtime of the film is 95 minutes. 3. Please see the shared google folder for the first still approved by actor's agents.</p>
+        <p>Follow up questions: 1. We are almost done with the Film Registration Form, except for the publicity section as we are finalizing the deal with our PR candidates. When do you need this information by?</p>
+        <p>2. Our post producer asks if the DCP must be physically shipped from Taiwan, or can you accept a digital transfer which is more time and cost efficient?</p>
+        <p>3. TIFF terms says "Exhibition Copies of English-language films in the Gala Presentations and Special Presentations sections must include a version with open captions (OC) in English". Would English OC be the responsibility of the lab that TIFF hires, or do we need to deliver the DCP with English OC?</p>
+        <p>4. Could you kindly put us in touch with the hospitality team? We have more than one actors interested to appear for TIFF, and we'd like to discuss the additional logistical support that the festival could provide.</p>
+      </div>
+      <div class="docpage" id="doc-email-e3">
+        <div class="pgno">✉ 3 · 2026/7/21 · Tiffin → Linhan（大會回覆）</div>
+        <p>Thank you for the information and the still, the film page went live earlier this morning at 10AM.</p>
+        <p>For the Film Registration Form, I'd suggest leaving the PR info blank for now and submit it. We need time to confirm the credits for the printing of the Programme Booklet. <b>We're not releasing the PR info on the film page until August 11</b>, and this info could still be added later if you could not confirm by the time.</p>
+        <p>For the DCP delivery, it should be <b>uploaded through our post-production partner, Deluxe</b>. Print delivery details on the end of page two of the Festival Terms and Conditions.</p>
+        <p>For the Open Caption requirement of GALA and SP titles, it is for films that are PREDOMINATELY in English. <b>Since your film is in Mandarin, please do not worry about it.</b></p>
+        <p><b>I'm the one who arranges the guests' flight and accommodation. Please send me the name of the additional cast member who would like to attend, and what the requests are.</b></p>
+      </div>
+      <div class="docpage" id="doc-email-e4">
+        <div class="pgno">✉ 4 · 2026/7/21 · Linhan → Tiffin（十項接待問題，待回覆）</div>
+        <p>1. The most important question, which all our actors (especially for Shuhua Yeh's team) want to know, is <b>when will the screenings take place?</b> We saw on the tiff form that the actors invited must attend at least two Q&amp;As.</p>
+        <p>2. Will TIFF schedule the first two public screenings within a 48-hour period to accommodate the complimentary 2 night hotel dates?</p>
+        <p>3. <b>What level of hotel is TIFF able to provide to our actors? Our three actors require 5 star hotels in their rider.</b></p>
+        <p>4. Guest badge and access: (1) Is it possible to receive a festival access badge for the following 8 key members: Shuhua Yeh, Xuan Chen, Kent Tsai, Fiona Roan, Clifford Miu, Linhan Zhang, Lisa Ho (cast coordinator), Anli Lin (head of marketing). (2) Would the following 11 person crew receive a badge (ok without a badge, as long as they receive backstage or venue-access credentials): Shuhua's agent ×2 / hair stylist / make up artist / stylist / bodyguard / photographer; Kent's agent / hair stylist / make up artist; Xuan Chen's assistant.</p>
+        <p>5. Could TIFF extend lodging hospitality to all three principal actors, the director and producers? If not, are there any additional complimentary / discounted rooms through the hotel or hospitality partners?</p>
+        <p>6. Could TIFF extend arrival and departure airport transfer services to all our key members and crews?</p>
+        <p>7. Would TIFF also offer transfers from hotel to the red carpet &amp; Q&amp;A screenings for our key members?</p>
+        <p>8. Will TIFF provide a Chinese to English interpreter for actors Shuhua, Xuan and Kent during Red-carpet interviews, press conferences and Q&amp;As?</p>
+        <p>9. Can TIFF comp for the talents' flights? If not, do you have any partner-airline discount codes we can use flying from Taiwan?</p>
+        <p>10. Given Shuhua's stardom, her team asks if the agents and personal security permitted to remain with talent in restricted areas (red carpet, premiere)? If necessary, can TIFF provide additional venue security on top of her personal bodyguard?</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="doc" id="doc-film-inv">
+    <summary>官方影片邀請函<span class="docmeta">922_official film invitation · 1 頁</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-film-inv-p1">
+        <div class="pgno">P.1 · Official Film Invitation</div>
+        <p>On behalf of Giovanna Fulvi, we are pleased to extend an official invitation to <b>HAPPILY EVER AFTER</b> to participate in the 51st Toronto International Film Festival Presented by Rogers, taking place September 10–20, 2026. This Film will be presented as part of the <b>Special Presentations</b> programme.</p>
+        <p>We extend this invitation with the understanding that HAPPILY EVER AFTER will be presented as a <b>World Premiere</b> at this year's Festival, which means your Film will not have a public presentation <b>anywhere</b> in person or online before its scheduled presentation at the Festival.</p>
+        <p>Your Film's schedule will be sent in late July. You have received the Festival Invitation Package with a film code and password to access your secure and personalized Online Film Registration Form. Please confirm your Film's participation by submitting the Form within 48 hours.</p>
+        <p>The participation of your Film may be included in a public announcement on July 20, 2026. You must keep your knowledge of the selection of your Film's participation in the Festival confidential until TIFF releases its official public announcements.</p>
+        <p>— Cameron Bailey (CEO), Anita Lee (Chief Programming Officer)</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="doc" id="doc-guest-shuhua">
+    <summary>來賓邀請函：葉舒華<span class="docmeta">922_guest invitation_shuhua · 2 頁</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-guest-shuhua-p1">
+        <div class="pgno">P.1 · 出席條件、接待、證件</div>
+        <p>TIFF invites <b>Shuhua</b> to participate in the 51st Toronto International Film Festival with the film HAPPILY EVER AFTER. Please note that this guest invitation is <b>non-transferable</b>.</p>
+        <p><b>SCREENING ATTENDANCE</b> — The following offer is dependent on the Guest attending the Festival, at minimum, for the <b>first two (2) public screenings</b> of the Film, for both the introduction and question-and-answer sessions. Introductions, Q&amp;A sessions, and any additional official Festival engagements may be recorded and made available on the Festival's online platforms and/or social media. By late July, you will be informed via email of your confirmed screening dates and times.</p>
+        <p><b>HOSPITALITY</b> — It is the responsibility of those who travel to Canada to ensure they meet travel documentation requirements. For visa support, the Immigration, Refugees and Citizenship Canada Special Event Code for this event is: <b>26TIFF</b>.</p>
+        <p><b>Airport transfers:</b> TIFF can provide airport transfers within Toronto. These can be booked up to five (5) days prior to arrival.</p>
+        <p><b>Accommodations:</b> TIFF is pleased to offer <b>up to two (2) nights</b> of accommodation at one of our Hospitality Partners. This booking must be made through your Film Coordinator. Should you wish to extend your stay, we would be pleased to help you arrange additional hotel nights based on the hotel's availability.</p>
+        <p><b>ACCREDITATION (GUEST PASS)</b> — A Guest Pass will be provided for each invited guest: six (6) advance tickets to Public screenings (max two per screening, for the Guest Pass holder and one additional person); first-come, first-served access to select Press &amp; Market screenings; access to <b>The Market Summit and all Market venues</b>; day-of tickets (up to 1 per film) daily; Rush ticket access.</p>
+      </div>
+      <div class="docpage" id="doc-guest-shuhua-p2">
+        <div class="pgno">P.2 · 票務、行為準則</div>
+        <p>This Guest Pass will be linked to a Ticketmaster account created by TIFF. For security reasons, <b>only the named Guest Pass holder can receive support from TIFF Customer Relations</b>. No one else will be able to access ticketing benefits on behalf of the named Guest Pass holder.</p>
+        <p><b>Guest Passes do not guarantee access to your own Film's screenings. Tickets to your own screenings must be secured through TIFF's Protocol Office</b> (protocol@tiff.net). The Protocol office begins organizing tickets to individual films in early August.</p>
+        <p><b>SAFETY AND RESPECT</b> — By participating in the Festival you agree to abide by TIFF's Code of Conduct. Passes and tickets may be revoked should the Code of Conduct be breached.</p>
+        <p>Your Film Coordinator will be in touch to introduce themselves and help facilitate your Festival participation. — Sonia Sakamoto-Jog, Senior Director, Festival Programming &amp; Guest Services</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="doc" id="doc-guest-fiona">
+    <summary>來賓邀請函：導演阮鳳儀<span class="docmeta">922_guest invitation_fiona roan feng-i · 2 頁</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-guest-fiona-p1">
+        <div class="pgno">P.1 · 出席條件、機票補助、接待</div>
+        <p>TIFF invites <b>Fiona Roan Feng-i</b> to participate with the film HAPPILY EVER AFTER. This guest invitation is non-transferable.</p>
+        <p><b>SCREENING ATTENDANCE</b> — 同舒華邀請函：招待以出席前兩場公開放映（介紹＋Q&amp;A）為前提。</p>
+        <p><b>Flight:</b> TIFF is pleased to offer you a contribution towards roundtrip travel from within <b>East Asia valued at $2,700 CAD</b>, as determined by TIFF in its sole discretion.</p>
+        <p><b>Airport transfers:</b> within Toronto, booked up to five (5) days prior to arrival.</p>
+        <p><b>Accommodations:</b> TIFF is pleased to offer <b>up to three (3) nights</b> of accommodation at one of our Hospitality Partners. This booking must be made through your Film Coordinator. Extensions based on hotel availability.</p>
+        <p>Visa support Special Event Code: <b>26TIFF</b>。Guest Pass 權益與舒華邀請函相同（6 張預售票、P&amp;M 場、Market Summit、day-of、Rush）。</p>
+      </div>
+      <div class="docpage" id="doc-guest-fiona-p2">
+        <div class="pgno">P.2 · 票務、行為準則</div>
+        <p>同舒華邀請函第 2 頁：Guest Pass 綁定本人 Ticketmaster 帳號、自家片票券須經 Protocol Office（8 月初啟動）、遵守 Code of Conduct。</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="doc" id="doc-schedule">
+    <summary>暫定場次通知函<span class="docmeta">TENTATIVE Schedule Letter · 2026/7/19 · 1 頁</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-schedule-p1">
+        <div class="pgno">P.1 · 暫定場次與更改期限</div>
+        <p>Following is the <b>TENTATIVE</b> schedule information for Happily Ever After [Special Presentations]. Please be advised that these dates, times, and venues are <b>NOT YET CONFIRMED</b> and may still be changed.</p>
+        <p>Additional Market screening slots can be booked <b>for an additional fee</b>. Bookings are on a first-come, first-served basis (themarketscreenings@tiff.net).</p>
+        <p>Should you have any requests for changes, please respond to schedules@tiff.net <b>by 10am EDT on Wednesday, July 22</b>.</p>
+        <ul>
+          <li>Press &amp; Market · 09/16 · MIDDAY · Scotiabank 10 · 228 席</li>
+          <li>Public · 09/17 · EARLY EVENING · Royal Alexandra Theatre · 1005 席</li>
+          <li>Public · 09/18 · EARLY EVENING · TIFF Lightbox Cinema 3 (Piers Handling Cinema) · 223 席</li>
+          <li>Public · 09/19 · MORNING · Scotiabank 4 · 388 席</li>
+          <li>Public · 09/20 · MORNING · Scotiabank 6 · 137 席</li>
+        </ul>
+        <p>時段定義：MORNING 8:30–11:29 / MIDDAY 11:30–13:59 / LATE AFTERNOON 14:00–17:29 / EARLY EVENING 17:30–20:59 / LATE EVENING 21:00–22:45 / MIDNIGHT 約午夜。</p>
+        <p>We look forward to sending your confirmed schedule information <b>by Monday, July 27</b>.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="doc" id="doc-guide">
+    <summary>Filmmaker Guide 參展手冊<span class="docmeta">TIFF 2026 Filmmaker Guide · 11 頁</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-guide-p3">
+        <div class="pgno">P.3 · Timeline 時間表</div>
+        <ul>
+          <li><b>Film Invitation Acceptance</b> — invitation sent in May/June/July; acceptance due as soon as possible. 窗口：Film Coordinator</li>
+          <li><b>Publicity Materials Delivery</b> — due within 48 hours of invitation. 窗口：Film Coordinator</li>
+          <li><b>Film Announcement</b> — June to August（本片 7/20）</li>
+          <li><b>Accreditation</b> — July。Director and Cast: Film Coordinator；Production and Sales Team: registration@tiff.net；Publicist: publicistregistration@tiff.net</li>
+          <li><b>Confirmed Film Schedule</b> — Late July（schedules@tiff.net）</li>
+          <li><b>Travel and Accommodations</b> — Early August, after the film schedule is locked。窗口：Film Coordinator</li>
+          <li><b>Screening and Venue Logistics</b> — Early August。窗口：Venue Liaison</li>
+          <li><b>Programming Questions</b> — Ongoing。窗口：your film's Programmer</li>
+        </ul>
+      </div>
+      <div class="docpage" id="doc-guide-p4">
+        <div class="pgno">P.4 · Film Publicity Materials 宣傳素材清單</div>
+        <p>Materials should be sent directly to your Film Coordinator within 48 hours of your film's official invitation. Feature films:</p>
+        <ul>
+          <li>3–5 colour horizontal film stills (minimum width/height of 4000 pixels)</li>
+          <li>1 vertical director photo (minimum 4000 pixels), with photo credit</li>
+          <li>1 digital press kit (including, at minimum, a synopsis and cast and character list)</li>
+          <li>1 digital film poster (minimum 4000 pixels)</li>
+          <li>1 compressed film trailer, not exceeding 5 minutes</li>
+          <li>3–5 film clips</li>
+        </ul>
+        <p>Trailers and clips: minimum 1080p H.264 Quicktime at 30mb/s or higher with AAC 320kb/s audio. Whenever possible, please provide ProRes Masters (422 or better) with 5.1 and split audio for in-cinema and editorial use. Deliver via download link (e.g. WeTransfer).</p>
+      </div>
+      <div class="docpage" id="doc-guide-p5">
+        <div class="pgno">P.5 · Before the Festival（版權調查、公關、場地）</div>
+        <p><b>Film Rights Survey</b> — The film owners must inform the Market team about the available territories and rights-holder contact information for all sold territories <b>by July 24, 2026</b>. Available rights information will be published in our Rights Availability List and will allow buyers to prioritise their screening schedule.</p>
+        <p><b>Press Announcements</b> — Your film's participation is strictly confidential until officially announced by TIFF. Once announced, visible at tiff.net. Questions: proffice@tiff.net.</p>
+        <p><b>Hiring a Publicist?</b> — Hiring an agency or publicist <b>is not required</b> but will ensure you have dedicated resources pitching your film individually to the media. Linked: Publicist Directory for TIFF 2026 Filmmakers（歷屆合作公關名單）.</p>
+        <p><b>Scheduling</b> — Upon receipt of your Tentative Schedule Letter, you will have 48 hours to submit schedule-related change requests to schedules@tiff.net. Requested changes are not guaranteed.</p>
+        <p><b>Screening and Venue Logistics</b> — By early-August, your Film Coordinator will introduce you to the <b>Venue Liaisons</b> assigned to your film's screenings, to confirm: arrival times and locations; <b>stage party and entourage</b>; <b>Green Room list</b>; <b>security</b>; sampling and activations; all information related to <b>Red Carpet events</b> (if applicable).</p>
+      </div>
+      <div class="docpage" id="doc-guide-p6">
+        <div class="pgno">P.6 · Accreditation 證件</div>
+        <p><b>Director and Talent Accreditation</b> — Each director and cast who receives an Official Guest Invitation is eligible for a complimentary Guest Pass（權益同邀請函所列）.</p>
+        <p><b>Production and Sales Team Accreditation</b> — Each film in Official Selection is eligible for <b>one complimentary pass for a producer</b> on the film and <b>one complimentary pass for a sales agent</b> representing the film. These passes are non-transferable. <b>Executive producers are ineligible.</b> Registration coordinated through the TIFF Protocol team (protocol@tiff.net).</p>
+        <p><b>Publicist Registration</b> — Publicists representing the film will need to register for a credential. In late August, TIFF will contact the film's main Publicity Contacts to register publicists for <b>Publicist Passes</b>. The Publicist Pass provides working access to the film's Festival events including the film's Press &amp; Market screening(s) and Red Carpet, if applicable. Note: there is a <b>limit of Publicist Passes per film</b>; non-transferable. <b>Talents' personal publicists will also need to register.</b> A valid ticket is required to take a seat in the cinema.</p>
+      </div>
+      <div class="docpage" id="doc-guide-p7">
+        <div class="pgno">P.7 · Tickets 自家片票券</div>
+        <p>Tickets to your own film's public screenings are coordinated through the primary rights holder's Protocol Coordinator (protocol@tiff.net). The Protocol team begins organizing tickets for film teams in early August. All tickets can be accessed and managed digitally as early as <b>August 15</b>.</p>
+        <p><b>All film team members</b> who plan to attend their film's public screenings, including the director and any attending cast, must secure their tickets through the Protocol Office.</p>
+        <p>Note: <b>All seating for public screenings within Festival venues is assigned.</b> Guests must remain in the seat indicated on their ticket. Publicists and their representatives are not permitted to relocate guests from their assigned seats.</p>
+      </div>
+      <div class="docpage" id="doc-guide-p8">
+        <div class="pgno">P.8 · Accessibility Requirements 無障礙要求</div>
+        <p><b>All non-English-language films will be required to include English subtitles</b> and we strongly encourage these productions to use English subtitles for the D/deaf and hard of hearing (SDH).</p>
+        <p>Exhibition copies of English-language films in the Gala and Special Presentations sections must include a version with open captions (OC) in English.（英語片才適用，本片為國語片）</p>
+      </div>
+      <div class="docpage" id="doc-guide-p9">
+        <div class="pgno">P.9 · 字幕製作注意</div>
+        <p>Closed captions must not exceed 32 characters per line, 3 lines limit. Opt for human instead of AI captioning to improve accuracy. Audio description mixing: track 8 of your DCP, description only. 技術問題：accessibility@tiff.net。</p>
+      </div>
+      <div class="docpage" id="doc-guide-p10">
+        <div class="pgno">P.10 · Connect with the Festival 社群</div>
+        <p>TIFF has a global audience of over <b>2.5 million</b> film lovers across Instagram, TikTok, YouTube, X/Twitter, Facebook, and Letterboxd. Join the conversation online using <b>#TIFF26</b> — the only official hashtag of the 51st edition.</p>
+        <p>If your film has an official Instagram, X/Twitter, or TikTok account, please share this information with your Film Coordinator. <b>We would also appreciate a list of Instagram handles for your film's team</b>, distributors, studio, etc. Tag us in any Festival-related posts, use the hashtag, and keep an eye out to reshare any posts you're tagged in. 帳號：@TIFF_NET（IG/TikTok/X）、@TIFF_INDUSTRY（X）。</p>
+      </div>
+      <div class="docpage" id="doc-guide-p11">
+        <div class="pgno">P.11 · Safety and Respect</div>
+        <p>TIFF does not tolerate violence, mistreatment, or harassment. Confidentially report wrongdoing: tiff.net/code-of-conduct；toll-free 1-833-265-9835；Emergencies: call 911.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="doc" id="doc-terms">
+    <summary>2026 參展條款 Terms &amp; Conditions<span class="docmeta">Festival Terms And Conditions · 17 頁</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-terms-p1">
+        <div class="pgno">P.1 · §I–IV 適用範圍、註冊、參展協議、單元</div>
+        <p><b>§II Film Registration</b> — In order to accept the Festival's invitation, an individual having authority to represent the Film must complete and submit the online Film Registration Form at festivalinvitations.tiff.net.</p>
+        <p><b>§III(3)</b> — Participating Films <b>must not be screened commercially in Canada or made available on the internet in Canada, prior to September 20, 2026</b>, except with TIFF's prior written consent.</p>
+        <p><b>§IV Programmes</b> — Centrepiece, Discovery, Gala Presentations, Midnight Madness, Platform, Primetime, Short Cuts, <b>Special Presentations</b>, TIFF Classics, TIFF Docs, Wavelengths.</p>
+      </div>
+      <div class="docpage" id="doc-terms-p2">
+        <div class="pgno">P.2 · §V 放映拷貝</div>
+        <p><b>§V(1)</b> — The Registrant must supply TIFF with an exhibition copy of the Film <b>by August 21, 2026</b> in the Theatrical Screening Format. Failure to deliver by deadline may result in administrative fees payable to TIFF.</p>
+        <p><b>§V(2)a</b> — <b>All non-English-language Films will be required to include English subtitles</b>; SDH strongly encouraged.</p>
+        <p><b>§V(2)b</b> — OC 要求僅限英語片（Gala/SP）。</p>
+        <p><b>§V(4) Inbound Digital Delivery (Features)</b> — Please contact Steven Landry, slandry@tiff.net, to make arrangements to receive a secure upload link through our post-production partner, <b>Deluxe</b>.</p>
+      </div>
+      <div class="docpage" id="doc-terms-p3">
+        <div class="pgno">P.3 · §VI 排片、§VII 放映出席與錄影授權</div>
+        <p><b>§VI(1)</b> — TIFF may schedule Films for up to five (5) in-person screenings inclusive for the public and Press &amp; Market audiences. The Registrant will receive at least two (2) public screenings and one Press &amp; Market screening. The time(s), date(s), and locations of all screenings will be selected by TIFF in its sole discretion and are subject to change at any time.</p>
+        <p><b>§VI(4)</b> — Tentative schedule letter from schedules@tiff.net no later than July 20, upon which change requests within 48 hours. Confirmed Schedule Letter no later than <b>July 27, 2026</b>. No more change requests accepted after the Confirmed Schedule Letter is sent.</p>
+        <p><b>§VII(1)</b> — TIFF requires that <b>the Film's director, and any other guests participating in the Festival with the Film, will be present, at minimum, for the first two (2) public screenings</b> of the Film, including press/media activities, an introduction and a Q&amp;A session. For Films with a red carpet or photo call, TIFF will provide further logistical details in <b>August 2026</b>.</p>
+        <p><b>§VII(2)</b> — TIFF and its partners may record all Festival events (publicity events, introductions, Q&amp;A, press conferences…). Participants grant to TIFF irrevocable permission to use the Recordings <b>in perpetuity</b>, in any manner and in all media, for any purpose connected to TIFF's charitable mandate.</p>
+      </div>
+      <div class="docpage" id="doc-terms-p4">
+        <div class="pgno">P.4 · §VII(4) 首映交通、§VIII 票務、§IX 素材</div>
+        <p><b>§VII(3)</b> — The Film will be presented at an in-person venue.</p>
+        <p><b>§VII(4)</b> — Guests and directors of all Films in the Gala Presentations programme <b>and some Films in the Special Presentations programme may be offered transportation to the first public screening</b> of the Film. TIFF will provide further logistical details in August 2026.</p>
+        <p><b>§VIII(3)</b> — Market passes and tickets are non-refundable. Tickets may be exchanged starting September 8. Complimentary day-of tickets may be redeemed daily at 8am starting September 10.</p>
+        <p><b>§VIII(7)</b> — TIFF Customer Relations requires government-issued photo ID for in-person support. <b>TIFF does not permit access to accounts on behalf of another person.</b></p>
+        <p><b>§IX(2)</b> — The Registrant is responsible for arranging and paying for the shipping of materials. Any shipping charges incurred by TIFF will be billed back to the Registrant.</p>
+        <p><b>§IX(4)</b> — <b>TIFF considers all materials sent by Registrants to be final and ready for publication.</b></p>
+      </div>
+      <div class="docpage" id="doc-terms-p5">
+        <div class="pgno">P.5 · §IX(5) 素材使用、§X 獎項</div>
+        <p><b>§IX(5)a</b> — TIFF may display all Film trailers on the TIFF digital signage system, TIFF online video and social channels, at digital publicity events and in cinemas, and may place a TIFF or Festival logo before all trailers. All trailers will remain on TIFF online video channels after the Festival, unless a removal request is emailed to materials@tiff.net.</p>
+        <p><b>§IX(5)c</b> — TIFF may print and mount <b>up to a maximum of three (3) posters</b> to be displayed at TIFF's premises, retained in TIFF's archives, gifted to TIFF sponsors, or auctioned to raise funds.</p>
+        <p><b>§X(1) People's Choice Award Presented by Rogers</b> — winner selected by a public voting mechanism administered by TIFF. The winner must make the winning Film available to TIFF upon request to be screened for public audiences <b>on the final day of the Festival</b>（含一場付費的志工專場）.</p>
+      </div>
+      <div class="docpage" id="doc-terms-p6">
+        <div class="pgno">P.6 · §X(4) 獎項清單</div>
+        <ul>
+          <li><b>People's Choice Award</b> — all feature films/series with a 2026 premiere date</li>
+          <li><b>People's Choice Documentary / Midnight Madness Awards</b></li>
+          <li><b>International People's Choice Award</b> — all international (non-Canadian, non-US) feature films with a 2026 premiere date. <b>The film's language is not a consideration for eligibility.</b>（本片符合資格）</li>
+          <li>Platform Award、Best Canadian Feature、Best Canadian Discovery、Short Cuts ×3（本片不適用加拿大類）</li>
+        </ul>
+      </div>
+      <div class="docpage" id="doc-terms-p7">
+        <div class="pgno">P.7 · §XI 責任與授權、防盜錄</div>
+        <p><b>§XI(3)</b> — <b>TIFF offers basic anti-piracy measures at each screening.</b> Studios, distributors, sales agents and production companies may augment, <b>on a fee-for-service basis</b>, enhanced coverage where trained personnel employ proven industry tools and techniques. Contact your Venue Liaison. While in TIFF's possession, all Films are securely stored.</p>
+      </div>
+      <div class="docpage" id="doc-terms-p10">
+        <div class="pgno">P.10–11 · 附錄A 素材交件表（前段）</div>
+        <p>It is of vital importance that you <b>notify us immediately if there are any changes to the screening format or run time</b>, as this has scheduling implications that may result in the loss of screenings.</p>
+        <ul>
+          <li>Online Registration Form — 48 hours after receiving the Invitation Package</li>
+          <li>30–50 word synopsis（英文＋原文）— 48 hours</li>
+          <li>Director biography and filmography — max 100 words — 48 hours</li>
+          <li>3–5 horizontal stills — ≥4000px JPEG colour — 48 hours</li>
+          <li>1 vertical director photo — ≥4000px + photo credit — 48 hours</li>
+          <li>1 trailer — 1080p H.264 30mb/s, AAC 320kb/s，交下載連結 — 48 hours</li>
+          <li>1 PDF press kit — 英文大綱＋cast &amp; character list＋導演簡歷，<b>不超過 2MB</b> — 48 hours</li>
+          <li>1–3 broadcast-quality clips — 每支 ≤2 分鐘（已交預告則選交）— 48 hours</li>
+          <li>1 vertical digital poster — ≥4000px JPEG — 48 hours</li>
+          <li>Official Social Media Handles — IG/X/FB/TikTok — 48 hours</li>
+          <li>1 Instagram Reels 版預告 — 直式 1.91:1–9:16、≥30FPS、720px、15–45 秒 — 48 hours</li>
+        </ul>
+      </div>
+      <div class="docpage" id="doc-terms-p12">
+        <div class="pgno">P.12–13 · 附錄A 交件表（後段）</div>
+        <ul>
+          <li><b>Exhibition Copy — August 21, 2026</b>（slandry@tiff.net）</li>
+          <li>Film Public Screening scheduling requests — July 13* (schedules@tiff.net) *邀請晚於 7/10 者於受邀時提出</li>
+          <li><b>Film Rights Survey — July 24, 2026</b></li>
+          <li><b>Ticket allotment — August 12, 2026</b> (protocol@tiff.net)：Each Film is entitled to <b>an allotment of paid and complimentary tickets for the Film's first and second in-person public screenings</b>. Resale not permitted. TIFF: The Market will be in touch with the Film's primary rights holder by mid-August.</li>
+          <li><b>Complimentary passes for Feature Films — August 17, 2026</b> (registration@tiff.net)：one pass for a producer + one pass for a sales agent；non-transferable；executive producers ineligible。Other members of the production and sales agency can purchase a pass <b>at a discounted rate</b> at tiff.net/themarket/attend.</li>
+          <li><b>Advertising opportunities — August 6, 2026</b> (themarketsales@tiff.net)：early booking window for promotional advertising throughout Market venues including King Street.</li>
+          <li><b>Market screenings — August 14, 2026</b> (themarketscreenings@tiff.net)：early-booking window to purchase Market screening slots or additional private screenings. First-come, first-served.</li>
+        </ul>
+      </div>
+      <div class="docpage" id="doc-terms-p15">
+        <div class="pgno">P.14–15 · 附錄B DCP 技術規格</div>
+        <p>Deliver your Exhibition Copy on or before <b>August 21, 2026</b>. Physical deliveries made directly to venues will not be accepted.</p>
+        <ul>
+          <li>2K or 4K resolution；single CPL；jpeg2000/mxf Interop or SMPTE；24, 25, 30 fps only</li>
+          <li>Subtitles burned into the image are the most reliable method and are <b>preferred</b></li>
+          <li>Audio: 5.1（Stereo 不建議）；24-bit 48KHz；7.1 須另附 5.1 版</li>
+          <li>Max bit rate 250 Mbps（建議編碼上限設 245）；VBR preferred</li>
+          <li>Encryption is optional；檔名須照 ISDCF 命名規範（isdcf.com/dcnc），Content Title Text 不符會被退件</li>
+          <li>開頭不得出現 bars、tones、slates、countdown、廣告或預告，違者退件</li>
+          <li>Container 尺寸須符合長寬比：1998×1080 (1.85) / 2048×858 (2.39) / 1920×1080 (16:9)</li>
+        </ul>
+      </div>
+      <div class="docpage" id="doc-terms-p16">
+        <div class="pgno">P.16–17 · 附錄B 加密、逾期罰款、替換版</div>
+        <p><b>KDM/Encryption</b> — If encrypted, supply a DKDM. Server certificates and DKDM information provided <b>no later than August 8, 2026</b>. Festival keys valid September 10–20.</p>
+        <p><b>Late-Delivery Penalties</b> — Content providers delivering later than <b>August 21</b> or failing to provide a DKDM will be billed an administrative fee of <b>CAD $350 (plus 13% HST)</b>.</p>
+        <p><b>Replacement Versions</b> — TIFF is not obligated to accept replacement versions after the delivery deadline. <b>The first version we receive will be considered the final version</b> and will be used for all Festival screenings unless a technical issue is identified.</p>
+        <p>Technical questions: technical@tiff.net.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="doc" id="doc-checklist">
+    <summary>登記表欄位清單 Film Invitation Checklist<span class="docmeta">TIFFFilmInvitationChecklist · 7 節</span><span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="docpage" id="doc-checklist-s1">
+        <div class="pgno">Section 1 · Film Details</div>
+        <p>片名（英文＋原文）、語言、英文字幕有無、紀錄片/動畫/闔家觀賞、英文＋原文大綱（30–50 字）、是否導演首部劇情長片、製作年份、出品國、院線上映日、線上曝光紀錄、參加過的影展與獎項、<b>Premiere Status（World Premiere…）</b>、官網與社群帳號。</p>
+      </div>
+      <div class="docpage" id="doc-checklist-s2">
+        <div class="pgno">Section 2 · Production Teams</div>
+        <p>主製作公司與聯絡人、共同製作公司、監製、執行監製、國際銷售代理、美國銷售代理、加拿大發行商、美國發行商、國家電影推廣機構——各含公司名、Email、電話。</p>
+      </div>
+      <div class="docpage" id="doc-checklist-s3">
+        <div class="pgno">Section 3 · Film Credits</div>
+        <p>原著改編資訊、<b>導演（代名詞、行動需求、是否需要口譯及語言、自我認同問題、簡歷）</b>、Director Liaison（導演聯絡窗口）、編劇、攝影、剪接、美術、造型、配樂、聲音、主要演員。</p>
+      </div>
+      <div class="docpage" id="doc-checklist-s4">
+        <div class="pgno">Section 4 · Technical Details</div>
+        <p>彩色/黑白、片長（分鐘）、放映格式（DCP/3D/4K）、聲音格式（2.0/5.1/7.1）、KDM 加密與聯絡人、拷貝寄送來源。<b>Have you used Generative Artificial Intelligence (AI) in the creation of this production?（Yes 需說明）</b>、Open Captions 聯絡意願、<b>Have you used any Adobe products?</b></p>
+      </div>
+      <div class="docpage" id="doc-checklist-s5">
+        <div class="pgno">Section 5–6 · Exhibition Copy 條件、Publicity 公關窗口</div>
+        <p>同意放映拷貝條件。Publicity：<b>Press Office 聯絡公司與聯絡人（必填）</b>、加拿大/美國/國際 Publicist 公司與聯絡人、Primary Publicist 指定。</p>
+      </div>
+      <div class="docpage" id="doc-checklist-s7">
+        <div class="pgno">Section 7 · Final Agreements</div>
+        <p><b>If your film is eligible, do you agree to participate in the People's Choice Award presented by Rogers?</b>；獎項資訊揭露同意（姓名、性別、族裔用於獎項資格判定與多元共融統計）；協議簽署公司與聯絡人。</p>
+      </div>
+    </div>
+  </details>
 </section>
 
 <footer>
@@ -549,7 +940,134 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
 
 </div>
 
+<div id="toast" role="status"></div>
 <script>
+/* ---------- toast ---------- */
+var _toastT;
+function toast(msg){
+  var el=document.getElementById('toast');
+  el.textContent=msg; el.classList.add('on');
+  clearTimeout(_toastT); _toastT=setTimeout(function(){el.classList.remove('on')},2400);
+}
+
+/* ---------- email click = copy, not open ---------- */
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href^="mailto:"]');
+  if(!a) return;
+  e.preventDefault();
+  var email=a.getAttribute('href').slice(7).split('?')[0];
+  function done(){toast('已複製 Email：'+email+'（到 Gmail 貼上即可）')}
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(email).then(done,function(){fallbackCopy(email);done()});
+  }else{ fallbackCopy(email); done(); }
+});
+function fallbackCopy(t){
+  var ta=document.createElement('textarea');
+  ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{document.execCommand('copy')}catch(e){}
+  document.body.removeChild(ta);
+}
+
+/* ---------- anchor jumps open collapsed sections ---------- */
+function revealEl(el){
+  if(!el) return;
+  var p=el;
+  while(p){ if(p.tagName==='DETAILS') p.open=true; p=p.parentElement; }
+  el.scrollIntoView({block:'start'});
+  if(el.classList.contains('docpage')||el.closest('.doc')||el.tagName==='DETAILS'){
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    setTimeout(function(){el.classList.remove('flash')},2000);
+  }
+}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href^="#"]');
+  if(!a) return;
+  var id=a.getAttribute('href').slice(1);
+  var el=document.getElementById(id);
+  if(!el) return;
+  e.preventDefault();
+  revealEl(el);
+  try{history.pushState(null,'','#'+id)}catch(err){}
+});
+window.addEventListener('load',function(){
+  if(location.hash) revealEl(document.getElementById(location.hash.slice(1)));
+});
+
+/* ---------- site-wide search ---------- */
+(function(){
+  var input=document.getElementById('q'), box=document.getElementById('results');
+  if(!input) return;
+  var idx=null;
+  function buildIndex(){
+    idx=[];
+    var sel='#timeline .tl .t, #screenings td, #screenings .note, .body p, .body li, .panel li, .callout, #cases li, .contact td, .alert, .docpage p, .docpage li';
+    document.querySelectorAll(sel).forEach(function(el){
+      var t=el.textContent.replace(/\s+/g,' ').trim();
+      if(t.length>3) idx.push({el:el, text:t, low:t.toLowerCase()});
+    });
+  }
+  function labelFor(el){
+    var doc=el.closest('.doc');
+    if(doc){
+      var s=doc.querySelector('summary');
+      return '官方文件 · '+(s?s.childNodes[0].textContent.trim():'');
+    }
+    var parts=[], sec=el.closest('section');
+    if(sec){ var h=sec.querySelector('h2'); if(h) parts.push(h.textContent.replace(/^\s*\d+\s*/,'').trim()); }
+    var det=el.closest('details');
+    if(det){ var s2=det.querySelector('summary'); if(s2) parts.push(s2.textContent.replace(/›/g,'').replace(/\s+/g,' ').trim().slice(0,24)); }
+    return parts.join(' · ')||'指南';
+  }
+  function render(q){
+    if(!idx) buildIndex();
+    var ql=q.toLowerCase();
+    var hits=[];
+    for(var i=0;i<idx.length && hits.length<15;i++){
+      var pos=idx[i].low.indexOf(ql);
+      if(pos>-1) hits.push({item:idx[i],pos:pos});
+    }
+    box.innerHTML='';
+    if(!hits.length){
+      box.innerHTML='<div class="rescount">找不到「'+q.replace(/</g,'&lt;')+'」，換個關鍵字試試（可搜中文或英文原文）</div>';
+      box.classList.add('on'); return;
+    }
+    var cnt=document.createElement('div'); cnt.className='rescount';
+    cnt.textContent=hits.length+' 筆結果（點擊跳至該段）';
+    box.appendChild(cnt);
+    hits.forEach(function(h){
+      var b=document.createElement('button'); b.type='button'; b.className='res';
+      var w=document.createElement('div'); w.className='where'; w.textContent=labelFor(h.item.el);
+      var s=document.createElement('div');
+      var t=h.item.text, from=Math.max(0,h.pos-26), to=Math.min(t.length,h.pos+q.length+46);
+      if(from>0) s.appendChild(document.createTextNode('…'));
+      s.appendChild(document.createTextNode(t.slice(from,h.pos)));
+      var m=document.createElement('mark'); m.textContent=t.slice(h.pos,h.pos+q.length); s.appendChild(m);
+      s.appendChild(document.createTextNode(t.slice(h.pos+q.length,to)+(to<t.length?'…':'')));
+      b.appendChild(w); b.appendChild(s);
+      b.addEventListener('click',function(){ hide(); revealEl(h.item.el); h.item.el.classList.add('flash'); setTimeout(function(){h.item.el.classList.remove('flash')},2000); });
+      box.appendChild(b);
+    });
+    box.classList.add('on');
+  }
+  function hide(){ box.classList.remove('on'); }
+  var deb;
+  input.addEventListener('input',function(){
+    clearTimeout(deb);
+    var q=input.value.trim();
+    var isAscii=/^[\x00-\x7F]*$/.test(q);
+    if(!q || (isAscii && q.length<2)){ hide(); return; }
+    deb=setTimeout(function(){render(q)},120);
+  });
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){ hide(); input.blur(); }
+    if(e.key==='Enter'){ var f=box.querySelector('.res'); if(f) f.click(); }
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.searchwrap') && !e.target.closest('#results')) hide();
+  });
+})();
+
 (function(){
   var nav=document.querySelector('nav');
   function syncNav(){
