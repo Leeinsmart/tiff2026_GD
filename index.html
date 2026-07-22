@@ -5,56 +5,28 @@
 <title>《幸福快樂的日子》TIFF 2026 參展指南</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#191511">
 <style>
+/* 固定深色主題：所有裝置一致，不跟隨系統設定 */
 :root{
-  --paper:#FBF8F2;
-  --card:#FFFFFF;
-  --ink:#221B15;
-  --muted:#71655A;
-  --line:#E6DDD0;
-  --accent:#C0342B;
-  --accent-ink:#A02921;
-  --accent-soft:#F8EAE6;
-  --ok:#2E7D4F;      --ok-soft:#E6F1EA;
-  --wait:#9A6B0A;    --wait-soft:#F7EEDB;
-  --info:#54657E;    --info-soft:#E9EDF3;
-  --pr:#6B4FA0;      --pr-soft:#EEE9F7;
-  --urgent:#B3261E;  --urgent-soft:#FBE9E7;
+  --paper:#191511;
+  --card:#221D18;
+  --ink:#EFE7DC;
+  --muted:#A2968A;
+  --line:#3A322A;
+  --accent:#E66A57;
+  --accent-ink:#F0836F;
+  --accent-soft:#33221E;
+  --ok:#7CC49A;      --ok-soft:#1F2E25;
+  --wait:#DCB05E;    --wait-soft:#332A18;
+  --info:#9FB0C6;    --info-soft:#242B35;
+  --pr:#C0A6E8;      --pr-soft:#2D2438;
+  --urgent:#F2857A;  --urgent-soft:#3A211E;
   --sans:"PingFang TC","Hiragino Sans TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
   --mono:var(--sans);
   --serif:var(--sans);
 }
-@media (prefers-color-scheme: dark){
-  :root{
-    --paper:#191511;
-    --card:#221D18;
-    --ink:#EFE7DC;
-    --muted:#A2968A;
-    --line:#3A322A;
-    --accent:#E66A57;
-    --accent-ink:#F0836F;
-    --accent-soft:#33221E;
-    --ok:#7CC49A;      --ok-soft:#1F2E25;
-    --wait:#DCB05E;    --wait-soft:#332A18;
-    --info:#9FB0C6;    --info-soft:#242B35;
-    --pr:#C0A6E8;      --pr-soft:#2D2438;
-    --urgent:#F2857A;  --urgent-soft:#3A211E;
-  }
-}
-:root[data-theme="light"]{
-  --paper:#FBF8F2; --card:#FFFFFF; --ink:#221B15; --muted:#71655A; --line:#E6DDD0;
-  --accent:#C0342B; --accent-ink:#A02921; --accent-soft:#F8EAE6;
-  --ok:#2E7D4F; --ok-soft:#E6F1EA; --wait:#9A6B0A; --wait-soft:#F7EEDB;
-  --info:#54657E; --info-soft:#E9EDF3; --pr:#6B4FA0; --pr-soft:#EEE9F7;
-  --urgent:#B3261E; --urgent-soft:#FBE9E7;
-}
-:root[data-theme="dark"]{
-  --paper:#191511; --card:#221D18; --ink:#EFE7DC; --muted:#A2968A; --line:#3A322A;
-  --accent:#E66A57; --accent-ink:#F0836F; --accent-soft:#33221E;
-  --ok:#7CC49A; --ok-soft:#1F2E25; --wait:#DCB05E; --wait-soft:#332A18;
-  --info:#9FB0C6; --info-soft:#242B35; --pr:#C0A6E8; --pr-soft:#2D2438;
-  --urgent:#F2857A; --urgent-soft:#3A211E;
-}
+:root{color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none !important} }
@@ -92,13 +64,37 @@ nav{
   position:fixed; top:0; left:0; right:0; z-index:10; background:var(--paper);
   border-bottom:1px solid var(--line);
   padding:0 max(20px, calc((100% - 900px)/2 + 20px));
-  display:flex; gap:4px; white-space:nowrap;
+  display:flex; align-items:center; white-space:nowrap;
 }
+.navlinks{
+  display:flex; gap:4px; flex:1 1 auto; min-width:0;
+  overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+}
+.navlinks::-webkit-scrollbar{display:none}
+.menubtn{
+  display:none; align-items:center; gap:6px; background:var(--card); color:var(--ink);
+  border:1px solid var(--line); border-radius:8px; padding:7px 12px; font-size:14px;
+  font-weight:700; font-family:var(--sans); cursor:pointer; flex:none;
+}
+.menubtn:focus-visible{outline:2px solid var(--accent); outline-offset:-1px}
+nav.menu-open .menubtn{color:var(--accent); border-color:var(--accent)}
 body{padding-top:var(--navh,48px)}
 section,header.hero{scroll-margin-top:calc(var(--navh,48px) + 8px)}
 @media (max-width:640px){
-  nav{flex-wrap:wrap; gap:0; padding:2px 10px}
-  nav a{padding:9px 10px; font-size:13.5px}
+  nav{padding:6px 10px; gap:8px}
+  .menubtn{display:inline-flex}
+  .navlinks{
+    display:none; position:fixed; top:var(--navh,52px); left:0; right:0;
+    flex-direction:column; gap:0; background:var(--card);
+    border-bottom:1px solid var(--line); box-shadow:0 14px 30px rgba(0,0,0,.4);
+    max-height:70vh; overflow:auto;
+  }
+  nav.menu-open .navlinks{display:flex}
+  .navlinks a{padding:13px 18px; font-size:15px; border-bottom:1px solid var(--line)}
+  .navlinks a:last-child{border-bottom:none}
+  .searchwrap{flex:1 1 auto; margin-left:0; padding:0}
+  .searchwrap input{width:100%}
+  body{padding-top:56px}
 }
 nav a{
   display:block; padding:12px 12px; color:var(--muted); text-decoration:none;
@@ -117,12 +113,6 @@ nav a:hover,nav a:focus-visible{color:var(--accent); border-bottom-color:var(--a
 .chip.bg{background:var(--info-soft); color:var(--info)}
 .chip.hot{background:var(--urgent-soft); color:var(--urgent)}
 
-/* ---------- internal execution tools ---------- */
-.internal{
-  margin:22px 0 0; padding:12px 16px; border:1px solid var(--line); border-radius:8px;
-  background:var(--info-soft); color:var(--info); font-size:13.5px;
-}
-.internal b{color:var(--ink)}
 .tasklist{list-style:none; margin:8px 0 14px; padding:0; border-top:1px solid var(--line)}
 .tasklist li{padding:9px 2px; border-bottom:1px solid var(--line); font-size:14.5px}
 .tasklist li.done{text-decoration:line-through; opacity:.55}
@@ -163,12 +153,33 @@ h2 .no{font-family:var(--mono); font-size:24px; font-weight:800; color:var(--acc
 .tl li.hot .d{color:var(--urgent); font-weight:700}
 .tl input[type=checkbox]{accent-color:var(--accent); width:16px; height:16px; margin-right:10px; vertical-align:-2px}
 @media (max-width:560px){
-  .tl li{grid-template-columns:1fr; gap:2px}
-  .owners{justify-content:flex-start; margin-left:30px; margin-top:2px}
+  .tl li{grid-template-columns:1fr auto; gap:3px 10px; padding:9px 2px; align-items:center}
+  .tl .d{grid-row:1; grid-column:1}
+  .owners{grid-row:1; grid-column:2; justify-content:flex-end; margin:0}
+  .tl .t{grid-column:1 / -1; line-height:1.6}
+  .tl .t .src{font-size:11px; padding:0 6px; margin-left:4px}
+  .tl .t small{margin:2px 0 0 26px}
 }
 
 /* ---------- schedule table ---------- */
 .tblwrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--card)}
+.tshell{position:relative}
+.tshell::before,.tshell::after{
+  content:""; position:absolute; top:1px; bottom:1px; width:30px; z-index:2;
+  pointer-events:none; opacity:0; transition:opacity .25s;
+}
+.tshell::after{right:1px; border-radius:0 8px 8px 0; background:linear-gradient(to left, rgba(0,0,0,.55), transparent)}
+.tshell::before{left:1px; border-radius:8px 0 0 8px; background:linear-gradient(to right, rgba(0,0,0,.55), transparent)}
+.tshell.more-right::after{opacity:1}
+.tshell.more-left::before{opacity:1}
+.scrollhint{
+  position:absolute; right:10px; top:50%; z-index:3; pointer-events:none;
+  background:var(--accent); color:#1A0F0C; font-size:12px; font-weight:700;
+  padding:4px 12px; border-radius:99px; box-shadow:0 2px 12px rgba(0,0,0,.45);
+  animation:hintnudge 1.4s ease-in-out infinite; white-space:nowrap;
+}
+@keyframes hintnudge{0%,100%{transform:translate(0,-50%)}50%{transform:translate(-7px,-50%)}}
+@media (prefers-reduced-motion: reduce){.scrollhint{animation:none; transform:translateY(-50%)}}
 table{border-collapse:collapse; width:100%; min-width:620px; font-size:14.5px}
 th{
   text-align:left; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
@@ -246,6 +257,10 @@ footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font
 .docpage li{margin:3px 0}
 .docmeta{font-size:12.5px; color:var(--muted); font-weight:400; margin-left:auto; padding-right:10px}
 summary .docmeta{flex:none}
+@media (max-width:640px){
+  .doc summary{flex-wrap:wrap; gap:2px 8px; padding:14px 16px}
+  .doc summary .docmeta{flex-basis:100%; order:3; margin:0; padding:0; font-size:11.5px}
+}
 
 /* ---------- search ---------- */
 .searchwrap{margin-left:auto; display:flex; align-items:center; padding:6px 0 6px 10px}
@@ -285,6 +300,23 @@ summary .docmeta{flex:none}
 }
 #toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
 a[href^="mailto:"]{cursor:copy}
+/* ---------- mobile spacing tighten ---------- */
+@media (max-width:640px){
+  .hero{padding:16px 0 18px}
+  .eyebrow{margin-bottom:8px; font-size:11.5px}
+  h1{margin-bottom:4px}
+  .hero .en{margin-bottom:12px}
+  .facts{display:grid; grid-template-columns:1fr 1fr; gap:0 18px}
+  .fact{padding:7px 0; margin-right:0}
+  .fact:last-child{grid-column:1 / -1}
+  .alert{margin-top:14px; padding:12px 14px}
+  .legend{margin-top:12px; gap:6px 14px}
+  section{padding-top:32px}
+  .sub{margin-bottom:12px}
+  h2{margin-bottom:2px}
+  .wrap{padding-bottom:48px}
+  footer{margin-top:36px}
+}
 </style>
 </head>
 
@@ -294,7 +326,7 @@ a[href^="mailto:"]{cursor:copy}
 <header class="hero">
   <span class="eyebrow">第 51 屆多倫多國際影展 · Special Presentations 特別放映單元</span>
   <h1>幸福快樂的日子<br>TIFF 2026 參展指南</h1>
-  <p class="en">Happily Ever After — <b>World Premiere 世界首映</b> · Toronto International Film Festival</p>
+  <p class="en">Happily Ever After · <b>世界首映</b></p>
   <div class="facts">
     <div class="fact"><div class="k">影展日期</div><div class="v">2026.9.10 – 9.20</div></div>
     <div class="fact"><div class="k">地點</div><div class="v">加拿大多倫多</div></div>
@@ -304,11 +336,10 @@ a[href^="mailto:"]{cursor:copy}
   </div>
 
   <div class="alert" id="status-alert">
-    <b id="status-title">目前狀態：等待場次時限判定。</b><span id="status-copy">暫定場次的更改窗口為 <b>7/22（三）上午 10 點（多倫多）＝台灣 22:00</b>；確認版預定最遲 7/27 寄達。</span><a class="src" href="#doc-schedule-p1">出處：場次函</a>
-    <div class="small" id="status-detail">前兩場公開放映暫定為 9/17、9/18；住宿日期仍須由 Tiffin 另行書面確認，不能由場次自行推定。</div>
+    <b id="status-title">目前進度：等待大會寄出確認版場次。</b><span id="status-copy">暫定場次的更改窗口為 <b>7/22（三）上午 10 點（多倫多）＝台灣 22:00</b>；確認版預定最遲 7/27 寄達。</span><a class="src" href="#doc-schedule-p1">出處：場次函</a>
+    <div class="small" id="status-detail">前兩場公開放映暫定為 9/17、9/18；住宿涵蓋哪幾晚要等 Tiffin 書面確認，先不要照場次自行推算。</div>
   </div>
 
-  <div class="internal"><b>內部工作頁：</b>本頁供劇組執行使用。護照號碼、生日、證件影本、私人電話與藝人安全動線請放在受控文件，不要寫進本 HTML，也不要把內部版公開轉傳。</div>
 
   <div class="legend">
     <span>本頁資訊分三級：</span>
@@ -319,21 +350,24 @@ a[href^="mailto:"]{cursor:copy}
 </header>
 
 <nav>
-  <a href="#timeline">時程</a>
-  <a href="#screenings">場次</a>
-  <a href="#roles">角色任務</a>
-  <a href="#operations">團隊狀態</a>
-  <a href="#asks">待確認</a>
-  <a href="#flights">班機</a>
-  <a href="#contacts">窗口</a>
-  <a href="#docs">官方文件</a>
+  <button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="navlinks">☰ 選單</button>
+  <div class="navlinks" id="navlinks">
+    <a href="#timeline">時程</a>
+    <a href="#screenings">場次</a>
+    <a href="#roles">角色任務</a>
+    <a href="#operations">團隊狀態</a>
+    <a href="#asks">待確認</a>
+    <a href="#flights">班機</a>
+    <a href="#contacts">窗口</a>
+    <a href="#docs">官方文件</a>
+  </div>
   <div class="searchwrap"><input id="q" type="search" placeholder="搜尋指南＋官方文件…" aria-label="全站搜尋"></div>
 </nav>
 <div id="results" role="listbox"></div>
 
 <section id="timeline">
   <h2><span class="no">01</span>關鍵時程</h2>
-  <p class="sub">唯一的期限清單；角色區不再重複。日期為多倫多時間，勾選結果僅存本機。</p>
+  <p class="sub">所有截止日期都集中在這張表，照日期排（多倫多時間）。勾選進度只存在自己的裝置，不會同步給其他人。</p>
   <ul class="tl">
     <li data-k="t0"><span class="d">受邀後 48h</span><span class="t"><label><input type="checkbox">交齊註冊表、宣傳素材與 press kit</label><a class="src" href="#doc-guide-p4">出處：指南 P.4</a></span><span class="owners"><span class="chip owner marketing">行銷</span><span class="chip owner pr">公關</span></span></li>
     <li data-k="t1"><span class="d">7/20</span><span class="t"><label><input type="checkbox">確認入選公布、影片頁與註冊表內容</label><a class="src" href="#doc-film-inv-p1">出處：影片邀請函</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
@@ -346,7 +380,7 @@ a[href^="mailto:"]{cursor:copy}
     <li data-k="t8"><span class="d">8/11</span><span class="t"><label><input type="checkbox">檢查影片頁公開的 PR 聯絡資訊</label><a class="src" href="#doc-email-e3">出處：信件 ✉3</a><small>這不是文件明載的補交截止；真正期限仍須向 TIFF 確認。</small></span><span class="owners"><span class="chip owner pr">公關</span></span></li>
     <li data-k="t9"><span class="d">8/12</span><span class="t"><label><input type="checkbox">完成首兩場公開放映的票券配額作業</label><a class="src" href="#doc-terms-p12">出處：附錄A</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
     <li data-k="t10"><span class="d">8/14</span><span class="t"><label><input type="checkbox">決定並預訂 Market 加場</label><a class="src" href="#doc-terms-p12">出處：附錄A</a></span><span class="owners"><span class="chip owner marketing">行銷</span></span></li>
-    <li data-k="t11"><span class="d">8/17</span><span class="t"><label><input type="checkbox">登記製片與銷售代理各一張免費 pass</label><a class="src" href="#doc-terms-p12">出處：附錄A</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
+    <li data-k="t11"><span class="d">8/17</span><span class="t"><label><input type="checkbox">登記製片與銷售代理各一張免費證件</label><a class="src" href="#doc-terms-p12">出處：附錄A</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
     <li data-k="t12"><span class="d">8/21</span><span class="t"><label><input type="checkbox">完成 DCP QC 並上傳最終版</label><a class="src" href="#doc-terms-p15">出處：附錄B</a><small>逾期或缺 DKDM：CAD $350＋13% 稅。</small></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
     <li data-k="t13"><span class="d">8 月底</span><span class="t"><label><input type="checkbox">依 TIFF 通知登記 Publicist Pass</label><a class="src" href="#doc-guide-p6">出處：指南 P.6</a></span><span class="owners"><span class="chip owner pr">公關</span></span></li>
     <li data-k="t14"><span class="d">9/8</span><span class="t"><label><input type="checkbox">確認團隊票券與座位；需要時辦理換票</label><a class="src" href="#doc-terms-p4">出處：條款 §VIII</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
@@ -374,7 +408,7 @@ a[href^="mailto:"]{cursor:copy}
 
 <section id="questions">
   <h2><span class="no">03</span>九大問題</h2>
-  <p class="sub">按 ANLI 的九個問題逐一回答，點開展開。</p>
+  <p class="sub">劇組最常問的九個問題，點標題展開答案。</p>
 
   <details open>
     <summary><span class="qn">Q1</span>需要準備什麼資料？<span class="arrow">›</span></summary>
@@ -418,7 +452,7 @@ a[href^="mailto:"]{cursor:copy}
     </div>
   </details>
 
-  <details>
+  <details id="q3">
     <summary><span class="qn">Q3</span>需要額外自費的部分嗎？<span class="arrow">›</span></summary>
     <div class="body">
       <div class="grid2">
@@ -454,7 +488,7 @@ a[href^="mailto:"]{cursor:copy}
     <div class="body">
       <p>「去」本身沒有人數上限——差別在<b>誰有大會招待、誰有證件</b>。</p>
       <ul>
-        <li><span class="chip doc">文件明載</span> 官方 Guest Invitation：<b>2 位</b>（導演阮鳳儀、葉舒華），邀請不可轉讓；但招待內容不同——導演有 CAD $2,700 機票補助＋3 晚住宿，舒華的現有邀請只有 2 晚住宿、沒有書面機票補助<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
+        <li><span class="chip doc">文件明載</span> 官方來賓邀請函：<b>2 位</b>（導演阮鳳儀、葉舒華），邀請不可轉讓；但招待內容不同——導演有 CAD $2,700 機票補助＋3 晚住宿，舒華的現有邀請只有 2 晚住宿、沒有書面機票補助<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
         <li><span class="chip doc">文件明載</span> 免費證件：<b>製片 1 名＋銷售代理 1 名</b>（執行製片不符資格、不可轉讓）<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
         <li><span class="chip ask">已去信詢問</span> 另外 6 位主創（陳雪、蔡凡熙、兩位製片、統籌、行銷 ANLI）的 badge，與 11 位隨行人員（經紀、妝髮、保鑣等）的進出證——待大會回覆</li>
         <li><span class="chip doc">文件明載</span> 紅毯、後台、Green Room 的 stage party／entourage／保安名單由 <b>Venue Liaison</b> 在 8 月初確認。這是<b>送審管道，不是進場保證</b>；妝髮、經紀、保鑣與攝影師均須列名並取得書面核准後才能依指定範圍工作<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
@@ -473,7 +507,7 @@ a[href^="mailto:"]{cursor:copy}
     <summary><span class="qn">Q5</span>住在哪？<span class="arrow">›</span></summary>
     <div class="body">
       <ul>
-        <li><span class="chip doc">文件明載</span> 住大會 <b>Hospitality Partner 合作飯店</b>，由 Film Coordinator（Tiffin）代訂；文件未指明飯店名稱與星級<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
+        <li><span class="chip doc">文件明載</span> 住<b>大會合作飯店</b>，由大會窗口 Tiffin 代訂；文件未指明飯店名稱與星級<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
         <li><span class="chip doc">文件明載</span> 額度：導演最多 3 晚、舒華最多 2 晚；想延住可請大會依空房協助加訂，額外費用先按自付編列<a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
         <li><span class="chip ask">已去信詢問</span> 三位演員經紀約要求五星飯店——等級與加房都已在信中提出，待回覆</li>
         <li><span class="chip hot">不可自行推定</span> 文件只承諾晚數，尚未確認飯店、入住日與退房日；即使前兩場暫定為 9/17、9/18，也須等 Tiffin 書面回覆後才能認定招待涵蓋哪些夜晚。其餘團隊可先找可取消房價，但不要把「約 9/16–19」當成大會承諾。</li>
@@ -509,7 +543,7 @@ a[href^="mailto:"]{cursor:copy}
     </div>
   </details>
 
-  <details>
+  <details id="q8">
     <summary><span class="qn">Q8</span>大會行銷、公關的資源和資訊<span class="arrow">›</span></summary>
     <div class="body">
       <h4>大會給的曝光（文件明載）</h4>
@@ -518,7 +552,7 @@ a[href^="mailto:"]{cursor:copy}
         <li>預告會上 TIFF 官方影音頻道＋King Street 數位看板（前面可能加掛 TIFF logo，影展後續留）<a class="src" href="#doc-terms-p5">出處：條款 §IX(5)</a></li>
         <li>片花提供媒體做電視、電台、網路報導</li>
         <li>海報最多印製 3 張於 TIFF 場館展示<a class="src" href="#doc-terms-p5">出處：條款 §IX(5)</a></li>
-        <li>官方社群 2.5M 受眾：hashtag <b>#TIFF26</b>、帳號 <a href="https://www.instagram.com/tiff_net/" target="_blank" rel="noopener">@tiff_net</a>——把全劇組 IG handles 給大會，官方會轉發被 tag 的貼文<a class="src" href="#doc-guide-p10">出處：指南 P.10</a></li>
+        <li>官方社群 2.5M 受眾：hashtag <b>#TIFF26</b>、帳號 <a href="https://www.instagram.com/tiff_net/" target="_blank" rel="noopener">@tiff_net</a>——把全劇組 IG 帳號給大會，官方會轉發被 tag 的貼文<a class="src" href="#doc-guide-p10">出處：指南 P.10</a></li>
       </ul>
       <h4>公關系統怎麼運作</h4>
       <ul>
@@ -611,81 +645,105 @@ a[href^="mailto:"]{cursor:copy}
 
 <section id="roles">
   <h2><span class="no">05</span>角色分工</h2>
-  <p class="sub">只列各角色獨有的準備工作；有日期的工作統一放在<a href="#timeline">關鍵時程</a>。</p>
+  <p class="sub">給分配工作用：每個角色點開自己的段落，就看到跟自己有關的事。帶「出處」標籤的來自大會文件，排在前面優先處理；其餘是內部提醒，排在後面。</p>
 
-  <details open>
-    <summary><span class="qn">全員</span>先建立共同作業規則<span class="arrow">›</span></summary>
+  <details>
+    <summary><span class="qn">全員</span>共同規則<span class="arrow">›</span></summary>
     <div class="body">
-      <ul class="tasklist">
-        <li data-k="r-all-1"><label><input type="checkbox">指定一位 TIFF 總窗口，統一收發並追蹤大會信件。</label><a class="src" href="#doc-email-e1">出處：歡迎信</a></li>
-        <li data-k="r-all-2"><label><input type="checkbox">建立責任表，為每項工作指定負責、協作與核准者。</label></li>
-        <li data-k="r-all-3"><label><input type="checkbox">建立同時顯示台北與多倫多時間的共用行事曆。</label></li>
-        <li data-k="r-all-4"><label><input type="checkbox">分設工作群與緊急通報群，指定緊急事件回應人。</label></li>
-        <li data-k="r-all-5"><label><input type="checkbox">護照、私人電話等敏感資料只存受控文件。</label></li>
+      <h4>文件相關（優先）</h4>
+      <ul>
+        <li>大會信件統一由製片 Linhan 收發（大會邀請函的收件人），收到大會信先轉給他<a class="src" href="#doc-film-inv-p1">出處：影片邀請函</a></li>
+        <li>所有會上台的人（介紹、Q&amp;A、紅毯）先知情：TIFF 會錄影且永久使用<a class="src" href="#doc-terms-p3">出處：條款 §VII</a></li>
+        <li>票務帳號綁本人，不能請別人代管<a class="src" href="#doc-guest-shuhua-p2">出處：邀請函 P.2</a></li>
+      </ul>
+      <h4>內部提醒</h4>
+      <ul>
+        <li>護照號碼、證件影本、私人電話、藝人動線只放受控文件，不進公開或共享頁面</li>
       </ul>
     </div>
   </details>
 
   <details>
-    <summary><span class="qn">行銷</span>ANLI／Marketing Lead<span class="arrow">›</span></summary>
+    <summary><span class="qn">行銷</span>ANLI<span class="arrow">›</span></summary>
     <div class="body">
-      <ul class="tasklist">
-        <li data-k="r-mkt-1"><label><input type="checkbox">填入曝光篇數、媒體訪問、買家會議與發行進度目標。</label></li>
-        <li data-k="r-mkt-2"><label><input type="checkbox">定稿中英文片介，統一 Special Presentations 與世界首映說法。</label><a class="src" href="#doc-film-inv-p1">出處：影片邀請函</a></li>
-        <li data-k="r-mkt-6"><label><input type="checkbox">確認影視局／TAICCA 可申請項目、文件與核銷規則。</label></li>
-        <li data-k="r-mkt-7"><label><input type="checkbox">建立每日成果表，記錄媒體、社群、買家與後續工作。</label></li>
+      <h4>文件相關（優先）</h4>
+      <ul>
+        <li>對外文案統一官方稱謂：Special Presentations、世界首映<a class="src" href="#doc-film-inv-p1">出處：影片邀請函</a></li>
+        <li>7/24 前把 Film Rights Survey 填完整，買家才會把本片排進看片行程<a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+        <li>貼文用 #TIFF26 並標記 @tiff_net，全劇組 IG 帳號提供給大會互推<a class="src" href="#doc-guide-p10">出處：指南 P.10</a></li>
+      </ul>
+      <h4>內部提醒</h4>
+      <ul>
+        <li>補助申請：文化部影視局／TAICCA 參展補助，項目與說明見 <a href="#q3">Q3 預算重點</a></li>
+        <li>首映在多倫多傍晚＝台北隔天清晨，發稿與社群排程吃這個時段紅利，換算見<a href="#flights">班機與時差</a></li>
       </ul>
     </div>
   </details>
 
   <details>
-    <summary><span class="qn">社群</span>Social Editor／現場內容<span class="arrow">›</span></summary>
+    <summary><span class="qn">社群</span>現場內容與發布<span class="arrow">›</span></summary>
     <div class="body">
-      <ul class="tasklist">
-        <li data-k="r-social-1"><label><input type="checkbox">排好 9/14–9/22 貼文日曆，標出台北／多倫多發布時間。</label></li>
-        <li data-k="r-social-2"><label><input type="checkbox">列出首映必拍畫面，逐項確認拍攝與發布授權。</label></li>
-        <li data-k="r-social-4"><label><input type="checkbox">檢查帳號權限、2FA、網路、備份空間與行動電源。</label></li>
-        <li data-k="r-social-5"><label><input type="checkbox">指定經紀審稿人，約定送審與最晚回覆時間。</label></li>
-        <li data-k="r-social-6"><label><input type="checkbox">設定危機事件的停發條件、核准人與恢復流程。</label></li>
-        <li data-k="r-social-7"><label><input type="checkbox">貼文使用 #TIFF26 與官方標記；不以票券或 pass 促銷／抽獎。</label><a class="src" href="#doc-guide-p10">出處：指南 P.10</a><a class="src" href="#doc-terms-p4">出處：條款 §VIII</a></li>
+      <h4>文件相關（優先）</h4>
+      <ul>
+        <li>貼文附官方 hashtag 與標記；不得用票券或證件做促銷、抽獎<a class="src" href="#doc-guide-p10">出處：指南 P.10</a><a class="src" href="#doc-terms-p4">條款 §VIII</a></li>
+      </ul>
+      <h4>內部提醒</h4>
+      <ul>
+        <li>行程確認後再排首映週貼文日曆，每篇標台北與多倫多兩個發布時間（見<a href="#flights">班機與時差</a>）</li>
+        <li>列首映必拍畫面清單，逐項確認拍攝與發布授權</li>
+        <li>指定經紀審稿人並約定最晚回覆時間；約定危機時誰能喊停貼文</li>
+        <li>出發前檢查帳號權限、雙重驗證、網路、備份空間與行動電源</li>
       </ul>
     </div>
   </details>
 
   <details>
-    <summary><span class="qn">公關</span>Film Publicist／Talent PR<span class="arrow">›</span></summary>
+    <summary><span class="qn">公關</span>影片公關／藝人公關<span class="arrow">›</span></summary>
     <div class="body">
-      <ul class="tasklist">
-        <li data-k="r-pr-1"><label><input type="checkbox">決定是否聘北美 publicist；需要時向 TIFF 索取名單。</label><a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
-        <li data-k="r-pr-4"><label><input type="checkbox">建立台灣、加拿大與國際媒體名單，排定聯繫日期。</label></li>
-        <li data-k="r-pr-5"><label><input type="checkbox">建立訪問表，記錄受訪者、時間、核准狀態與刊出結果。</label></li>
-        <li data-k="r-pr-6"><label><input type="checkbox">準備統一答題重點、敏感問題回應與口譯詞表。</label></li>
-        <li data-k="r-pr-7"><label><input type="checkbox">建立媒體監測表，指定更正與危機聲明核准人。</label></li>
+      <h4>文件相關（優先）</h4>
+      <ul>
+        <li>公關公司資料最晚 8/11 影片頁公開前補交給大會<a class="src" href="#doc-email-e3">出處：信件 ✉3</a></li>
+        <li>Publicist Pass 名額有限、不可轉讓，藝人個人公關也要註冊；8 月底大會通知辦理<a class="src" href="#doc-guide-p6">出處：指南 P.6</a></li>
+        <li>儘早定案是否聘北美 publicist；大會的 Publicist Directory 連結在 <a href="#q8">Q8</a><a class="src" href="#doc-guide-p5">出處：指南 P.5</a></li>
+      </ul>
+      <h4>內部提醒</h4>
+      <ul>
+        <li>建台灣、加拿大與國際媒體名單，排定聯繫順序</li>
+        <li>準備統一答題重點、敏感題回應與中英口譯詞表（口譯是否由大會提供，追蹤在<a href="#asks">待問清單①</a>）</li>
       </ul>
     </div>
   </details>
 
   <details>
-    <summary><span class="qn">導演</span>Fiona Roan Feng-i<span class="arrow">›</span></summary>
+    <summary><span class="qn">導演</span>阮鳳儀<span class="arrow">›</span></summary>
     <div class="body">
-      <ul class="tasklist">
-        <li data-k="r-dir-2"><label><input type="checkbox">準備中英文自我介紹、導演論述與常見問答。</label></li>
-        <li data-k="r-dir-3"><label><input type="checkbox">列出口譯、無障礙與行動協助需求，交給製片登記。</label><a class="src" href="#doc-checklist-s3">出處：登記表 S3</a></li>
-        <li data-k="r-dir-6"><label><input type="checkbox">讓所有上台者確認 TIFF 會錄影並使用活動影像。</label><a class="src" href="#doc-terms-p3">出處：條款 §VII</a></li>
-        <li data-k="r-dir-7"><label><input type="checkbox">開票前取得 CAD $2,700 機票補助的訂票與核銷規則。</label><a class="src" href="#doc-guest-fiona-p1">出處：導演邀請函</a></li>
+      <h4>文件相關（優先）</h4>
+      <ul>
+        <li>必出席前兩場公開放映的介紹與 Q&amp;A（暫定 9/17、9/18），這是所有招待的前提<a class="src" href="#doc-guest-fiona-p1">出處：導演邀請函</a></li>
+        <li>口譯、無障礙與行動協助需求填進登記表<a class="src" href="#doc-checklist-s3">出處：登記表 S3</a></li>
+        <li>機票補助 CAD $2,700 的請領方式待 Tiffin 回覆（追蹤在<a href="#asks">待問清單①</a>），確認前不開票<a class="src" href="#doc-guest-fiona-p1">出處：導演邀請函</a></li>
+      </ul>
+      <h4>內部提醒</h4>
+      <ul>
+        <li>準備中英文自我介紹、導演論述與常見問答</li>
       </ul>
     </div>
   </details>
 
   <details>
-    <summary><span class="qn">製片</span>Producer／總控<span class="arrow">›</span></summary>
+    <summary><span class="qn">製片</span>總控<span class="arrow">›</span></summary>
     <div class="body">
-      <ul class="tasklist">
-        <li data-k="r-prod-1"><label><input type="checkbox">建立全團名單，逐人追蹤航班、住宿、入境文件與 badge。</label></li>
-        <li data-k="r-prod-2"><label><input type="checkbox">完成總預算，為每筆費用指定付款人並保留預備金。</label></li>
-        <li data-k="r-prod-3"><label><input type="checkbox">每位成員開票前確認護照、入境文件與工作身分。</label><a class="src" href="#doc-guest-fiona-p1">出處：邀請函</a></li>
-        <li data-k="r-prod-6"><label><input type="checkbox">交件前完成影片、音樂、人物、商標與素材權利清除。</label><a class="src" href="#doc-terms-p7">出處：條款 §XI</a></li>
-        <li data-k="r-prod-8"><label><input type="checkbox">為航班、健康、入境文件、DCP 與現場安全各備一套方案。</label></li>
+      <h4>文件相關（優先）</h4>
+      <ul>
+        <li>權利保證：影片、音樂、人物、商標與素材授權在交件前全部到位<a class="src" href="#doc-terms-p7">出處：條款 §XI</a></li>
+        <li>DCP 8/21 前交件；交件後原則上不收替換版，上傳前做最後確認<a class="src" href="#doc-terms-p16">出處：條款附錄B</a></li>
+        <li>旅行證件是每位旅客自己的責任：逐人確認護照效期與 eTA／簽證<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a></li>
+      </ul>
+      <h4>內部提醒</h4>
+      <ul>
+        <li>全團名單逐人追蹤航班、住宿、入境文件與證件，現況看<a href="#operations">團隊狀態</a></li>
+        <li>總預算逐筆指定付款人，留預備金</li>
+        <li>隨行工作人員（妝髮、攝影、保鑣）的入境身分是否屬商務訪客，出發前逐人判斷</li>
       </ul>
     </div>
   </details>
@@ -693,7 +751,7 @@ a[href^="mailto:"]{cursor:copy}
 
 <section id="operations">
   <h2><span class="no">06</span>全團狀態</h2>
-  <p class="sub">只看人員權益、缺口與預算；日期請回到<a href="#timeline">關鍵時程</a>，場次請看<a href="#screenings">放映場次</a>。</p>
+  <p class="sub">每個人目前拿到的權益、還缺什麼、預算現況一覽。日期在<a href="#timeline">關鍵時程</a>，場次在<a href="#screenings">放映場次</a>。</p>
 
   <h4 style="margin:18px 0 8px; font-size:15px">人員與招待狀態</h4>
   <div class="tblwrap">
@@ -703,7 +761,7 @@ a[href^="mailto:"]{cursor:copy}
         <tr><td>導演阮鳳儀</td><td><span class="chip doc">Guest Pass</span><span class="chip doc">機票 CAD $2,700</span><span class="chip doc">住宿 3 晚</span></td><td>補助流程、飯店與日期、接送、票券、call time</td><td>未取得補助方式前不開不可退票</td></tr>
         <tr><td>葉舒華</td><td><span class="chip doc">Guest Pass</span><span class="chip doc">住宿 2 晚</span></td><td>機票、飯店與日期、接送、口譯、保安、entourage</td><td>經紀需求整理成一份正式名單</td></tr>
         <tr><td>陳雪／蔡凡熙</td><td><span class="chip ask">尚無正式邀請</span></td><td>Guest Invitation、機票、住宿、pass、接送</td><td>將姓名、角色及 rider 正式寄給 Tiffin</td></tr>
-        <tr><td>製片／銷售</td><td><span class="chip doc">各 1 張免費 pass</span></td><td>登記人、額外折扣 pass、票券</td><td>由製片確認兩位登記人</td></tr>
+        <tr><td>製片／銷售</td><td><span class="chip doc">各 1 張免費證件</span></td><td>登記人、額外折扣 pass、票券</td><td>由製片確認兩位登記人</td></tr>
         <tr><td>行銷／公關／社群</td><td><span class="chip ask">未保證 badge</span></td><td>Publicist Pass 上限、Market pass、P&amp;M／紅毯工作權</td><td>依實際工作拆分證件需求</td></tr>
         <tr><td>經紀／妝髮／保鑣／攝影</td><td><span class="chip ask">須送 Venue Liaison</span></td><td>後台、Green Room、紅毯與器材權限</td><td>製片彙整姓名、角色與必要性</td></tr>
       </tbody>
@@ -802,7 +860,7 @@ a[href^="mailto:"]{cursor:copy}
 
 <section id="contacts">
   <h2><span class="no">09</span>聯絡窗口速查</h2>
-  <p class="sub">大會明確要求：找對信箱，事情才會動。</p>
+  <p class="sub">不同事務有各自的窗口，寄對信箱才有人處理。</p>
   <div class="tblwrap">
     <table class="contact">
       <thead><tr><th>事務</th><th>窗口</th></tr></thead>
@@ -1160,6 +1218,55 @@ a[href^="mailto:"]{cursor:copy}
 
 <div id="toast" role="status"></div>
 <script>
+/* ---------- horizontal-scroll tables: edge shadows + swipe hint ---------- */
+(function(){
+  var updates=[];
+  function init(){
+    document.querySelectorAll('.tblwrap').forEach(function(w){
+      if(w.parentElement && w.parentElement.classList.contains('tshell')) return;
+      var shell=document.createElement('div'); shell.className='tshell';
+      w.parentNode.insertBefore(shell,w); shell.appendChild(w);
+      var hint=null, dismissed=false;
+      function showHint(){
+        if(hint) return;
+        hint=document.createElement('span');
+        hint.className='scrollhint'; hint.textContent='← 滑動看更多';
+        shell.appendChild(hint);
+      }
+      function hideHint(){ if(hint){ hint.remove(); hint=null; } }
+      function update(){
+        var canScroll=w.scrollWidth>w.clientWidth+2;
+        var atStart=w.scrollLeft<4;
+        var atEnd=w.scrollLeft+w.clientWidth>=w.scrollWidth-4;
+        shell.classList.toggle('more-right',canScroll&&!atEnd);
+        shell.classList.toggle('more-left',canScroll&&!atStart);
+        if(canScroll && !dismissed){ showHint(); } else { hideHint(); }
+      }
+      w.addEventListener('scroll',function(){
+        if(w.scrollLeft>12) dismissed=true;
+        update();
+      },{passive:true});
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if(en.isIntersecting){ dismissed=false; update(); }
+            else{ hideHint(); }
+          });
+        },{threshold:0.25}).observe(shell);
+      }
+      updates.push(update);
+      update();
+    });
+  }
+  function refresh(){ updates.forEach(function(f){f()}) }
+  window.addEventListener('resize',refresh);
+  document.addEventListener('toggle',function(){ setTimeout(refresh,50) },true);
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',init); }
+  else{ init(); }
+  window.addEventListener('load',refresh);
+})();
+</script>
+<script>
 /* ---------- toast ---------- */
 var _toastT;
 function toast(msg){
@@ -1219,7 +1326,7 @@ window.addEventListener('load',function(){
   var idx=null;
   function buildIndex(){
     idx=[];
-    var sel='#timeline .tl .t, #screenings td, #screenings .note, .body p, .body li, .panel li, .callout, #cases li, .contact td, .alert, .internal, .docpage p, .docpage li, #flights li, #flights td, #flights .note, #operations td, #operations .note';
+    var sel='#timeline .tl .t, #screenings td, #screenings .note, .body p, .body li, .panel li, .callout, #cases li, .contact td, .alert, .docpage p, .docpage li, #flights li, #flights td, #flights .note, #operations td, #operations .note';
     document.querySelectorAll(sel).forEach(function(el){
       var t=el.textContent.replace(/\s+/g,' ').trim();
       if(t.length>3) idx.push({el:el, text:t, low:t.toLowerCase()});
@@ -1287,6 +1394,25 @@ window.addEventListener('load',function(){
 })();
 
 (function(){
+  var btn=document.getElementById('menubtn'), nav=document.querySelector('nav');
+  if(!btn) return;
+  function set(open){
+    nav.classList.toggle('menu-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  }
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    set(!nav.classList.contains('menu-open'));
+  });
+  document.addEventListener('click',function(e){
+    if(e.target.closest('.navlinks a')){ set(false); return; }
+    if(!e.target.closest('nav')) set(false);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') set(false);
+  });
+})();
+(function(){
   var nav=document.querySelector('nav');
   function syncNav(){
     document.documentElement.style.setProperty('--navh', nav.offsetHeight+'px');
@@ -1332,7 +1458,7 @@ window.addEventListener('load',function(){
     copy.innerHTML='若尚未收到 Confirmed Schedule Letter，請由排程窗口立即追蹤 <a href="mailto:schedules@tiff.net">schedules@tiff.net</a>；之後的所有班機、住宿與 call time 都以確認版及後續通知為準。';
     if(deadlineItem) deadlineItem.classList.remove('hot');
   }
-  detail.textContent='前兩場公開放映暫定為 9/17、9/18；住宿日期仍須由 Tiffin 另行書面確認，不能由場次自行推定。';
+  detail.textContent='前兩場公開放映暫定為 9/17、9/18；住宿涵蓋哪幾晚要等 Tiffin 書面確認，先不要照場次自行推算。';
 })();
 </script>
 
