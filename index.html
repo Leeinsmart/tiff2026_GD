@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>《幸福快樂的日子》TIFF 2026 參展指南</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --paper:#FBF8F2;
+  --card:#FFFFFF;
+  --ink:#221B15;
+  --muted:#71655A;
+  --line:#E6DDD0;
+  --accent:#C0342B;
+  --accent-ink:#A02921;
+  --accent-soft:#F8EAE6;
+  --ok:#2E7D4F;      --ok-soft:#E6F1EA;
+  --wait:#9A6B0A;    --wait-soft:#F7EEDB;
+  --info:#54657E;    --info-soft:#E9EDF3;
+  --urgent:#B3261E;  --urgent-soft:#FBE9E7;
+  --sans:"PingFang TC","Hiragino Sans TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+  --mono:var(--sans);
+  --serif:var(--sans);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#191511;
+    --card:#221D18;
+    --ink:#EFE7DC;
+    --muted:#A2968A;
+    --line:#3A322A;
+    --accent:#E66A57;
+    --accent-ink:#F0836F;
+    --accent-soft:#33221E;
+    --ok:#7CC49A;      --ok-soft:#1F2E25;
+    --wait:#DCB05E;    --wait-soft:#332A18;
+    --info:#9FB0C6;    --info-soft:#242B35;
+    --urgent:#F2857A;  --urgent-soft:#3A211E;
+  }
+}
+:root[data-theme="light"]{
+  --paper:#FBF8F2; --card:#FFFFFF; --ink:#221B15; --muted:#71655A; --line:#E6DDD0;
+  --accent:#C0342B; --accent-ink:#A02921; --accent-soft:#F8EAE6;
+  --ok:#2E7D4F; --ok-soft:#E6F1EA; --wait:#9A6B0A; --wait-soft:#F7EEDB;
+  --info:#54657E; --info-soft:#E9EDF3; --urgent:#B3261E; --urgent-soft:#FBE9E7;
+}
+:root[data-theme="dark"]{
+  --paper:#191511; --card:#221D18; --ink:#EFE7DC; --muted:#A2968A; --line:#3A322A;
+  --accent:#E66A57; --accent-ink:#F0836F; --accent-soft:#33221E;
+  --ok:#7CC49A; --ok-soft:#1F2E25; --wait:#DCB05E; --wait-soft:#332A18;
+  --info:#9FB0C6; --info-soft:#242B35; --urgent:#F2857A; --urgent-soft:#3A211E;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none !important} }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); line-height:1.75; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px; margin:0 auto; padding:0 20px 80px}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 28px; border-bottom:4px solid var(--ink)}
+.eyebrow{
+  display:inline-block; letter-spacing:.14em; font-size:12.5px; font-weight:700;
+  color:var(--accent); text-transform:uppercase; margin-bottom:14px;
+}
+h1{font-size:clamp(34px,6vw,52px); line-height:1.15; margin:0 0 6px; font-weight:800; letter-spacing:.01em; text-wrap:balance}
+.hero .en{font-family:var(--sans); font-size:clamp(17px,2.6vw,22px); color:var(--muted); margin:0 0 26px}
+.hero .en b{color:var(--accent); font-style:normal; font-weight:700}
+.facts{display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--line)}
+.fact{padding:12px 28px 12px 0; margin-right:28px}
+.fact .k{font-size:11.5px; letter-spacing:.12em; color:var(--muted); text-transform:uppercase}
+.fact .v{font-weight:700; font-variant-numeric:tabular-nums}
+
+/* ---------- alert ---------- */
+.alert{
+  margin:26px 0 0; padding:14px 18px; border-left:4px solid var(--urgent);
+  background:var(--urgent-soft); border-radius:0 6px 6px 0;
+}
+.alert b{color:var(--urgent)}
+.alert .small{font-size:13.5px; color:var(--muted); margin-top:2px}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:10; background:var(--paper);
+  border-bottom:1px solid var(--line);
+  padding:0 max(20px, calc((100% - 900px)/2 + 20px));
+  display:flex; gap:4px; white-space:nowrap;
+}
+body{padding-top:var(--navh,48px)}
+section,header.hero{scroll-margin-top:calc(var(--navh,48px) + 8px)}
+@media (max-width:640px){
+  nav{flex-wrap:wrap; gap:0; padding:2px 10px}
+  nav a{padding:9px 10px; font-size:13.5px}
+}
+nav a{
+  display:block; padding:12px 12px; color:var(--muted); text-decoration:none;
+  font-size:14px; font-weight:600; border-bottom:3px solid transparent;
+}
+nav a:hover,nav a:focus-visible{color:var(--accent); border-bottom-color:var(--accent); outline:none}
+
+/* ---------- legend ---------- */
+.legend{display:flex; flex-wrap:wrap; gap:10px 18px; margin:22px 0 0; font-size:13.5px; color:var(--muted); align-items:center}
+.chip{
+  display:inline-block; padding:1px 9px; border-radius:99px; font-size:12px; font-weight:700;
+  vertical-align:1px; white-space:nowrap;
+}
+.chip.doc{background:var(--ok-soft); color:var(--ok)}
+.chip.ask{background:var(--wait-soft); color:var(--wait)}
+.chip.bg{background:var(--info-soft); color:var(--info)}
+.chip.hot{background:var(--urgent-soft); color:var(--urgent)}
+
+/* ---------- sections ---------- */
+section{padding-top:48px}
+h2{
+  font-size:24px; margin:0 0 4px; font-weight:800; letter-spacing:.01em;
+  display:flex; align-items:baseline; gap:12px;
+}
+h2 .no{font-family:var(--mono); font-size:24px; font-weight:800; color:var(--accent); letter-spacing:0; font-variant-numeric:tabular-nums}
+.sub{color:var(--muted); font-size:14.5px; margin:0 0 20px}
+
+/* ---------- timeline ---------- */
+.tl{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.tl li{
+  display:grid; grid-template-columns:118px 1fr auto; gap:6px 16px; align-items:baseline;
+  padding:10px 4px; border-bottom:1px solid var(--line);
+}
+.tl .d{font-family:var(--mono); font-size:13.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+.tl .t{font-size:15px}
+.tl .t small{display:block; color:var(--muted); font-size:13px}
+.tl li.done .t,.tl li.done .d{text-decoration:line-through; opacity:.55}
+.tl li.hot{background:var(--urgent-soft)}
+.tl li.hot .d{color:var(--urgent); font-weight:700}
+.tl input[type=checkbox]{accent-color:var(--accent); width:16px; height:16px; margin-right:10px; vertical-align:-2px}
+@media (max-width:560px){ .tl li{grid-template-columns:1fr; gap:2px} }
+
+/* ---------- schedule table ---------- */
+.tblwrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--card)}
+table{border-collapse:collapse; width:100%; min-width:620px; font-size:14.5px}
+th{
+  text-align:left; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); padding:10px 14px; border-bottom:2px solid var(--line); font-weight:700;
+}
+td{padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num,.mono{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13.5px}
+tr.key{background:var(--accent-soft)}
+tr.key td:first-child{border-left:3px solid var(--accent)}
+
+/* ---------- accordion ---------- */
+details{
+  background:var(--card); border:1px solid var(--line); border-radius:10px;
+  margin:0 0 12px; overflow:hidden;
+}
+details[open]{border-color:var(--accent)}
+summary{
+  cursor:pointer; padding:16px 18px; font-weight:700; font-size:17px;
+  display:flex; align-items:center; gap:12px; list-style:none;
+}
+summary::-webkit-details-marker{display:none}
+summary:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
+summary .qn{
+  font-family:var(--mono); font-size:12.5px; color:var(--accent); flex:none;
+  border:1px solid var(--accent); border-radius:99px; padding:1px 8px;
+}
+summary .arrow{margin-left:auto; color:var(--muted); transition:transform .15s; flex:none}
+details[open] summary .arrow{transform:rotate(90deg)}
+.body{padding:2px 20px 18px; border-top:1px solid var(--line); font-size:15px}
+.body h4{margin:18px 0 6px; font-size:14px; letter-spacing:.06em; color:var(--accent-ink)}
+.body ul{margin:6px 0 12px; padding-left:20px}
+.body li{margin:5px 0}
+.body li small,.body p small{color:var(--muted)}
+.body p{margin:10px 0}
+.note{
+  background:var(--info-soft); border-radius:8px; padding:10px 14px; font-size:13.5px;
+  color:var(--muted); margin:12px 0 4px;
+}
+.note b{color:var(--info)}
+.callout{
+  background:var(--accent-soft); border-radius:8px; padding:10px 14px; font-size:14px; margin:12px 0 4px;
+}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:10px 0}
+@media (max-width:640px){ .grid2{grid-template-columns:1fr} }
+.panel{border:1px solid var(--line); border-radius:8px; padding:12px 16px; background:var(--paper)}
+.panel h5{margin:0 0 6px; font-size:14px}
+.panel ul{margin:0; padding-left:18px; font-size:14px}
+.panel li{margin:4px 0}
+
+/* ---------- contact ---------- */
+.contact td:first-child{font-weight:600; white-space:nowrap}
+a{color:var(--accent-ink)}
+
+footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted)}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">第 51 屆多倫多國際影展 · Special Presentations 特別放映單元</span>
+  <h1>幸福快樂的日子<br>TIFF 2026 參展指南</h1>
+  <p class="en">Happily Ever After — <b>World Premiere 世界首映</b> · Toronto International Film Festival</p>
+  <div class="facts">
+    <div class="fact"><div class="k">影展日期</div><div class="v">2026.9.10 – 9.20</div></div>
+    <div class="fact"><div class="k">地點</div><div class="v">加拿大多倫多</div></div>
+    <div class="fact"><div class="k">片長 / 語言</div><div class="v">95 分鐘 · 國語</div></div>
+    <div class="fact"><div class="k">官方受邀</div><div class="v">導演阮鳳儀 · 葉舒華</div></div>
+    <div class="fact"><div class="k">大會窗口</div><div class="v">Tiffin Shing（Film Coordinator）</div></div>
+  </div>
+
+  <div class="alert">
+    <b>最急：場次更改請求今天截止。</b>暫定場次若要調整，須於 <b>7/22（三）上午 10 點（多倫多時間）＝台灣今晚 22:00</b> 前寄到 schedules@tiff.net。確認版場次最遲 7/27 寄達，之後不再受理更改。
+    <div class="small">目前暫定的前兩場公開放映為 9/17、9/18，相隔 24 小時，與大會提供的 2 晚住宿相符——若無問題可不必回信。</div>
+  </div>
+
+  <div class="legend">
+    <span>本頁資訊分三級：</span>
+    <span><span class="chip doc">文件明載</span> 大會文件白紙黑字</span>
+    <span><span class="chip ask">已去信詢問</span> 製片 7/21 已發問，待大會回覆</span>
+    <span><span class="chip bg">補充背景</span> 非大會文件，供參考、建議查證</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#timeline">關鍵時程</a>
+  <a href="#screenings">放映場次</a>
+  <a href="#questions">九大問題</a>
+  <a href="#asks">待問清單</a>
+  <a href="#cases">參考案例</a>
+  <a href="#contacts">聯絡窗口</a>
+</nav>
+
+<section id="timeline">
+  <h2><span class="no">01</span>關鍵時程</h2>
+  <p class="sub">全部出自大會文件與信件。勾選可標記完成（存在這台裝置上）。日期為多倫多時間。</p>
+  <ul class="tl">
+    <li data-k="t1"><span class="d">7/20</span><span class="t"><label><input type="checkbox">官方公布入選 · 影片頁上線 · 註冊表送出（PR 欄可先空白）</label></span></li>
+    <li data-k="t2" class="hot"><span class="d">7/22 10:00</span><span class="t"><label><input type="checkbox">場次更改請求截止（schedules@tiff.net）</label><small>台灣時間 7/22 晚上 10 點</small></span></li>
+    <li data-k="t3"><span class="d">7/24</span><span class="t"><label><input type="checkbox">Film Rights Survey：回報各地區版權銷售現況（供買家排片）</label></span></li>
+    <li data-k="t4"><span class="d">7/27 前</span><span class="t"><label><input type="checkbox">收到確認版場次表（含各位演員 Q&A 日期，可據此敲行程）</label></span></li>
+    <li data-k="t5"><span class="d">8 月初</span><span class="t"><label><input type="checkbox">Venue Liaison 對接：紅毯、後台名單、隨行人員、保安細節</label></span></li>
+    <li data-k="t6"><span class="d">8/6</span><span class="t"><label><input type="checkbox">Market 場館廣告優先預訂截止（自費，themarketsales@tiff.net）</label></span></li>
+    <li data-k="t7"><span class="d">8/8 前</span><span class="t"><label><input type="checkbox">大會提供 DKDM 憑證資訊（若 DCP 加密）</label></span></li>
+    <li data-k="t8"><span class="d">8/11</span><span class="t"><label><input type="checkbox">影片頁公開 PR 資訊——公關公司資料最晚此前補交</label></span></li>
+    <li data-k="t9"><span class="d">8/12</span><span class="t"><label><input type="checkbox">首兩場公開放映票券配額作業（protocol@tiff.net）</label></span></li>
+    <li data-k="t10"><span class="d">8/14</span><span class="t"><label><input type="checkbox">Market 加場（私人放映）優先預訂截止（自費）</label></span></li>
+    <li data-k="t11"><span class="d">8/17</span><span class="t"><label><input type="checkbox">製片 1 名＋銷售代理 1 名免費證件登記（registration@tiff.net）</label></span></li>
+    <li data-k="t12"><span class="d">8/21</span><span class="t"><label><input type="checkbox">DCP 交片截止——逾期或缺 DKDM 收 CAD $350＋13% 稅</label></span></li>
+    <li data-k="t13"><span class="d">8 月底</span><span class="t"><label><input type="checkbox">Publicist Pass 註冊（大會主動聯繫 7 月填報的公關窗口）</label></span></li>
+    <li data-k="t14"><span class="d">9/8</span><span class="t"><label><input type="checkbox">票券開放換票（線上或 Press & Market 票口）</label></span></li>
+    <li data-k="t15"><span class="d">9/10–20</span><span class="t"><label><input type="checkbox">影展。抵達前 5 天以上預訂機場接送</label></span></li>
+  </ul>
+</section>
+
+<section id="screenings">
+  <h2><span class="no">02</span>放映場次（暫定）</h2>
+  <p class="sub">7/19 大會暫定版，<b>尚未確認、仍可能變動</b>，確認版 7/27 前寄達。標紅的前兩場公開放映＝受邀者必須出席的場次。</p>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>日期</th><th>時段</th><th>性質</th><th>場地</th><th>座位</th></tr></thead>
+      <tbody>
+        <tr><td class="num">9/16（三）</td><td>中午 11:30–14:00</td><td>Press &amp; Market 業界媒體場</td><td>Scotiabank 10</td><td class="num">228</td></tr>
+        <tr class="key"><td class="num">9/17（四）</td><td>傍晚 17:30–21:00</td><td><b>公開首映（世界首映）★必出席</b></td><td>Royal Alexandra Theatre</td><td class="num">1005</td></tr>
+        <tr class="key"><td class="num">9/18（五）</td><td>傍晚 17:30–21:00</td><td><b>公開第二場 ★必出席</b></td><td>TIFF Lightbox 3（Piers Handling 廳）</td><td class="num">223</td></tr>
+        <tr><td class="num">9/19（六）</td><td>上午 8:30–11:30</td><td>公開場</td><td>Scotiabank 4</td><td class="num">388</td></tr>
+        <tr><td class="num">9/20（日）</td><td>上午 8:30–11:30</td><td>公開場</td><td>Scotiabank 6</td><td class="num">137</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note"><b>解讀：</b>時段為大會的區間定義（如「傍晚」＝17:30–20:59 之間開演），確切開演時間以確認版為準。想加開業界場（Market screening）需另外付費、先到先得。</p>
+</section>
+
+<section id="questions">
+  <h2><span class="no">03</span>九大問題</h2>
+  <p class="sub">按 ANLI 的九個問題逐一回答，點開展開。</p>
+
+  <details open>
+    <summary><span class="qn">Q1</span>需要準備什麼資料？<span class="arrow">›</span></summary>
+    <div class="body">
+      <h4>宣傳素材（原則上邀請後 48 小時內交，已陸續進行）</h4>
+      <ul>
+        <li>中＋英文劇情大綱各一（30–50 字）；導演簡歷（100 字內，含出生地、學歷、代表作）</li>
+        <li>橫式劇照 3–5 張（寬高皆 ≥4000px、JPEG、彩色）——首張已交，其餘補齊</li>
+        <li>導演直式照 1 張（≥4000px，須附攝影師署名）＋ 直式海報 1 張（≥4000px）</li>
+        <li>預告 1 支（1080p H.264、30mb/s、5 分鐘內；另交 IG Reels 直式版 15–45 秒）</li>
+        <li>片花 1–3 支（每支 2 分鐘內；已交預告則為選交）</li>
+        <li>PDF 版 press kit（≤2MB：英文大綱＋演員角色表＋導演簡歷）</li>
+        <li>影片與導演、演員的官方社群帳號清單（IG / X / FB / TikTok）</li>
+      </ul>
+      <h4>放映拷貝（DCP）</h4>
+      <ul>
+        <li>8/21 前經大會後製夥伴 Deluxe <b>數位上傳</b>（不必從台灣實體寄送——信中已確認）</li>
+        <li>必附<b>英文字幕</b>（建議做成聽障友善 SDH 版）；本片為國語片，<b>不需</b>英文 Open Caption（信中已確認）</li>
+        <li>規格重點：2K/4K、24/25/30fps、5.1 聲道（7.1 須另附 5.1 版）、≤250 Mbps、開頭不得有 bars/slate；加密則需供 DKDM</li>
+      </ul>
+      <h4>旅行證件（每位團員自理）</h4>
+      <ul>
+        <li>護照效期確認；<span class="chip bg">補充背景</span> 台灣護照入境加拿大免簽證但需線上申請 eTA</li>
+        <li>需要簽證者：大會可出<b>簽證支持信</b>，加拿大移民署特殊活動代碼 <b>26TIFF</b></li>
+      </ul>
+      <h4>行政表單</h4>
+      <ul>
+        <li>Film Rights Survey（7/24 前）：回報全球版權銷售現況與各地區權利方聯絡資訊</li>
+        <li>票券需求：8 月初起與 Protocol Office 確認自家場次的票量</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q2</span>這一屆跟往屆有何不同？<span class="arrow">›</span></summary>
+    <div class="body">
+      <p>大會文件並沒有「與往屆對照」的段落，以下是文件中可見的本屆制度，加上少量背景補充。</p>
+      <ul>
+        <li><span class="chip doc">文件明載</span> 所有受邀者證件（Guest Pass）都含 <b>The Market Summit 與全部 Market 場館</b>的進場資格。<span class="chip bg">補充背景</span> TIFF 官方內容市場「TIFF: The Market」2026 年首度全面營運，是本屆最大的新制——賣片、買家排片（Rights Survey）、Market 加場、市場區廣告都掛在它底下。</li>
+        <li><span class="chip doc">文件明載</span> 登記表新增申報：是否使用<b>生成式 AI</b>、是否使用 Adobe 產品。</li>
+        <li><span class="chip doc">文件明載</span> 無障礙要求明確化：非英語片必附英文字幕（鼓勵 SDH）；英語片才需要 OC/CC，與本片無關。</li>
+        <li><span class="chip doc">文件明載</span> 觀眾票選獎除主獎外，設有 <b>International People's Choice Award</b>（非加、非美影片專屬，本片符合資格）。</li>
+        <li><span class="chip bg">補充背景</span> 上一屆（2025）是 TIFF 50 週年的擴大慶祝屆，本屆回歸常規；冠名贊助為 Rogers。</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q3</span>需要額外自費的部分嗎？<span class="arrow">›</span></summary>
+    <div class="body">
+      <div class="grid2">
+        <div class="panel">
+          <h5>大會出（文件明載）</h5>
+          <ul>
+            <li>導演：機票補助 <b>CAD $2,700</b>（東亞出發）＋飯店 <b>3 晚</b></li>
+            <li>舒華：飯店 <b>2 晚</b>（邀請函無機票補助）</li>
+            <li>兩位受邀者：多倫多市區機場接送、Guest Pass</li>
+            <li>製片 1 名＋銷售代理 1 名：免費證件</li>
+            <li>簽證支持信、放映基本防盜錄</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h5>要自費（文件明載）</h5>
+          <ul>
+            <li>受邀者以外所有人的機票、住宿</li>
+            <li>兩位受邀者超過 2–3 晚的延住</li>
+            <li>額外證件（可折扣價加購）</li>
+            <li>DCP 製作費；逾期交片罰 CAD $350＋13% 稅</li>
+            <li>Market 加場、市場區廣告、自聘公關公司</li>
+            <li>素材運費與關稅（若有實體寄送）</li>
+          </ul>
+        </div>
+      </div>
+      <p><span class="chip ask">已去信詢問</span> 以下都是製片 7/21 信中提出、<b>還沒有答案</b>的項目，先別當作有或沒有：演員機票補助或航空公司折扣碼、三位演員的五星飯店等級、額外免費/折扣房、全團機場接送、飯店↔紅毯接駁、中英口譯、額外保安。</p>
+      <p class="callout">預算重點：若大會不補助演員機票，台北↔多倫多長程機票＋隨行 11 人團隊的旅宿會是最大自費項目。<span class="chip bg">補充背景</span> 可查詢文化部影視局、TAICCA 的國際影展參展補助（機票、行銷費），入選 TIFF 主單元通常符合申請門檻——請以當期公告為準。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q4</span>有多少去的名額？<span class="arrow">›</span></summary>
+    <div class="body">
+      <p>「去」本身沒有人數上限——差別在<b>誰有大會招待、誰有證件</b>。</p>
+      <ul>
+        <li><span class="chip doc">文件明載</span> 官方受邀＋全套招待：<b>2 位</b>（導演阮鳳儀、葉舒華），邀請不可轉讓</li>
+        <li><span class="chip doc">文件明載</span> 免費證件：<b>製片 1 名＋銷售代理 1 名</b>（執行製片不符資格、不可轉讓，8/17 前登記）</li>
+        <li><span class="chip ask">已去信詢問</span> 另外 6 位主創（陳雪、蔡凡熙、兩位製片、統籌、行銷 ANLI）的 badge，與 11 位隨行人員（經紀、妝髮、保鑣等）的進出證——待大會回覆</li>
+        <li><span class="chip doc">文件明載</span> 隨行團隊即使沒有影展 badge，紅毯、後台、Green Room 的進出是由 <b>Venue Liaison</b> 在 8 月初以「stage party／entourage／保安名單」處理——妝髮保鑣走這條線即可工作</li>
+        <li><span class="chip doc">文件明載</span> 製作與銷售團隊其他成員可用<b>折扣價加購</b> Market 證件</li>
+      </ul>
+      <h4>Guest Pass 內含權益</h4>
+      <ul>
+        <li>6 張其他影片公開場預售票（每場限 2 張）＋每日 day-of 票＋rush 排隊資格</li>
+        <li>Press &amp; Market 場次、The Market Summit 與全部 Market 場館進場</li>
+        <li>注意：<b>自家片的票不含在內</b>，須透過 Protocol Office 另外安排（首兩場有免費＋付費配額）；票務帳號綁本人，大會不受理代操作</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q5</span>住在哪？<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul>
+        <li><span class="chip doc">文件明載</span> 住大會 <b>Hospitality Partner 合作飯店</b>，由 Film Coordinator（Tiffin）代訂；文件未指明飯店名稱與星級</li>
+        <li><span class="chip doc">文件明載</span> 額度：導演最多 3 晚、舒華最多 2 晚；想延住可請大會依空房協助加訂，<b>費用自付</b></li>
+        <li><span class="chip ask">已去信詢問</span> 三位演員經紀約要求五星飯店——等級與加房都已在信中提出，待回覆</li>
+        <li>住宿日期會配合必出席的前兩場放映（暫定 9/17、9/18）由 Tiffin 安排；其餘團隊自行訂房，越早越好——影展期間多倫多市中心房價高、房源緊<span class="chip bg">補充背景</span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q6</span>哪些重要環節要出席？<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul>
+        <li><span class="chip doc">文件明載</span> <b>鐵則：前兩場公開放映</b>（暫定 9/17 首映、9/18 第二場）——含映前介紹＋映後 Q&A，可能還有媒體活動。這是邀請函所有招待的<b>前提條件</b>，導演與受邀演員都適用</li>
+        <li><span class="chip doc">文件明載</span> 紅毯／photo call：SP 單元部分影片會有，含首映場交通安排，<b>8 月大會通知細節</b>——是否有紅毯以屆時通知為準，不要先對外承諾</li>
+        <li><span class="chip doc">文件明載</span> 9/16 Press &amp; Market 場為業界媒體場，文件未要求出席</li>
+        <li><span class="chip doc">文件明載</span> 若拿下 People's Choice：閉幕日（9/20）加映得獎場，得獎者需錄影片感言</li>
+        <li>行銷須知：介紹、Q&A 與官方活動會被大會<b>錄影並永久使用</b>於其平台與社群（條款 §VII），藝人端請先知會</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q7</span>大會提供的協助有哪些？<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul>
+        <li><b>Film Coordinator（Tiffin Shing）</b>：單一窗口，管註冊、素材、受邀者機票住宿、簽證支持</li>
+        <li><b>Venue Liaison</b>（8 月初對接）：進場動線、後台/Green Room 名單、隨行人員、保安、紅毯細節</li>
+        <li><b>Protocol Office</b>：自家場次票務配額</li>
+        <li>簽證支持信＋特殊活動代碼 26TIFF；機場接送（出發 5 天前預訂）</li>
+        <li>受邀者飯店 2–3 晚；導演機票補助 CAD $2,700</li>
+        <li>放映基本防盜錄措施（加強版付費）；無障礙技術支援</li>
+        <li>行銷公關面的協助見 Q8</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q8</span>大會行銷、公關的資源和資訊<span class="arrow">›</span></summary>
+    <div class="body">
+      <h4>大會給的曝光（文件明載）</h4>
+      <ul>
+        <li>影片專頁已於 7/20 上線；節目手冊（印刷）收錄劇組名單</li>
+        <li>預告會上 TIFF 官方影音頻道＋King Street 數位看板（前面可能加掛 TIFF logo，影展後續留）</li>
+        <li>片花提供媒體做電視、電台、網路報導</li>
+        <li>海報最多印製 3 張於 TIFF 場館展示</li>
+        <li>官方社群 2.5M 受眾：hashtag <b>#TIFF26</b>、帳號 @tiff_net——把全劇組 IG handles 給大會，官方會轉發被 tag 的貼文</li>
+      </ul>
+      <h4>公關系統怎麼運作</h4>
+      <ul>
+        <li>聘公關公司<b>非必要但大會建議</b>；大會提供歷屆合作的 <b>Publicist Directory</b> 名單（在 Filmmaker Guide 內連結）</li>
+        <li>公關公司資料最晚 8/11 前補進影片頁；8 月底大會聯繫註冊 <b>Publicist Pass</b>（有數量上限、不可轉讓；<b>藝人的個人公關也要註冊</b>）</li>
+        <li>Publicist Pass 給工作進場權：自家片的 P&M 場與紅毯</li>
+        <li>媒體相關問題：proffice@tiff.net</li>
+      </ul>
+      <h4>賣片與市場（自費項目）</h4>
+      <ul>
+        <li>Rights Survey（7/24）填得完整，買家才會把本片排進看片行程</li>
+        <li>Market 加場私人放映（8/14 前優先預訂）；市場區廣告版位（8/6 前優先預訂）</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="qn">Q9</span>其他注意事項<span class="arrow">›</span></summary>
+    <div class="body">
+      <ul>
+        <li><b>世界首映義務：</b>9/17 前不得在任何地方（含線上）公開放映；影展結束（9/20）前不得在加拿大商業放映或上網，違反可能被取消資格</li>
+        <li>交給大會的素材<b>視同最終版</b>直接發布；DCP 也是——8/21 後原則上不收替換版</li>
+        <li>片長、規格若有變動要<b>立刻</b>通知大會，否則可能失去場次</li>
+        <li>所有參加者受 TIFF 行為準則約束，違反可撤證</li>
+        <li>People's Choice 參賽在註冊表勾選；得獎影響大（見下方案例）</li>
+        <li>公開場一律對號入座，公關不得替來賓換位；開演前 15 分鐘未入座，保留席會被釋出</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section id="asks">
+  <h2><span class="no">04</span>待問清單：行程規劃前還缺的答案</h2>
+  <p class="sub">要排出導演與演員的完整行程，還差以下資訊。依「該找哪個單位」分組；大部分製片 7/21 已在信中提出（標 <span class="chip ask">追蹤回覆</span>），少數是<b>還沒問過、要新發問</b>的（標 <span class="chip hot">尚未提出</span>）。</p>
+
+  <div class="grid2">
+    <div class="panel">
+      <h5>① Tiffin Shing（Film Coordinator）— cinshing@tiff.net</h5>
+      <p style="margin:4px 0 8px; font-size:13px; color:var(--muted)">受邀者機票、住宿、簽證都由她統包，是九成問題的窗口。</p>
+      <ul>
+        <li><span class="chip hot">尚未提出</span> <b>正式提交增列出席演員名單與需求</b>——Tiffin 已主動要求「把想出席的演員姓名與需求寄給我」，陳雪、蔡凡熙的名字與 rider 需求至今還沒正式送出，這是目前卡住所有談判的第一步</li>
+        <li><span class="chip hot">尚未提出</span> 導演 CAD $2,700 機票補助的<b>請領方式</b>：大會代訂？實報實銷？可否併入升等票價</li>
+        <li><span class="chip hot">尚未提出</span> 招待住宿的<b>確切入住/退房日期</b>（配合 9/17、9/18 兩場必出席場次如何算）</li>
+        <li><span class="chip ask">追蹤回覆</span> 飯店是哪一間、星級（演員 rider 要求五星）；額外房間的免費/折扣方案</li>
+        <li><span class="chip ask">追蹤回覆</span> 演員機票有無補助或航空夥伴折扣碼</li>
+        <li><span class="chip ask">追蹤回覆</span> 機場接送涵蓋哪些人；飯店↔紅毯/場館接駁有沒有</li>
+        <li><span class="chip ask">追蹤回覆</span> 紅毯、記者會、Q&A 的中英口譯由誰出</li>
+        <li><span class="chip ask">追蹤回覆</span> 8 位主創 badge＋11 位隨行人員進出證怎麼給</li>
+        <li><span class="chip ask">追蹤回覆</span> 舒華的經紀與保鑣可否隨行進管制區；大會可否加派保安</li>
+        <li><span class="chip hot">尚未提出</span> 若團隊有人非台灣護照／需簽證：簽證支持信申請流程</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h5>② schedules@tiff.net — 場次</h5>
+      <ul>
+        <li><b>確認版場次表</b>（大會承諾 7/27 前寄達；沒收到就追）——所有機票、飯店、藝人檔期都以此為準，收到前不要開票</li>
+      </ul>
+      <h5 style="margin-top:14px">③ Protocol Office — protocol@tiff.net（8 月初啟動）</h5>
+      <ul>
+        <li>首兩場公開放映的<b>免費＋付費票配額各多少張</b>——決定隨行團隊、貴賓能帶幾人進場</li>
+        <li>劇組全員（含導演演員本人）進自家場次的取票方式；8/12 前後大會會主動聯繫版權方</li>
+      </ul>
+      <h5 style="margin-top:14px">④ Venue Liaison（8 月初由 Tiffin 引介）</h5>
+      <ul>
+        <li>首映日<b>到場時間（call time）</b>與進場動線——排當天妝髮時程的依據</li>
+        <li>有沒有<b>紅毯／photo call</b>、規格如何</li>
+        <li>台上介紹與 Q&A 的 <b>stage party 人數上限</b></li>
+        <li>Green Room／後台名單怎麼報：11 位隨行人員（妝髮、經紀、保鑣、攝影師）走這條線</li>
+        <li>現場保安安排</li>
+      </ul>
+      <h5 style="margin-top:14px">⑤ registration@tiff.net — 證件</h5>
+      <ul>
+        <li>製片 1＋銷售代理 1 免費證登記（8/17 前）；其他團隊成員<b>加購證件的折扣價格</b></li>
+      </ul>
+      <h5 style="margin-top:14px">⑥ 公關線（proffice / publicistregistration@tiff.net）</h5>
+      <ul>
+        <li>本片 <b>Publicist Pass 上限幾張</b>——決定 PR 團隊編制；藝人個人公關也占額度</li>
+        <li>大會與媒體端的訪問安排（junket）如何對接——通常由自聘 publicist 主導</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:16px">
+    <b>建議的規劃順序：</b>① 今天先把演員名單與需求寄給 Tiffin（她已在等）→ ② 7/27 收到確認場次，鎖定藝人檔期與進出日期 → ③ 拿到 Tiffin 對機票/飯店/證件的回覆後，訂自費機票與加訂房 → ④ 8 月初 Venue Liaison＋Protocol 啟動後，敲首映日細部流程與票量 → ⑤ 據此排妝髮、訪問、隨行人員班表。
+  </div>
+</section>
+
+<section id="cases">
+  <h2><span class="no">05</span>參考案例與類比</h2>
+  <p class="sub"><span class="chip bg">補充背景</span> 本節全部來自大會文件以外的一般背景知識，細節請以 TIFF 官網節目資料庫查證後再對外引用。</p>
+  <ul>
+    <li><b>Special Presentations 是什麼位階：</b>TIFF 的明星＋話題作主力單元，規模僅次於 Gala。近年經典如《寄生上流》（2019）、《分手的決心》（2022）、是枝裕和《怪物》（2023）都走過這個單元——多半是坎城後的北美首映。本片以<b>世界首映</b>進 SP，代表 TIFF 把它當「全球第一手」的重點新片，對國際媒體與買家是更強的訊號。</li>
+    <li><b>首映場地的意義：</b>暫定首映場 Royal Alexandra Theatre 是千人級歷史劇院，SP 單元的指標場地之一，通常伴隨媒體拍照區；確切紅毯規格等 8 月大會通知。</li>
+    <li><b>People's Choice 的價值：</b>TIFF 沒有評審團大獎，觀眾票選獎就是最高榮譽，歷屆得主（如《綠皮書》《寄生上流》之後的多部）常直通頒獎季。國際片另設 International People's Choice——動員觀眾投票是行銷端可以主動操作的少數獎項。</li>
+    <li><b>台灣團隊常見做法：</b>入選國際 A 級影展主單元後，向文化部影視局／TAICCA 申請參展補助（機票、國際行銷費），並由國內發行方同步操作「入選 TIFF」新聞稿與 9 月首映的二波宣傳。</li>
+  </ul>
+</section>
+
+<section id="contacts">
+  <h2><span class="no">06</span>聯絡窗口速查</h2>
+  <p class="sub">大會明確要求：找對信箱，事情才會動。</p>
+  <div class="tblwrap">
+    <table class="contact">
+      <thead><tr><th>事務</th><th>窗口</th></tr></thead>
+      <tbody>
+        <tr><td>總窗口（註冊、素材、受邀者旅宿、簽證）</td><td>Tiffin Shing · <span class="mono">cinshing@tiff.net</span></td></tr>
+        <tr><td>場次更改</td><td><span class="mono">schedules@tiff.net</span></td></tr>
+        <tr><td>自家場次票券</td><td><span class="mono">protocol@tiff.net</span></td></tr>
+        <tr><td>製片／銷售證件</td><td><span class="mono">registration@tiff.net</span></td></tr>
+        <tr><td>公關證件</td><td><span class="mono">publicistregistration@tiff.net</span></td></tr>
+        <tr><td>媒體、影展宣傳</td><td><span class="mono">proffice@tiff.net</span></td></tr>
+        <tr><td>DCP 交片（Deluxe 上傳連結）</td><td>Steven Landry · <span class="mono">slandry@tiff.net</span></td></tr>
+        <tr><td>技術規格</td><td><span class="mono">technical@tiff.net</span></td></tr>
+        <tr><td>Market 廣告 / 加場</td><td><span class="mono">themarketsales@tiff.net</span> / <span class="mono">themarketscreenings@tiff.net</span></td></tr>
+        <tr><td>無障礙需求</td><td><span class="mono">accessibility@tiff.net</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  整理自 TIFF 官方邀請函（影片＋兩位來賓）、2026 參展條款、Filmmaker Guide、交片規格、暫定場次通知，以及製片 Linhan 與大會窗口 Tiffin 的往來信件（至 2026/7/21）。暫定資訊以大會後續確認為準。製表：2026/7/22。
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var nav=document.querySelector('nav');
+  function syncNav(){
+    document.documentElement.style.setProperty('--navh', nav.offsetHeight+'px');
+  }
+  syncNav();
+  window.addEventListener('resize', syncNav);
+})();
+(function(){
+  var KEY='tiff2026-checklist';
+  var saved={};
+  try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  document.querySelectorAll('.tl li').forEach(function(li){
+    var k=li.dataset.k, box=li.querySelector('input[type=checkbox]');
+    if(!box) return;
+    if(saved[k]){ box.checked=true; li.classList.add('done'); }
+    box.addEventListener('change',function(){
+      li.classList.toggle('done', box.checked);
+      saved[k]=box.checked;
+      try{ localStorage.setItem(KEY, JSON.stringify(saved)); }catch(e){}
+    });
+  });
+})();
+</script>
+
+</html>
