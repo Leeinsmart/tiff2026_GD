@@ -57,6 +57,10 @@ h1{font-size:clamp(34px,6vw,52px); line-height:1.15; margin:0 0 6px; font-weight
   background:var(--urgent-soft); border-radius:0 6px 6px 0;
 }
 .alert b{color:var(--urgent)}
+.alert #status-title{display:block; margin-bottom:6px; font-size:16px}
+.alert ol,.alert ul{margin:6px 0 8px; padding-left:22px}
+.alert li{margin:3px 0}
+.alert .srcrow{display:block; margin-top:6px}
 .alert .small{font-size:13.5px; line-height:1.65; color:var(--muted); margin-top:4px}
 
 /* ---------- nav ---------- */
@@ -348,7 +352,7 @@ a[href^="mailto:"]{cursor:copy}
   </div>
 
   <div class="alert" id="status-alert">
-    <b id="status-title">目前進度：出席確認啟動，先交導演機票表單。</b><span id="status-copy"><b>7/27（一）</b>前完成導演的 Traveller Profile Form（大會經法航／達美代訂）；<b>7/31（五）</b>前回齊出席名單、抵離日期、Guest Pass 登記表與口譯需求。行程完全鎖定前，大會不會安排任何旅行。</span><a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a><a class="src" href="#doc-form-guestpass-p1">表單原文</a>
+    <b id="status-title">目前進度：先拍板導演機票走哪條路。</b><span id="status-copy"><b>週一（7/27）</b>確認版場次寄達。導演機票二選一：<ol><li>大會代訂（<b>7/27 前</b>填 Traveller Profile Form）</li><li>自購機票（免填表，改領 CAD $2,700 支票）</li></ol><b>7/31（五）</b>前回齊出席名單、抵離日期、Guest Pass 登記表與口譯需求。<b>8/3</b> 行程完全鎖定後才可安排旅行。</span><span class="srcrow"><a class="src" href="#doc-email-e8">出處：信件 ✉8</a><a class="src" href="#doc-form-travel-p1">機票表原文</a><a class="src" href="#doc-form-guestpass-p1">登記表原文</a></span>
     <div class="small" id="status-detail">場次仍為暫定（前兩場 9/17、9/18）；住宿晚數等 Tiffin 書面確認。確認版場次若 7/27 後仍未收到，追蹤 schedules@tiff.net。</div>
   </div>
 
@@ -387,9 +391,10 @@ a[href^="mailto:"]{cursor:copy}
     <li data-k="t2" id="schedule-deadline"><span class="d">7/22 10:00</span><span class="t"><label><input type="checkbox">寄出場次更改請求</label><a class="src" href="#doc-schedule-p1">出處：場次函</a><small>台灣時間 7/22 22:00；寄至 <a href="mailto:schedules@tiff.net">schedules@tiff.net</a>。</small></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
     <li data-k="t3"><span class="d">7/24</span><span class="t"><label><input type="checkbox">送出 <b>Film Rights Survey</b></label><a class="src" href="#doc-guide-p5">出處：指南 P.5</a></span><span class="owners"><span class="chip owner marketing">行銷</span></span></li>
     <li data-k="t4"><span class="d">7/27 前</span><span class="t"><label><input type="checkbox">收到並核對確認版場次；未收到就追蹤</label><a class="src" href="#doc-schedule-p1">出處：場次函</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
-    <li data-k="t16" class="hot"><span class="d">7/27（一）</span><span class="t"><label><input type="checkbox">交導演的 <b>Traveller Profile Form</b>（大會經法航／達美代訂機票）</label><a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a><small>要填的欄位見<a href="#forms">要交的兩份表單</a></small></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
-    <li data-k="t17" class="hot"><span class="d">7/31（五）</span><span class="t"><label><input type="checkbox"><b>回齊 Tiffin</b>：出席名單、抵離日期、<b>Guest Pass 登記表</b>、口譯需求；並回覆 Protocol 證件信</label><a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-email-e5">✉5</a><a class="src" href="#doc-form-guestpass-p1">表單原文</a><small>額外確定出席的演員要立即通知，9/9 大會新聞稿列名；登記表要備的資料見<a href="#forms">要交的兩份表單</a></small></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
-    <li data-k="t5"><span class="d">8 月初</span><span class="t"><label><input type="checkbox">向 Venue Liaison 確認紅毯、後台、隨行與保安</label><a class="src" href="#doc-guide-p5">出處：指南 P.5</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
+    <li data-k="t16" class="hot"><span class="d">7/27（一）</span><span class="t"><label><input type="checkbox">導演機票拍板：要大會代訂就交 <b>Traveller Profile Form</b>；自購則免填表</label><a class="src" href="#doc-email-e8">出處：信件 ✉8</a><a class="src" href="#doc-form-travel-p1">表單原文</a><small>同日收到確認版場次；兩條路的差別見<a href="#forms">需填表單</a></small></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
+    <li data-k="t17" class="hot"><span class="d">7/31（五）</span><span class="t"><label><input type="checkbox"><b>回齊 Tiffin</b>：出席名單、抵離日期、<b>Guest Pass 登記表</b>、口譯需求；並回覆 Protocol 證件信</label><a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-email-e5">✉5</a><a class="src" href="#doc-form-guestpass-p1">表單原文</a><small>額外確定出席的演員要立即通知，9/9 大會新聞稿列名；登記表要備的資料見<a href="#forms">需填表單</a>；不需要證件權益的人可不填<a class="src" href="#doc-email-e8">✉8</a></small></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
+    <li data-k="t19" class="hot"><span class="d">8/3（一）</span><span class="t"><label><input type="checkbox">場次<b>完全鎖定</b>：時間與場地定案，之後才可實際訂票訂房</label><a class="src" href="#doc-email-e8">出處：信件 ✉8</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
+    <li data-k="t5"><span class="d">8 月中</span><span class="t"><label><input type="checkbox">Venue Liaison 提供紅毯細節；一併確認後台、隨行與保安</label><a class="src" href="#doc-email-e8">出處：信件 ✉8</a><a class="src" href="#doc-guide-p5">指南 P.5</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
     <li data-k="t6"><span class="d">8/6</span><span class="t"><label><input type="checkbox">決定並預訂 Market 場館廣告</label><a class="src" href="#doc-terms-p12">出處：附錄A</a></span><span class="owners"><span class="chip owner marketing">行銷</span></span></li>
     <li data-k="t7"><span class="d">8/8 前</span><span class="t"><label><input type="checkbox">收到 DKDM 憑證資訊並交給 DCP 負責人</label><a class="src" href="#doc-terms-p16">出處：附錄B</a></span><span class="owners"><span class="chip owner producer">製片</span></span></li>
     <li data-k="t8"><span class="d">8/11</span><span class="t"><label><input type="checkbox">檢查影片頁公開的 PR 聯絡資訊</label><a class="src" href="#doc-email-e3">出處：信件 ✉3</a><small>這不是文件明載的補交截止；真正期限仍須向 TIFF 確認。</small></span><span class="owners"><span class="chip owner pr">公關</span></span></li>
@@ -410,8 +415,8 @@ a[href^="mailto:"]{cursor:copy}
 
   <div class="grid2">
     <div class="panel">
-      <h5>① 導演機票資料表 Traveller Profile</h5>
-      <p style="margin:4px 0 10px; font-size:13.5px; line-height:1.65; color:var(--muted)"><b style="color:var(--urgent)">7/27（一）前</b>交回 Tiffin。大會據此經法航／達美代訂導演來回機票，行程鎖定後開票。<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></p>
+      <h5>① 導演機票：二選一</h5>
+      <p style="margin:4px 0 10px; font-size:13.5px; line-height:1.65; color:var(--muted)"><b style="color:var(--urgent)">7/27（一）前</b>決定走哪條路。<b>A 大會代訂</b>：填下面這張表交回 Tiffin，大會用合作航空（法航／達美）訂票。<b>B 自己買</b>：<b>免填此表</b>，改用下方單據領 CAD $2,700 支票。<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></p>
       <ul>
         <li><b>個人資料</b>：姓氏與名字（照護照拼字）、稱謂、性別（依護照欄位）、生日（月/日/年）、Email、電話</li>
         <li><b>護照</b>：號碼、國籍、效期</li>
@@ -420,6 +425,7 @@ a[href^="mailto:"]{cursor:copy}
         <li><b>緊急聯絡人</b>：姓名、電話（含國碼）</li>
       </ul>
       <p class="note"><b>直接開啟：</b><a class="gobtn" href="https://docs.google.com/document/d/1xHtzGad-7-8tRiVVX0y8Gc3GlR6izJi8g8pb_TCPPhw/edit?usp=sharing" target="_blank" rel="noopener">開啟機票資料表（Google 文件）</a>表單共享給製片的帳號，打不開就回信請 Tiffin 加開權限（她信中有提）。空白表 PDF 也在專案資料夾「要填的資料」。</p>
+      <p class="note"><b>選 B 自購要備的東西</b>（換 CAD $2,700 支票）：機票電子檔（E-Ticket）、受款人姓名（須與護照一致，<b>本人親自領取</b>）、受款人通訊地址與 Email；受款人若不是導演本人，要另以 email 說明關係。<b>支票在影展期間到現場領取</b>，於大會合作銀行兌換加幣（開美金支票則無法在該行兌換）。<a class="src" href="#doc-email-e8">出處：信件 ✉8</a></p>
       <p class="note">護照號碼屬敏感資料：填完直接回傳 Tiffin，不要留在共享空間。特殊需求可註記但大會不保證；建議註明避免經美國轉機。</p>
     </div>
     <div class="panel">
@@ -430,7 +436,7 @@ a[href^="mailto:"]{cursor:copy}
         <li><b>大頭照各一張</b>：彩色、正面、光線充足的近照；jpg 格式、小於 1MB</li>
       </ul>
       <p class="note"><b>直接開啟：</b><a class="gobtn" href="https://guestpasses.tiff.net/Default.aspx?code=HAPPILYEVERAFTER26" target="_blank" rel="noopener">開啟證件登記表（網址已帶存取碼）</a>若網站另外要求輸入，存取碼 <button type="button" class="copycode" data-copy="HAPPILYEVERAFTER26">HAPPILYEVERAFTER26（點擊複製）</button></p>
-      <p class="note">流程：Edit 逐人填、Update 暫存（可分次完成），確認全部無誤才按 <b>Submit Final</b>——送出後要改就得找 Tiffin。其他團隊成員的證件不走這張表，走 registration@tiff.net。</p>
+      <p class="note">流程：Edit 逐人填、Update 暫存（可分次完成），確認全部無誤才按 <b>Submit Final</b>——送出後要改就得找 Tiffin。其他團隊成員的證件不走這張表，走 registration@tiff.net。<b>不需要 Guest Pass 權益的來賓可以不填。</b><a class="src" href="#doc-email-e8">出處：信件 ✉8</a></p>
     </div>
   </div>
 </section>
@@ -569,7 +575,7 @@ a[href^="mailto:"]{cursor:copy}
     <div class="body">
       <ul>
         <li><span class="chip doc">文件明載</span> <b>鐵則：前兩場公開放映</b>（暫定 9/17 首映、9/18 第二場）——含映前介紹＋映後 Q&amp;A，可能還有媒體活動。這是邀請函所有招待的<b>前提條件</b>，導演與受邀演員都適用<a class="src" href="#doc-guest-shuhua-p1">出處：邀請函</a><a class="src" href="#doc-terms-p3">條款 §VII</a></li>
-        <li><span class="chip doc">文件明載</span> 紅毯／photo call：SP 單元部分影片會有，含首映場交通安排，<b>8 月大會通知細節</b>——是否有紅毯以屆時通知為準，不要先對外承諾<a class="src" href="#doc-terms-p4">出處：條款 §VII(4)</a></li>
+        <li><span class="chip doc">文件明載</span> 紅毯／photo call：細節約 <b>8 月中</b>由 Venue Liaison 提供<a class="src" href="#doc-email-e8">出處：信件 ✉8</a>；SP 單元部分影片會有，含首映場交通安排，<b>8 月大會通知細節</b>——是否有紅毯以屆時通知為準，不要先對外承諾<a class="src" href="#doc-terms-p4">出處：條款 §VII(4)</a></li>
         <li><span class="chip doc">文件明載</span> 9/16 Press &amp; Market 場為業界媒體場，文件未要求出席</li>
         <li><span class="chip doc">文件明載</span> 若拿下 People's Choice：閉幕日（9/20）加映得獎場，得獎者需錄影片感言<a class="src" href="#doc-terms-p5">出處：條款 §X</a></li>
         <li>行銷須知：介紹、Q&amp;A 與官方活動會被大會<b>錄影並永久使用</b>於其平台與社群（條款 §VII），藝人端請先知會<a class="src" href="#doc-terms-p3">出處：條款 §VII(2)</a></li>
@@ -643,7 +649,7 @@ a[href^="mailto:"]{cursor:copy}
       <p style="margin:4px 0 10px; font-size:13.5px; line-height:1.65; color:var(--muted)">受邀者機票、住宿、簽證都由她統包，是九成問題的窗口。<a class="src" href="#doc-email-e3">出處：信件 ✉3</a></p>
       <ul>
         <li><span class="chip ask">追蹤回覆</span> <b>增列演員的名單與需求</b>——陳璇、蔡凡熙的姓名與 rider 需求已在 7/21 信中提出，等大會逐項回覆；<b>7/31 前</b>仍須正式回覆出席確認（9/9 大會新聞稿列名）<a class="src" href="#doc-email-e4">出處：信件 ✉4</a><a class="src" href="#doc-email-e6">✉6</a></li>
-        <li><span class="chip doc">已回覆 7/24</span> 導演機票由大會<b>直接代訂</b>（合作航空：法航／達美），7/27 前填 Traveller Profile Form；延住可協助訂房＋房價建議；口譯與無障礙需求大會收集中<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></li>
+        <li><span class="chip doc">已回覆 7/24</span> 導演機票<b>兩種走法</b>：大會代訂（7/27 前填 Traveller Profile Form）或自購後憑單據領 CAD $2,700 支票（影展期間現場領、合作銀行兌換加幣）；延住可協助訂房＋房價建議；口譯與無障礙需求大會收集中<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></li>
         <li><span class="chip hot">待我方回覆</span> <b>7/31 前</b>給 Tiffin：導演與舒華的預計抵離日期、是否延住與加訂晚數（招待涵蓋哪些夜晚由大會書面確認）<a class="src" href="#doc-email-e6">出處：信件 ✉6</a></li>
         <li><span class="chip ask">追蹤回覆</span> 飯店是哪一間、星級（演員 rider 要求五星）；額外房間的免費/折扣方案</li>
         <li><span class="chip ask">追蹤回覆</span> 演員機票有無補助或航空夥伴折扣碼</li>
@@ -772,7 +778,7 @@ a[href^="mailto:"]{cursor:copy}
       <ul>
         <li><b>必出席前兩場公開放映</b>的介紹與 Q&amp;A（暫定 9/17、9/18），這是所有招待的前提<a class="src" href="#doc-guest-fiona-p1">出處：導演邀請函</a></li>
         <li>口譯、無障礙與行動協助需求：<b>7/31 前</b>回報 Tiffin（會轉交場館團隊）<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-checklist-s3">登記表 S3</a></li>
-        <li>機票由大會代訂（合作航空：法航／達美）：<b>7/27 前</b>填妥 Traveller Profile Form，行程鎖定後大會訂票<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></li>
+        <li>機票由大會代訂（合作航空：法航／達美）：<b>7/27 前</b>拍板：大會代訂（填 Traveller Profile Form）或自購改領 CAD $2,700 支票<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></li>
       </ul>
       <h4>內部提醒</h4>
       <ul>
@@ -853,7 +859,7 @@ a[href^="mailto:"]{cursor:copy}
 
 <section id="flights">
   <h2><span class="no">08</span>建議班機與時差</h2>
-  <p class="sub"><span class="chip bg">補充背景</span> 航班為 2026/7/22 查詢的現行班表，訂票時請以航空公司為準。原則：<b>大會通知行程鎖定前，不訂任何旅行</b>（Tiffin 7/24 明示<a class="src" href="#doc-email-e6">出處：信件 ✉6</a>）；開票後立刻回報 Tiffin。</p>
+  <p class="sub"><span class="chip bg">補充背景</span> 航班為 2026/7/22 查詢的現行班表，訂票時請以航空公司為準。原則：<b>8/3 場次完全鎖定前不訂任何旅行</b>（Tiffin 7/24 明示<a class="src" href="#doc-email-e8">出處：信件 ✉8</a>）；開票後立刻回報 Tiffin。</p>
 
   <h4 style="margin:18px 0 8px; font-size:15px">時差怎麼算（9 月）</h4>
   <ul style="margin:0 0 18px; padding-left:20px">
@@ -873,7 +879,7 @@ a[href^="mailto:"]{cursor:copy}
     </table>
   </div>
   <p class="note" style="margin-top:10px"><b>使用方式：</b>表內時刻只供規劃方向，不代表 9 月每一天都有同一班次或完全相同時刻。開票當天須在<a href="https://flights.evaair.com/zh-tw/flights-from-taipei-to-toronto" target="_blank" rel="noopener">長榮官網</a>輸入實際日期，重新確認班號、起降時間、行李、改票／退票條件與團體訂位。回程若是凌晨航班，集合與退房日應按「前一晚」安排。</p>
-  <p class="note"><b>導演的機票不用自己買：</b>大會經合作航空（法航／達美）代訂，<b>7/27 前</b>填 Traveller Profile Form 即可。填表時建議註明<b>避免經美國轉機</b>，否則需另辦美國過境文件。本章的直飛建議適用其他自費成員。<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></p>
+  <p class="note"><b>導演機票二選一：</b>大會經合作航空（法航／達美）代訂（<b>7/27 前</b>填 Traveller Profile Form），或自己買再憑 E-Ticket 等單據領 CAD $2,700 支票（影展期間現場領）。填表時建議註明<b>避免經美國轉機</b>，否則需另辦美國過境文件。本章的直飛建議適用其他自費成員。<a class="src" href="#doc-email-e6">出處：信件 ✉6</a><a class="src" href="#doc-form-travel-p1">表單原文</a></p>
 
   <div class="grid2" style="margin-top:16px">
     <div class="panel">
@@ -939,7 +945,7 @@ a[href^="mailto:"]{cursor:copy}
   <p class="sub">大會文件與信件全文照錄（英文原文），頁碼對應 PDF 頁碼。指南各處的「出處」小標籤點了會跳到這裡的對應段落並短暫變色。用上方搜尋框可直接搜文件內文。</p>
 
   <details class="doc" id="doc-email">
-    <summary>與 TIFF 信件往來<span class="docmeta">與TIFF信件內容(1)(2).docx · 6 封</span><span class="arrow">›</span></summary>
+    <summary>與 TIFF 信件往來<span class="docmeta">與TIFF信件內容(1)(2)(3).docx · 8 封</span><span class="arrow">›</span></summary>
     <div class="body">
       <div class="docpage" id="doc-email-e1">
         <div class="pgno">✉ 1 · 2026/7/20 · Tiffin Shing → Linhan（歡迎信）</div>
@@ -995,6 +1001,22 @@ a[href^="mailto:"]{cursor:copy}
         <p><b>Guest Pass Registration Form</b> — This form is for registering the Guest Passes of <b>directors and cast only</b>. To obtain passes for other members of the film team, please reach out to registration@tiff.net. Access Code: <b>HAPPILYEVERAFTER26</b>。<b>Submit by no later than Friday, July 31.</b></p>
         <p><b>Accessibility and Interpreter Considerations</b> — We would like to confirm if there are any accessibility considerations or <b>interpreter requirements</b> for the invited guests. This information will be shared with our <b>Venue Liaisons</b> team to aid in their preparation for the film's public screenings.</p>
         <p>Recap, by no later than <b>Friday, July 31</b>: attendance of director and cast; arrival/departure dates; Traveller Profile Form by <b>July 27</b>; Guest Pass Registration Form; any accessibility or interpreter needs.</p>
+      </div>
+      <div class="docpage" id="doc-email-e7">
+        <div class="pgno">✉ 7 · 2026/7/24 · Linhan → Tiffin（三個追加問題；cc 公關共同負責人 Leo 王豪）</div>
+        <p>While we take this weekend to re-confirm actor attendance with the agents, our team has three side questions:</p>
+        <p>1. Assuming our premiere is set on Sep 17, <b>when and where would the red carpet take place?</b></p>
+        <p>2. If we decide to <b>buy the flight for director Fiona</b> and ask for the 2700 CAD reimbursement, do we still need to fill out Fiona's Traveller Profile Form? Would the reimbursement be done via cash or bank wire transfer?</p>
+        <p>3. If more actors confirm their attendance, will they also need to fill out the Guest Registration Form? <b>We will do our best to fill out the form for Shuhua before 7/31.</b> We will notify you if we have issues meeting this deadline.</p>
+        <p>（同日稍早另有一封信約成週五上午的 10 分鐘電話，兩人已通話。）</p>
+      </div>
+      <div class="docpage" id="doc-email-e8">
+        <div class="pgno">✉ 8 · 2026/7/24 深夜 · Tiffin → Linhan（場次鎖定時程、機票二選一、支票補助細節）</div>
+        <p>For the screening schedule, <b>on coming Monday you'll receive the confirmed letter, and by August 3 the schedule will be fully locked.</b> You'll know the screening time and venue by then. <b>Red Carpet details will become available around mid-August</b>, I'll connect you with the Venue Liaison Team.</p>
+        <p><b>If you purchase the director's flight ticket, there is no need to fill in the Traveller Profile Form.</b></p>
+        <p><b>Travel Stipend</b> — Travel stipends are prepared in the form of <b>a cheque in Canadian Dollars</b> that can be picked up and exchanged for Canadian funds at our nearby partner bank <b>during the Festival</b>. Cheques can also be prepared in USD but these cannot be exchanged at our partner bank.</p>
+        <p>In order to prepare the stipend for the director's flight, we will require: <b>Flight E-Ticket</b>；<b>Full Name of Payee</b>（as appears on the Payee's passport，this same person must pick up the cheque）；<b>Mailing Address of Payee</b>；<b>Email Address of Payee</b>；confirmation via email of the payee's relation to the invited guest（only where the payee is not the guest）.</p>
+        <p><b>Guest Pass benefits</b> — six advance tickets（max 2 per screening）；select Press &amp; Market screenings；Market Summit programming；day-of tickets（up to 1 per film）；Rush access. <b>If the guest does not need the above benefits and does not need the pass, they do not need to fill in the form.</b></p>
       </div>
     </div>
   </details>
@@ -1554,17 +1576,33 @@ window.addEventListener('load',function(){
   var now=new Date();
   var profileDue=new Date('2026-07-28T00:00:00-04:00');
   var bundleDue=new Date('2026-08-01T00:00:00-04:00');
+  var lockDate=new Date('2026-08-04T00:00:00-04:00');
   if(now<profileDue){
-    title.textContent='目前進度：出席確認啟動，先交導演機票表單。';
-    copy.innerHTML='<b>7/27（一）</b>前完成導演的 Traveller Profile Form（大會經法航／達美代訂）；<b>7/31（五）</b>前回齊出席名單、抵離日期、Guest Pass 登記表與口譯需求。行程完全鎖定前，大會不會安排任何旅行。';
+    title.textContent='目前進度：先拍板導演機票走哪條路。';
+    copy.innerHTML='<b>週一（7/27）</b>確認版場次寄達。導演機票二選一：'
+      +'<ol><li>大會代訂（<b>7/27 前</b>填 Traveller Profile Form）</li>'
+      +'<li>自購機票（免填表，改領 CAD $2,700 支票）</li></ol>'
+      +'<b>7/31（五）</b>前回齊出席名單、抵離日期、Guest Pass 登記表與口譯需求。';
   }else if(now<bundleDue){
     title.textContent='目前進度：7/31（五）回覆包倒數。';
-    copy.innerHTML='<b>7/31 前</b>回覆 Tiffin：出席名單、抵離日期、Guest Pass 登記表、口譯與無障礙需求；同時回覆 Protocol 的證件確認信。行程鎖定前不訂任何旅行。';
+    copy.innerHTML='<b>7/31 前</b>回覆 Tiffin：'
+      +'<ol><li>出席名單與抵離日期</li>'
+      +'<li>Guest Pass 登記表</li>'
+      +'<li>口譯與無障礙需求</li>'
+      +'<li>回覆 Protocol 證件確認信</li></ol>'
+      +'<b>8/3</b> 行程完全鎖定前不訂任何旅行。';
+  }else if(now<lockDate){
+    title.textContent='目前進度：等 8/3 行程完全鎖定。';
+    copy.innerHTML='確認版場次應已到手，沒收到就追 schedules@tiff.net。'
+      +'<ol><li><b>8/3</b> 場次鎖定後即可訂票訂房</li>'
+      +'<li>紅毯細節約 <b>8 月中</b>由 Venue Liaison 提供</li></ol>';
   }else{
-    title.textContent='目前進度：等待大會通知行程鎖定。';
-    copy.innerHTML='行程鎖定通知到手前不訂任何旅行；<b>8/13</b> 會收到首兩場可購票配額通知（此前不會有數字）。';
+    title.textContent='目前進度：行程已鎖定，可安排旅行。';
+    copy.innerHTML='<ol><li>訂票後立刻回報 Tiffin（機場接送需抵達 5 天前預約）</li>'
+      +'<li><b>8/13</b> 收首兩場可購票配額通知</li>'
+      +'<li>紅毯細節約 <b>8 月中</b>由 Venue Liaison 提供</li></ol>';
   }
-  detail.textContent='場次仍為暫定（前兩場 9/17、9/18）；住宿晚數等 Tiffin 書面確認。確認版場次若 7/27 後仍未收到，追蹤 schedules@tiff.net。';
+  detail.textContent='場次仍以確認版與大會通知為準；住宿晚數等 Tiffin 書面確認。';
 })();
 </script>
 
