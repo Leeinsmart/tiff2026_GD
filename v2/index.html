@@ -172,7 +172,6 @@ td.n{white-space:nowrap}
   background:#EDEAE3; border-radius:var(--r-sm); padding:var(--s1) var(--s3); margin:0 0 var(--s2)}
 .tlday.key .d{background:var(--accent-soft); color:var(--accent-ink)}
 .tlday .ttl{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:700; margin-top:var(--s0); color:var(--ink)}
-.tlday .ttl.off{font-weight:400; color:var(--muted)}
 /* 場地：圖釘＋可點到地圖 */
 .venue{display:inline-flex; align-items:center; gap:var(--s1); margin-top:var(--s1);
   font-size:var(--f-note); line-height:var(--lh-note); color:var(--accent-ink); text-decoration:none;
@@ -1496,7 +1495,7 @@ function renderSched(){
     var s='<div class="tlday'+(d.key?' key':'')+'" id="day-'+encodeURIComponent(d.date)+'">'+
       '<div class="d">'+d.date+
         (d.people.length?'<span class="inTO">在多倫多<b>'+d.people.join('、')+'</b></span>':'')+'</div>'+
-      '<div class="ttl'+(d.items.length?'':' off')+'">'+(d.items.join('　·　')||'無場次')+'</div>';
+      (d.items.length?'<div class="ttl">'+d.items.join('　·　')+'</div>':'');
     if(d.venue) s+=venueLink(d.venue,d.map);
     var rows='';
     if(d.vl) rows+='<dt>場館窗口</dt><dd>'+d.vl+'</dd>';
