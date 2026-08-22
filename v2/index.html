@@ -13,7 +13,7 @@
   --ok:#00B368; --ok-soft:#DFF7EA; --wait:#E09E00; --wait-soft:#FFF2CE;
   --shadow:0 1px 2px rgba(35,39,43,.04),0 4px 14px rgba(35,39,43,.05);
 
-  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+  --s0:2px; --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
 
   --f-h1:28px;  --lh-h1:1.18;
   --f-h2:20px;  --lh-h2:1.3;
@@ -121,7 +121,7 @@ main{max-width:var(--shell); margin:0 auto; padding:var(--s4) var(--s4) var(--s7
 .facts div{background:var(--card); border:1px solid var(--line); border-radius:var(--r-sm);
   padding:var(--s2) var(--s3); display:flex; flex-direction:column; justify-content:center; min-height:66px}
 .facts .k{font-size:var(--f-micro); line-height:1.5; color:var(--muted)}
-.facts .v{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:800; margin-top:2px}
+.facts .v{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:800; margin-top:var(--s0)}
 
 /* ═══ 表：與卡片同一組內距 ═══ */
 .tw{overflow-x:auto; border:1px solid var(--line); border-radius:var(--r); background:var(--card)}
@@ -152,7 +152,7 @@ td.n{white-space:nowrap}
 .tlday.key::before{background:var(--accent)}
 .tlday .d{font-size:var(--f-micro); line-height:1.5; font-weight:700; color:var(--muted)}
 .tlday.key .d{color:var(--accent-ink)}
-.tlday .ttl{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:800; margin-top:2px}
+.tlday .ttl{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:800; margin-top:var(--s0)}
 .tlday .line{font-size:var(--f-note); line-height:var(--lh-note); color:var(--muted); margin-top:var(--s1)}
 .tlday .line b{color:var(--ink)}
 
