@@ -289,6 +289,33 @@ ul.moves{list-style:none; margin:0; padding:0; display:flex; flex-direction:colu
 }
 @media(min-width:1440px){ .trackwrap .grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
 
+/* ═══ 手機：整體收緊（間距仍只用刻度） ═══ */
+@media(max-width:640px){
+  :root{ --pad-y:11px; --pad-x:13px; --gap:9px; --lh-body:1.55; --lh-note:1.5; }
+  .appbar .in{padding:var(--s2) var(--s3) 0}
+  .searchwrap{margin-top:var(--s1)}
+  .searchwrap input{padding:var(--s1) var(--s3)}
+  .basic{margin-top:var(--s1)}
+  .basic>summary{padding:var(--s1) var(--s3)}
+  .tabs{margin-top:var(--s1)}
+  .tabs button{padding:var(--s2) var(--s2)}
+  main{padding:var(--s2) var(--s3) var(--s6)}
+  .alert{margin-bottom:var(--s3); padding:var(--s1) var(--s3)}
+  .h{margin:var(--s4) 0 var(--s1)}
+  .sub{margin-bottom:var(--s2)}
+  .card{gap:var(--s1)}
+  .facts{gap:var(--s1)}
+  .facts>div{min-height:0; padding:var(--s1) var(--s2)}
+  .tlday{padding-bottom:var(--s4)}
+  .tlday .d{padding:var(--s1) var(--s2)}
+  .msec,.tlday .qsec{margin-top:var(--s2); padding-top:var(--s2)}
+  ul.moves{gap:var(--s1)}
+  .detail{padding:var(--s4) var(--s3)}
+  .blk{margin-top:var(--s4); padding-top:var(--s3)}
+  .chat{gap:var(--s1)}
+  #book .body,#docs .body{padding:var(--s2) var(--s3) var(--s3)}
+}
+
 /* ═══ 手冊與原始文件：沿用 V1 片段 ═══ */
 #book .wrap,#docs .wrap{max-width:var(--measure)}
 #book details,#docs details{background:var(--card); border:1px solid var(--line);
