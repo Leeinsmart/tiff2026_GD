@@ -196,23 +196,24 @@ span.venue{color:var(--muted); border-bottom:0}
 .msec{margin-top:var(--s3); padding-top:var(--s2); border-top:1px dashed var(--line)}
 .mlab{font-size:var(--f-micro); line-height:1.5; font-weight:700; color:var(--ink); margin-bottom:var(--s2)}
 ul.moves{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--s2)}
-.mv{display:grid; grid-template-columns:3.4em auto 1fr auto; gap:var(--s1) var(--s2); align-items:baseline;
-  font-size:var(--f-note); line-height:var(--lh-note)}
-.mv .mk{grid-column:1; font-size:var(--f-micro); font-weight:700; text-align:center;
+.mv{font-size:var(--f-note); line-height:var(--lh-note)}
+.mhead{display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--s1) var(--s2)}
+.mv .mk{flex:0 0 auto; width:4.6em; text-align:center; font-size:var(--f-micro); font-weight:700;
   border-radius:5px; padding:1px 0; color:#fff; background:var(--muted)}
 .mv .mk.kin{background:var(--ok)} .mv .mk.kout{background:var(--accent)}
 .mv .mk.kci{background:#5A6B8C} .mv .mk.kco{background:#8C7A5A}
-.mv .mw{grid-column:2; font-weight:700; color:var(--ink); white-space:nowrap}
-.mv .mt{grid-column:3; color:var(--ink)}
-.mv .pill{grid-column:4; justify-self:end}
-.mv .mwhy{grid-column:2 / -1; font-size:var(--f-micro); line-height:1.5; color:var(--muted)}
+.mv .mw{flex:0 0 auto; font-weight:700; color:var(--ink); white-space:nowrap}
+.mv .mt{flex:1 1 auto; min-width:0; color:var(--ink)}
+.mv .pill{flex:0 0 auto; margin-left:auto}
+.mv .mwhy{margin-top:var(--s1); padding-left:calc(4.6em + var(--s2));
+  font-size:var(--f-micro); line-height:1.5; color:var(--muted)}
 .mv .mwhy a{color:var(--accent-ink); text-decoration:none; border-bottom:1px solid var(--accent-soft); white-space:nowrap}
 .pill.ok{background:var(--ok-soft); color:var(--ok)}
 .pill.req{background:var(--wait-soft); color:var(--wait)}
 .pill.split{background:var(--urgent-soft); color:var(--urgent)}
 .pill.tbd{background:#F1EFEA; color:var(--muted)}
 .mv.split .mt{font-weight:700}
-@media(max-width:560px){ .mv{grid-template-columns:3.4em 1fr auto} .mv .mt{grid-column:2 / -1} .mv .pill{grid-column:3; grid-row:1} }
+@media(max-width:560px){ .mv .mwhy{padding-left:0} }
 .tlday .qsec{margin-top:var(--s3); padding-top:var(--s2); border-top:1px dashed var(--line)}
 .tlday .qlab{font-size:var(--f-micro); line-height:1.5; font-weight:700; color:var(--ink); margin-bottom:var(--s2)}
 .tlday .qlab span{font-weight:400; color:var(--muted); margin-left:var(--s2)}
@@ -279,9 +280,9 @@ ul.moves{list-style:none; margin:0; padding:0; display:flex; flex-direction:colu
   .split{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:var(--s5); align-items:start}
   .split>section>.h:first-child{margin-top:var(--s2)}
   .schedsplit{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:var(--s5); align-items:start}
-  .schedsplit .people{position:sticky; top:150px}
+  .schedsplit .people{position:sticky; top:var(--stick,120px)}
   .trackwrap{display:grid; grid-template-columns:220px minmax(0,1fr); gap:var(--s5); align-items:start}
-  .trackwrap .side{position:sticky; top:150px}
+  .trackwrap .side{position:sticky; top:var(--stick,120px)}
   .trackwrap .side .filters{flex-direction:column; align-items:stretch; margin-bottom:var(--s4)}
   .trackwrap .side .filters .lbl{width:auto; margin-bottom:var(--s1)}
   .trackwrap .side .filters button{text-align:left}
@@ -1496,11 +1497,13 @@ function renderSched(){
       s+='<div class="msec"><div class="mlab">人員動向</div><ul class="moves">'+
         d.moves.map(function(m){
           return '<li class="mv '+m.conf+'">'+
-            '<span class="mk k'+({'抵達':'in','離開':'out','入住':'ci','退房':'co'}[m.kind]||'in')+'">'+
-              (m.air?PLANE:'')+m.kind+'</span>'+
-            '<span class="mw">'+m.who+'</span>'+
-            '<span class="mt">'+m.text+'</span>'+
-            '<span class="pill '+m.conf+'">'+m.conflbl+'</span>'+
+            '<div class="mhead">'+
+              '<span class="mk k'+({'抵達':'in','離開':'out','入住':'ci','退房':'co'}[m.kind]||'in')+'">'+
+                (m.air?PLANE:'')+m.kind+'</span>'+
+              '<span class="mw">'+m.who+'</span>'+
+              '<span class="mt">'+m.text+'</span>'+
+              '<span class="pill '+m.conf+'">'+m.conflbl+'</span>'+
+            '</div>'+
             '<div class="mwhy">'+m.why+
               (m.q&&byId[m.q]?'　<a href="#" data-q="'+m.q+'">'+byId[m.q].title+' →</a>':'')+
             '</div></li>';}).join('')+'</ul></div>';
@@ -1515,7 +1518,7 @@ function renderSched(){
         '<p class="sub">抵離與住宿標了可信度：'+pill('done','已確認')+'書面已定案　'+pill('them','需求單')+'雄獅詢價中、尚未開票　'+
         pill('us','兩說')+'兩份數字並存，需內部核對。點標記後的問題卡看完整對話。</p>'+
         '<div class="tl">'+tl+'</div></section>'+
-      '<section class="people">'+H('01','人員','  first')+'<div class="grid" style="grid-template-columns:1fr">'+
+      '<section class="people">'+H('02','人員','  first')+'<div class="grid" style="grid-template-columns:1fr">'+
         D.people.map(function(p,i){
           return '<article class="card" data-p="'+i+'"><div class="ct">'+p.name+' '+pill('g',p.role)+'</div>'+
             '<div class="meta">'+(p.itin.length?pill('g',p.itin.length+' 天有行程'):'')+
@@ -1710,6 +1713,13 @@ $('#q').addEventListener('input',function(){
                 :'<div class="empty">沒有符合的問題。原始文件全文請到<a href="#docs">原始文件</a>用瀏覽器搜尋。</div>');
 });
 
+function syncStick(){
+  var h=$('.appbar'); if(!h) return;
+  document.documentElement.style.setProperty('--stick', (Math.round(h.getBoundingClientRect().height)+12)+'px');
+}
+syncStick();
+window.addEventListener('resize',syncStick);
+if(window.ResizeObserver){ new ResizeObserver(syncStick).observe($('.appbar')); }
 route();
 })();
 </script>
