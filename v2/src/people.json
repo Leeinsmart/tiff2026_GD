@@ -1,0 +1,723 @@
+{
+ "dates": [
+  "9/14（一）",
+  "9/15（二）",
+  "9/16（三）",
+  "9/17（四）",
+  "9/18（五）",
+  "9/19（六）",
+  "9/20（日）",
+  "9/21（一）"
+ ],
+ "people": [
+  {
+   "name": "阮鳳儀",
+   "role": "導演",
+   "status": [
+    "機票：自購後請領 CAD $2,700 定額補助；需求單：9/9 BR36 抵、9/21 凌晨 BR35 返（雄獅詢價中，提早抵達部分自費）",
+    "住宿：8/21 定案 Sheraton Centre Toronto，9/15 入住–9/20 退房（5 晚）；招待 3 晚，自付 2 晚 CAD $955.84（每晚 $477.92，含 6% MAT 與 13% HST），走第三方付款、授權書寄 Clifford✉42；改住 Chelsea Hotel 的請求未獲回應——大會逕以 Sheraton 開出訂房✉33",
+    "國籍：美籍，免 eTA（8/17 回覆大會）✉33",
+    "機票：e-ticket 8/17 已附件寄出✉33",
+    "向大會申報的旅行日期：9/10–9/20（8/14 為晚宴名單回覆）——與內部需求單的 9/9 抵、9/21 返不一致，兩份數字並存✉28",
+    "證件：Guest Pass 登記已完成"
+   ],
+   "days": [
+    {
+     "ev": "在多倫多",
+     "note": "9/9 已抵（需求單）",
+     "must": false
+    },
+    {
+     "ev": "在多倫多",
+     "note": "Sheraton 9/15 入住（8/21 訂房定案）",
+     "must": false
+    },
+    {
+     "ev": "在多倫多",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "首映 19:30",
+     "note": "Royal Alexandra到場 18:40（開演前 50 分）介紹＋Q&amp;A憑 Protocol 票入場VL：Sonica",
+     "must": true
+    },
+    {
+     "ev": "第二場 12:15",
+     "note": "Scotiabank 3介紹＋Q&amp;A憑 Protocol 票入場",
+     "must": true
+    },
+    {
+     "ev": "第三場 12:30",
+     "note": "Scotiabank 4非強制取票方式待確認",
+     "must": false
+    },
+    {
+     "ev": "第四場 12:50",
+     "note": "Scotiabank 6非強制取票方式待確認Sheraton 9/20 退房",
+     "must": false
+    },
+    {
+     "ev": "01:45 BR35 返台",
+     "note": "9/22 清晨抵台（需求單）9/20 晚赴機場",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "葉舒華",
+   "role": "演員",
+   "status": [
+    "機票：7/31 改請台北→多倫多單程商務艙（回程不需大會出）；8/1 已轉 Festival Invitation Team（Tiffin：送演員機票非常罕見）；e-ticket 8/17 已附件寄出，回程由經紀團隊另外安排：9/19 22:55 多倫多飛倫敦 11:10（+1 日）✉33",
+    "國籍：台籍，eTA 申請中、尚未核准（8/17 回覆大會）✉33",
+    "住宿：8/21 定案 Sheraton Centre Toronto 標準房，9/16 入住–9/20 退房（4 晚）——大會明文註記非套房，與我方 8/18 讓步一致✉36；招待 3 晚，第 4 晚自付 CAD $477.92（含 6% MAT 與 13% HST），走第三方付款、授權書寄 Clifford✉42",
+    "接送分兩條線：首映日用車＝1 台 7 人座 SUV、只限 9/17、全片組共用，第二場與記者會不提供✉41；機場接送＝仍是 8/12 那台可坐 4 人的 SUV✉25，5 人隨行＋至少 8 件行李的缺口、車型與加派車自 8/10 起未答✉33",
+    "證件：Guest Pass 登記已完成；口譯：公開場中文口譯由大會提供"
+   ],
+   "days": [
+    {
+     "ev": "未抵達",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "未抵達",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "抵達多倫多",
+     "note": "BR36 晚 21:20 抵（需求單，商務艙）接送：抵達前 5 日內向 Tiffin 預訂",
+     "must": false
+    },
+    {
+     "ev": "首映 19:30",
+     "note": "Royal Alexandra到場 18:40（開演前 50 分）介紹＋Q&amp;A中文口譯（大會）憑 Protocol 票入場VL：Sonica",
+     "must": true
+    },
+    {
+     "ev": "第二場 12:15",
+     "note": "Scotiabank 3介紹＋Q&amp;A中文口譯（大會）憑 Protocol 票入場",
+     "must": true
+    },
+    {
+     "ev": "在多倫多",
+     "note": "Sheraton 標準房已訂（9/16–20）late checkout 待核對附件第三場 12:30 出席未確認",
+     "must": false
+    },
+    {
+     "ev": "9/20 離（8/10 確認）",
+     "note": "Sheraton 9/20 退房第 4 晚（9/19–20）片方自付 CAD $477.92，第三方付款回程航班未列（✉33 載 9/19 22:55 飛倫敦，與 9/20 退房需內部核對）",
+     "must": false
+    },
+    {
+     "ev": "已離開",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "陳璇",
+   "role": "演員",
+   "status": [
+    "出席已確認（7/31 通知大會）；9/12 抵多倫多（8/14 告知大會，先以觀眾身分參與影展）",
+    "機票／住宿：自費——為集中資源於舒華，加開飯店請求已撤回",
+    "口譯：公開場中文口譯由大會提供（已確認）",
+    "證件：Guest Pass 是否含她仍待大會書面確認（登記表原載 2 人）",
+    "8/17 大會首次把她列入首映與第二場的書面出席名單，並註明需中文口譯✉38；進場仍須有票，可由片方 Protocol 配額分配或自行購票",
+    "尚待確認：crew／購票權益細節見所有問題"
+   ],
+   "days": [
+    {
+     "ev": "在多倫多",
+     "note": "9/12 已抵（8/14 告知大會）",
+     "must": false
+    },
+    {
+     "ev": "在多倫多",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "在多倫多",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "首映 19:30",
+     "note": "Royal Alexandra到場 18:40（開演前 50 分）介紹＋Q&amp;A中文口譯（大會）VL：Sonica",
+     "must": true
+    },
+    {
+     "ev": "第二場 12:15",
+     "note": "Scotiabank 3介紹＋Q&amp;A中文口譯（大會）",
+     "must": true
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "蔡凡熙",
+   "role": "演員",
+   "status": [
+    "不出席：7/31 因預算考量通知大會取消",
+    "相關飯店請求已一併撤回"
+   ],
+   "days": [
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "Linhan Zhang",
+   "role": "製片｜大會信件窗口",
+   "status": [
+    "證件：自費加購製片 Market+ 證（8/7 確認，8 折）；免費製片證已定給 Clifford✉34",
+    "住宿：已請求 1 間標準房，未定"
+   ],
+   "days": [
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "Clifford Miu",
+   "role": "製片",
+   "status": [
+    "免費證件：製片 Market+ 證，8/7 確認登記在 Splash Pictures, Inc. 名下✉34",
+    "需求單：9/9 BR36 抵、9/21 凌晨 BR35 返；雙床房 9/15–9/20（雄獅詢價中）"
+   ],
+   "days": [
+    {
+     "ev": "在多倫多",
+     "note": "9/9 已抵（需求單）",
+     "must": false
+    },
+    {
+     "ev": "在多倫多",
+     "note": "飯店 9/15 入住（需求單）",
+     "must": false
+    },
+    {
+     "ev": "在多倫多",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "01:45 BR35 返台",
+     "note": "9/22 清晨抵台（需求單）",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "Lisa Ho",
+   "role": "選角統籌",
+   "status": [
+    "證件：Market Pass（8 折，8/12 已提供個人註冊連結）✉34",
+    "出席與行程未載"
+   ],
+   "days": [
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "Anli Lin",
+   "role": "行銷負責人",
+   "status": [
+    "證件：只能自費 Market Pass（8 折已知✉34，尚未登記）",
+    "出席與行程未載"
+   ],
+   "days": [
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "Leo 王豪",
+   "role": "公關共同負責人",
+   "status": [
+    "證件：走 Publicist Pass，前提是 8/3 交公關聯絡人表",
+    "上限張數未載；出席與行程未載"
+   ],
+   "days": [
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "銷售代理",
+   "role": "Moebius Entertainment（國際＋美國，credits 載明）",
+   "status": [
+    "免費證件：銷售代理 1 張，限定 credited 代理 Fred Tsui 本人登記；Linhan 若 Fred 缺席想代位一事 8/7 未獲准✉34",
+    "出席與行程未載"
+   ],
+   "days": [
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "舒華隨行 7 人",
+   "role": "經紀 ×2、髮型、化妝、造型、保鑣、攝影",
+   "status": [
+    "隨行房 8/18 更新：雙床房＋大床房各一間確定可訂（非原詢問的三床房）——大床房（大坪數）留給經紀人 AN KYUNGHWA（兼作梳化間）、雙床房（小坪數）留給保鑣 LEE TAEJUN，僅此二人與舒華同飯店，其餘隨行人員自訂鄰近飯店；舒華＋經紀人行李 3 大 1 小；首爾 5 人團隊抵達後不等舒華、直接前往各自飯店✉35；本列 7 人與 ✉35 名單（6 人）是否同一份未核對，見所有問題",
+    "後台／紅毯須由 Venue Liaison 8 月中核准，非進場保證"
+   ],
+   "days": [
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "蔡凡熙隨行 3 人",
+   "role": "經紀、髮型、化妝",
+   "status": [
+    "不適用：藝人 7/31 退出，隨行團隊不成行"
+   ],
+   "days": [
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "—",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "陳璇隨行 1 人",
+   "role": "助理",
+   "status": [
+    "無招待；須列 Venue Liaison 名單或自費 Market Pass"
+   ],
+   "days": [
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  },
+  {
+   "name": "本片放映",
+   "role": "確認版場次",
+   "status": [
+    "地址見表格下方",
+    "8/11 大會公告前不得對外公布"
+   ],
+   "days": [
+    {
+     "ev": "業界場 10:00",
+     "note": "Scotiabank 9劇組不須出席須業界證件",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    },
+    {
+     "ev": "首映 19:30",
+     "note": "Royal Alexandra",
+     "must": true
+    },
+    {
+     "ev": "第二場 12:15",
+     "note": "Scotiabank 3",
+     "must": true
+    },
+    {
+     "ev": "第三場 12:30",
+     "note": "Scotiabank 4",
+     "must": false
+    },
+    {
+     "ev": "第四場 12:50",
+     "note": "Scotiabank 6",
+     "must": false
+    },
+    {
+     "ev": "待定",
+     "note": "",
+     "must": false
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,743 @@
+[
+ {
+  "id": "q01",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催大會書面確認陳璇 Guest Pass"
+ },
+ {
+  "id": "q02",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催大會回報補助支票開立進度"
+ },
+ {
+  "id": "q03",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "內部",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "核對舒華回程班機與退房日"
+ },
+ {
+  "id": "q04",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催大會書面確認 9/19 晚退房"
+ },
+ {
+  "id": "q05",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q06",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q07",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催大會補答機場接送 6 人缺口"
+ },
+ {
+  "id": "q08",
+  "owner": [
+   "製片"
+  ],
+  "type": "票務",
+  "counterparty": "TIFF（Stephanie）",
+  "deadline": "8/24",
+  "deadlineNote": "卡片載 8/24 17:00 ET 前要送出票券請求表單",
+  "nextStep": "送出票券請求表單"
+ },
+ {
+  "id": "q09",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "彙整完整 entourage 與紅毯名單"
+ },
+ {
+  "id": "q10",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催大會回覆未答的四項請求"
+ },
+ {
+  "id": "q11",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催大會回覆房價是否含早餐"
+ },
+ {
+  "id": "q12",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "決定是否重提改住 Chelsea"
+ },
+ {
+  "id": "q13",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": "9/5",
+  "deadlineNote": "入住前 10 天扣款推算，導演約 9/5、舒華約 9/6",
+  "nextStep": "請 Clifford Miu 填回信用卡授權書"
+ },
+ {
+  "id": "q14",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "內部",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "核對班機與退房日確認第 4 晚用途"
+ },
+ {
+  "id": "q15",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q16",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "媒體",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "重問蔡凡熙能否加入紅毯與首映流程"
+ },
+ {
+  "id": "q17",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催大會決定舒華機票補助"
+ },
+ {
+  "id": "q18",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF（Cailin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q19",
+  "owner": [
+   "製片"
+  ],
+  "type": "票務",
+  "counterparty": "TIFF（Cailin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q20",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "追問飯店與場館接駁及離境接送"
+ },
+ {
+  "id": "q21",
+  "owner": [
+   "製片"
+  ],
+  "type": "素材權利",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q22",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF 口譯組（Kaila）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "向 Kaila 確認紅毯是否有中文口譯"
+ },
+ {
+  "id": "q23",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Protocol",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "逐一登記 8 位主創的個人證件"
+ },
+ {
+  "id": "q24",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Venue Liaison（Sonica）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "回覆 Sonica 第 8 題並說明保鑣隨行"
+ },
+ {
+  "id": "q25",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "內部",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "確認團隊是否有人需要簽證支持信"
+ },
+ {
+  "id": "q26",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF（Katie）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "回覆演員檔期與早午餐出席人數"
+ },
+ {
+  "id": "q27",
+  "owner": [
+   "製片"
+  ],
+  "type": "票務",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q28",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q29",
+  "owner": [
+   "製片"
+  ],
+  "type": "票務",
+  "counterparty": "CHIME／PAFF（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "決定是否提供首映 2 張票並回覆"
+ },
+ {
+  "id": "q30",
+  "owner": [
+   "製片"
+  ],
+  "type": "場次",
+  "counterparty": "TIFF Schedules（schedules@tiff.net）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q31",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Venue Liaison（Sonica）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "向場館聯絡人提交完整隨行名單"
+ },
+ {
+  "id": "q32",
+  "owner": [
+   "製片"
+  ],
+  "type": "票務",
+  "counterparty": "TIFF Protocol",
+  "deadline": "8/24",
+  "deadlineNote": "結論寫明等我方先送出 8/24 表單",
+  "nextStep": "送出票券配額請求表單"
+ },
+ {
+  "id": "q33",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Market Protocol",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "指定收報告者並確認其持有證件"
+ },
+ {
+  "id": "q34",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Venue Liaison（Sonica）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "回覆 Sonica 現在能答的 10 題"
+ },
+ {
+  "id": "q35",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "票務",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": "8/24",
+  "deadlineNote": "fact 載座位排數與座號須先送 8/24 票券表單",
+  "nextStep": "送出票券請求表單，取得座位號"
+ },
+ {
+  "id": "q36",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "場次",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q37",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q38",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q39",
+  "owner": [
+   "公關",
+   "製片"
+  ],
+  "type": "媒體",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "追問紅毯與媒體細節時程"
+ },
+ {
+  "id": "q40",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "場次",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "追問上台人數上限"
+ },
+ {
+  "id": "q41",
+  "owner": [
+   "公關",
+   "行銷"
+  ],
+  "type": "媒體",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "索取內容團隊拍攝申請表"
+ },
+ {
+  "id": "q42",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Venue Liaison",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "回覆第 8 題並說明舒華帶保鑣"
+ },
+ {
+  "id": "q43",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "內部",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "自信箱另存兩份 PDF 至大會文件夾"
+ },
+ {
+  "id": "q44",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "TIFF Protocol",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q45",
+  "owner": [
+   "公關"
+  ],
+  "type": "媒體",
+  "counterparty": "TIFF 公關線（Flabia Vigo）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "追問公關證名額上限"
+ },
+ {
+  "id": "q46",
+  "owner": [
+   "公關"
+  ],
+  "type": "表單",
+  "counterparty": "TIFF 公關線（Flabia Vigo）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "詢問補交聯絡人表是否另有期限"
+ },
+ {
+  "id": "q47",
+  "owner": [
+   "公關",
+   "行銷"
+  ],
+  "type": "媒體",
+  "counterparty": "42West",
+  "deadline": "8/31",
+  "deadlineNote": "此為 42West 交付第一版行程表的日子，非我方期限；我方要在此之前交名單與住宿",
+  "nextStep": "交名單與住宿給 42West"
+ },
+ {
+  "id": "q48",
+  "owner": [
+   "製片"
+  ],
+  "type": "素材權利",
+  "counterparty": "TIFF 技術窗口",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "向技術窗口確認上傳連結與加密"
+ },
+ {
+  "id": "q49",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "內部",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "補列舒華回程航班班次"
+ },
+ {
+  "id": "q50",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q51",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "Lisa Ho（舒華隨行團隊）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "補齊 KIM JIWON 回程與兩人訂房"
+ },
+ {
+  "id": "q52",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "雄獅旅行社",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "催雄獅回覆機位與房價報價"
+ },
+ {
+  "id": "q53",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "Lisa Ho（舒華隨行團隊）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "選定車資分攤方案並回覆 Lisa Ho"
+ },
+ {
+  "id": "q54",
+  "owner": [
+   "製片"
+  ],
+  "type": "接待",
+  "counterparty": "Lisa Ho（舒華隨行團隊）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "核對矩陣 7 人與名單 6 人差異"
+ },
+ {
+  "id": "q55",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "Global Alliance",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q56",
+  "owner": [
+   "製片",
+   "公關"
+  ],
+  "type": "交通住宿",
+  "counterparty": "42West",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "彙整用車時段路線交 42West"
+ },
+ {
+  "id": "q57",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF（Madelyn）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "以 18:40 到場為固定點排出用車班表"
+ },
+ {
+  "id": "q58",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "內部",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "決定是否自費加訂第二台車"
+ },
+ {
+  "id": "q59",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "Global Alliance",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "向 Global Alliance 詢自費用車報價"
+ },
+ {
+  "id": "q60",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "TIFF Film Coordinator（Tiffin）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "向 Tiffin 追機場接送 6 人缺口"
+ },
+ {
+  "id": "q61",
+  "owner": [
+   "製片"
+  ],
+  "type": "交通住宿",
+  "counterparty": "Global Alliance",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q62",
+  "owner": [
+   "公關",
+   "製片"
+  ],
+  "type": "媒體",
+  "counterparty": "42West",
+  "deadline": "8/31",
+  "deadlineNote": "Hilda 明講 8/31 給第一版行程表",
+  "nextStep": "彙整三份名單資料送交 Hilda"
+ },
+ {
+  "id": "q63",
+  "owner": [
+   "公關"
+  ],
+  "type": "媒體",
+  "counterparty": "42West",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "從隨行名單挑出 2–3 位陪同"
+ },
+ {
+  "id": "q64",
+  "owner": [
+   "公關"
+  ],
+  "type": "媒體",
+  "counterparty": "42West",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": null
+ },
+ {
+  "id": "q65",
+  "owner": [
+   "公關"
+  ],
+  "type": "媒體",
+  "counterparty": "TIFF（Madelyn）",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "確認大會已更正 Hilda 信箱網域"
+ },
+ {
+  "id": "q66",
+  "owner": [
+   "公關",
+   "製片"
+  ],
+  "type": "媒體",
+  "counterparty": "42West",
+  "deadline": null,
+  "deadlineNote": null,
+  "nextStep": "把大會場次表交 42West 並取回媒體行程比對"
+ }
+]
