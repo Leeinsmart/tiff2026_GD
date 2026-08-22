@@ -127,11 +127,20 @@ main{max-width:var(--shell); margin:0 auto; padding:var(--s3) var(--s4) var(--s7
 .basic>summary>span{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .basic .facts{margin:0; padding:var(--s3); border-top:1px solid var(--line)}
 .facts{display:grid; gap:var(--s2); grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(min-width:900px){ .facts{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media(min-width:900px){
+  .facts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .basic{position:relative}
+  .basic[open]>summary{border-bottom:0}
+  .basic .facts{position:absolute; right:0; top:calc(100% + var(--s1));
+    width:min(680px,86vw); padding:var(--s3); border:1px solid var(--line); border-top:1px solid var(--line);
+    border-radius:var(--r); background:var(--card); box-shadow:0 10px 30px rgba(35,39,43,.14); z-index:40}
+}
 .facts>div{background:var(--card); border:1px solid var(--line); border-radius:var(--r-sm);
   padding:var(--s2) var(--s3); display:flex; flex-direction:column; justify-content:center; min-height:66px}
 .facts .k{font-size:var(--f-micro); line-height:1.5; color:var(--muted)}
-.facts .v{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:800; margin-top:var(--s0)}
+.facts .v{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:800; margin-top:var(--s0);
+  overflow-wrap:anywhere}
+.facts .k{overflow-wrap:anywhere}
 
 /* ═══ 表：與卡片同一組內距 ═══ */
 .tw{overflow-x:auto; border:1px solid var(--line); border-radius:var(--r); background:var(--card)}
