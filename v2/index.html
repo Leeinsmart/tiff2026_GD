@@ -22,13 +22,13 @@
   --f-note:13.5px; --lh-note:1.55;
   --f-micro:12px;
 
-  --pad-y:14px; --pad-x:16px;
+  --pad-y:var(--s3); --pad-x:var(--s4);
   --r:12px; --r-sm:8px;
-  --gap:12px;
+  --gap:var(--s3);
   --measure:820px;
   --shell:1180px;
 }
-@media(min-width:900px){ :root{ --f-h1:34px; --f-h2:24px; --gap:14px; --shell:1280px; } }
+@media(min-width:900px){ :root{ --f-h1:34px; --f-h2:24px; --shell:1280px; } }
 @media(min-width:1440px){ :root{ --shell:1360px; } }
 
 *{box-sizing:border-box}
@@ -127,7 +127,7 @@ main{max-width:var(--shell); margin:0 auto; padding:var(--s3) var(--s4) var(--s7
 .card .next b{color:var(--accent-ink)}
 .card.urgent{border-color:var(--urgent); box-shadow:0 0 0 1px var(--urgent-soft),var(--shadow)}
 .pill{display:inline-block; font-size:11px; line-height:1.6; font-weight:700;
-  border-radius:5px; padding:0 6px; white-space:nowrap}
+  border-radius:5px; padding:0 var(--s1); white-space:nowrap}
 .pill.us{background:var(--accent-soft); color:var(--accent-ink)}
 .pill.them{background:var(--wait-soft); color:var(--wait)}
 .pill.done{background:var(--ok-soft); color:var(--ok)}
@@ -193,7 +193,7 @@ td.n{white-space:nowrap}
   border-radius:99px; padding:var(--s1) var(--s3)}
 .filters button.on{background:var(--ink); color:#fff; border-color:var(--ink)}
 .filters .lbl{font-size:var(--f-micro); color:var(--muted); width:2.6em; flex:0 0 auto}
-.modes{display:inline-flex; background:#F1EFEA; border-radius:99px; padding:3px; margin:0 0 var(--s3)}
+.modes{display:inline-flex; background:#F1EFEA; border-radius:99px; padding:var(--s0); margin:0 0 var(--s3)}
 .modes button{font:inherit; font-size:var(--f-note); font-weight:700; cursor:pointer; border:0;
   background:transparent; color:var(--muted); border-radius:99px; padding:var(--s1) var(--s4)}
 .modes button.on{background:var(--card); color:var(--ink); box-shadow:var(--shadow)}
@@ -221,7 +221,7 @@ span.venue{color:var(--muted); border-bottom:0}
 .tlday .dmeta dt{color:var(--muted); font-size:var(--f-micro); line-height:var(--lh-note)}
 .tlday .dmeta dd{margin:0; color:var(--ink)}
 .tlday .d{display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--s1) var(--s3)}
-.mk .plane{margin-right:2px; vertical-align:-2px}
+.mk .plane{margin-right:var(--s0); vertical-align:-2px}
 .mk.kin .plane{transform:rotate(135deg)}
 .mk.kout .plane{transform:rotate(45deg)}
 /* 人員動向 */
@@ -231,7 +231,7 @@ ul.moves{list-style:none; margin:0; padding:0; display:flex; flex-direction:colu
 .mv{font-size:var(--f-note); line-height:var(--lh-note)}
 .mhead{display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--s1) var(--s2)}
 .mv .mk{flex:0 0 auto; width:4.6em; text-align:center; font-size:var(--f-micro); font-weight:700;
-  border-radius:5px; padding:1px 0; color:#fff; background:var(--muted)}
+  border-radius:5px; padding:var(--s0) 0; color:#fff; background:var(--muted)}
 .mv .mk.kin{background:var(--ok)} .mv .mk.kout{background:var(--accent)}
 .mv .mk.kci{background:#5A6B8C} .mv .mk.kco{background:#8C7A5A}
 .mv .mw{flex:0 0 auto; font-weight:700; color:var(--ink); white-space:nowrap}
@@ -249,7 +249,7 @@ ul.moves{list-style:none; margin:0; padding:0; display:flex; flex-direction:colu
 
 /* ═══ 對話 ═══ */
 .chat{display:flex; flex-direction:column; gap:var(--s2); margin:var(--s3) 0 0}
-.msg{max-width:min(88%,560px); display:flex; flex-direction:column; gap:2px}
+.msg{max-width:min(88%,560px); display:flex; flex-direction:column; gap:var(--s0)}
 .msg.us{align-self:flex-end; align-items:flex-end}
 .msg.tiff,.msg.p3{align-self:flex-start; align-items:flex-start}
 .msg.none{align-self:center; align-items:center; max-width:min(94%,620px)}
@@ -265,14 +265,14 @@ ul.moves{list-style:none; margin:0; padding:0; display:flex; flex-direction:colu
 .msg.none .bb{background:transparent; border:1px dashed var(--line); color:var(--muted);
   font-size:var(--f-micro); border-radius:10px; text-align:center}
 .msg .tm{font-size:11px; line-height:1.5; color:var(--muted); padding:0 var(--s1)}
-.msg .nm::after{font-size:10px; font-weight:700; border-radius:4px; padding:0 5px;
+.msg .nm::after{font-size:10px; font-weight:700; border-radius:4px; padding:0 var(--s1);
   margin-left:var(--s1); color:#fff; vertical-align:1px}
 .msg.dec .nm::after{content:"決定"; background:var(--accent)}
 .msg.dec .bb{border-color:var(--accent)}
 .msg.key .nm::after{content:"解鎖"; background:var(--ok)}
 .msg.key .bb{border-color:var(--ok)}
 .src{display:inline-block; font-size:11px; line-height:1.6; color:var(--muted);
-  border:1px solid var(--line); background:var(--card); border-radius:5px; padding:0 5px;
+  border:1px solid var(--line); background:var(--card); border-radius:5px; padding:0 var(--s1);
   margin-left:var(--s1); text-decoration:none; white-space:nowrap}
 .src:hover{border-color:var(--accent); color:var(--accent-ink)}
 
@@ -321,7 +321,7 @@ ul.moves{list-style:none; margin:0; padding:0; display:flex; flex-direction:colu
 
 /* ═══ 手機：整體收緊（間距仍只用刻度） ═══ */
 @media(max-width:640px){
-  :root{ --pad-y:11px; --pad-x:13px; --gap:9px; --lh-body:1.55; --lh-note:1.5; }
+  :root{ --pad-x:var(--s3); --gap:var(--s2); --lh-body:1.55; --lh-note:1.5; }
   main{padding:var(--s2) var(--s3) var(--s6)}
   .alert{margin-bottom:var(--s3); padding:var(--s1) var(--s3)}
   .h{margin:var(--s4) 0 var(--s1)}
@@ -368,14 +368,14 @@ ul.todo input[type=checkbox]{accent-color:var(--accent); width:17px; height:17px
 ul.todo>li.done .t,ul.todo>li.done .d{text-decoration:line-through; opacity:.5}
 /* 誰在什麼時候勾的：不跟著刪除線與淡化 */
 ul.todo .ckby{display:inline-block; margin-left:var(--s2); font-size:11px; line-height:1.6;
-  font-weight:700; color:var(--ok); background:var(--ok-soft); border-radius:5px; padding:0 5px;
+  font-weight:700; color:var(--ok); background:var(--ok-soft); border-radius:5px; padding:0 var(--s1);
   white-space:nowrap; text-decoration:none}
 ul.todo>li.done .d{opacity:1}
 ul.todo>li.done .d>span:not(.ckby),ul.todo>li.done .d{text-decoration:line-through}
 ul.todo>li.done .ckby{text-decoration:none}
 ul.todo .owners{display:flex; flex-wrap:wrap; gap:var(--s1); justify-self:end}
 ul.todo .chip{display:inline-block; font-size:11px; line-height:1.6; font-weight:700;
-  border-radius:5px; padding:0 6px; background:#F1EFEA; color:var(--muted); white-space:nowrap}
+  border-radius:5px; padding:0 var(--s1); background:#F1EFEA; color:var(--muted); white-space:nowrap}
 /* 篩選只藏不重排，勾選狀態與捲動位置都不會被打斷 */
 #todo[data-tf="open"] ul.todo>li.done{display:none}
 #todo[data-tf="done"] ul.todo>li:not(.done){display:none}
@@ -405,9 +405,9 @@ ul.todo .chip{display:inline-block; font-size:11px; line-height:1.6; font-weight
 #book .body,#docs .body{padding:var(--s3) var(--pad-x) var(--s4); border-top:1px solid var(--line);
   font-size:var(--f-note); line-height:var(--lh-body)}
 #book .qn{display:inline-block; font-size:11px; line-height:1.6; font-weight:800; color:#fff;
-  background:var(--ink); border-radius:5px; padding:0 6px}
+  background:var(--ink); border-radius:5px; padding:0 var(--s1)}
 #book .chip,#docs .chip{display:inline-block; font-size:11px; line-height:1.6; font-weight:700;
-  border-radius:5px; padding:0 6px; background:#F1EFEA; color:var(--muted); margin-right:var(--s1)}
+  border-radius:5px; padding:0 var(--s1); background:#F1EFEA; color:var(--muted); margin-right:var(--s1)}
 #book .chip.doc{background:var(--ok-soft); color:var(--ok)}
 #book .chip.ask{background:var(--wait-soft); color:var(--wait)}
 #book .chip.hot{background:var(--urgent-soft); color:var(--urgent)}
@@ -424,7 +424,7 @@ ul.todo .chip{display:inline-block; font-size:11px; line-height:1.6; font-weight
 #book .gobtn{display:inline-block; font-size:var(--f-micro); line-height:1.6; text-decoration:none;
   background:var(--ink); color:#fff; border-radius:var(--r-sm); padding:var(--s1) var(--s3); margin:var(--s1) var(--s1) var(--s1) 0}
 #book .copycode{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:var(--f-micro);
-  background:#F1EFEA; border-radius:5px; padding:0 5px}
+  background:#F1EFEA; border-radius:5px; padding:0 var(--s1)}
 #book .docmeta,#docs .docmeta{font-size:11.5px; line-height:1.5; color:var(--muted); font-weight:400}
 #book .sub,#docs .sub{margin:0 0 var(--s4)}
 #book .no,#docs .no,#book h2:not(.h),#docs h2:not(.h){display:none}
@@ -452,7 +452,7 @@ a.hitrow{display:flex; flex-direction:column; gap:var(--s1); text-decoration:non
 a.hitrow:hover{border-color:var(--muted)}
 a.hitrow .hw{display:flex; flex-wrap:wrap; align-items:center; gap:var(--s1) var(--s2);
   font-size:var(--f-micro); line-height:1.5; color:var(--muted)}
-a.hitrow .hx{font-size:11px; line-height:1.6; font-weight:700; border-radius:5px; padding:0 6px;
+a.hitrow .hx{font-size:11px; line-height:1.6; font-weight:700; border-radius:5px; padding:0 var(--s1);
   background:#F1EFEA; color:var(--muted)}
 a.hitrow .ht{font-size:var(--f-h3); line-height:var(--lh-h3); font-weight:800}
 a.hitrow .hs{font-size:var(--f-note); line-height:var(--lh-note); color:var(--muted)}
@@ -1814,7 +1814,7 @@ function renderTrack(){
   else if(T.f==='type'){ keyf=function(q){return q.type||'未分類';};
                          list.sort(function(a,b){return keyf(a).localeCompare(keyf(b));}); }
 
-  var body='<p class="sub">'+(exec?'只看還沒完成的，依球在誰手上分。每個問題只有這裡有完整內容。':
+  var body='<p class="sub">'+(exec?'只看還沒完成的，可按待我方或等待對方篩選。每個問題只有這裡有完整內容。':
       '已結案的問題，連同完整對話與結案判斷。')+'</p>';
   if(!exec) body+=retroStats(base);
   body+='<p class="sub">'+list.length+' 件</p>';
