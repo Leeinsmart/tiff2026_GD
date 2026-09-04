@@ -19,6 +19,7 @@
   --accent-soft:#FFEAE2;
   --ok:#00B368;      --ok-soft:#DFF7EA;
   --wait:#E09E00;    --wait-soft:#FFF2CE;
+  --hl:#FFE24D;      --hl-on:#FFC400;
   --info:#3D7BF5;    --info-soft:#E7EFFF;
   --pr:#8A5CF5;      --pr-soft:#F0EAFF;
   --urgent:#F02D68;  --urgent-soft:#FFE4EC;
@@ -317,7 +318,12 @@ summary .docmeta{flex:none}
 .res:last-child{border-bottom:none}
 .res:hover,.res:focus-visible{background:var(--paper); outline:none}
 .res .where{font-size:11.5px; color:var(--accent); font-weight:700; letter-spacing:.05em; margin-bottom:2px}
-.res mark{background:var(--wait-soft); color:inherit; padding:0 1px}
+.res mark{background:var(--hl); color:var(--ink); padding:0 1px; border-radius:4px}
+/* 落點的關鍵字標亮：點結果跳過去就標上，一直留著，直到換關鍵字、清空搜尋框或重新整理 */
+mark.hl{background:var(--hl); color:var(--ink); border-radius:5px; padding:0 2px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+/* 點過來的那一個命中再重一階，一眼分得出是哪一個 */
+mark.hl.first{background:var(--hl-on); box-shadow:0 0 0 2px var(--accent)}
 
 /* ---------- copy toast ---------- */
 #toast{
@@ -2522,6 +2528,49 @@ window.addEventListener('load',function(){
   var input=document.getElementById('q'), box=document.getElementById('results');
   if(!input) return;
   var idx=null;
+  var HLMARKS=[], HLKW='';
+  function clearHL(){
+    HLMARKS.forEach(function(m){
+      var p=m.parentNode; if(!p) return;
+      while(m.firstChild) p.insertBefore(m.firstChild,m);
+      p.removeChild(m); if(p.normalize) p.normalize();
+    });
+    HLMARKS=[];
+  }
+  function markHL(root,q){
+    if(!root||!q||!document.createTreeWalker||typeof NodeFilter==='undefined') return null;
+    var needle=q.toLowerCase(), first=null, made=0;
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false), nodes=[], n;
+    while((n=w.nextNode())){
+      var par=n.parentNode, pt=par&&par.nodeName;
+      if(pt==='SCRIPT'||pt==='STYLE'||pt==='MARK') continue;
+      /* flex／grid 容器裡的裸文字被切成三段會多長出 gap，標題會裂開 */
+      if(par&&par.nodeType===1&&window.getComputedStyle){
+        var dsp=getComputedStyle(par).display;
+        if(dsp==='flex'||dsp==='inline-flex'||dsp==='grid'||dsp==='inline-grid') continue;
+      }
+      nodes.push(n);
+    }
+    for(var i=0;i<nodes.length&&made<40;i++){
+      var cur=nodes[i];
+      while(made<40){
+        var low=cur.nodeValue.toLowerCase();
+        /* 轉小寫改變了長度就不標：位置會對不上，寧可不標也不要標錯字 */
+        if(low.length!==cur.nodeValue.length) break;
+        var pos=low.indexOf(needle); if(pos<0) break;
+        var mid=cur.splitText(pos), rest=mid.splitText(needle.length);
+        var mk=document.createElement('mark');
+        /* 這次點過來的第一個命中要獨一份：先把上一個落點的 first 降回一般標亮 */
+        if(first) mk.className='hl';
+        else { HLMARKS.forEach(function(o){ o.className='hl'; }); mk.className='hl first'; }
+        mid.parentNode.replaceChild(mk,mid); mk.appendChild(mid);
+        HLMARKS.push(mk); made++;
+        if(!first) first=mk;
+        cur=rest;
+      }
+    }
+    return first;
+  }
   function buildIndex(){
     idx=[];
     var sel='#timeline .tl .t, #screenings td, #screenings .note, .body p, .body li, .panel li, .callout, #cases li, .contact td, .alert, .docpage p, .docpage li, #flights li, #flights td, #flights .note, #operations td, #operations .note';
@@ -2544,6 +2593,7 @@ window.addEventListener('load',function(){
   }
   function render(q){
     if(!idx) buildIndex();
+    if(q!==HLKW){ clearHL(); HLKW=q; }
     var ql=q.toLowerCase();
     var hits=[];
     for(var i=0;i<idx.length && hits.length<15;i++){
@@ -2568,7 +2618,13 @@ window.addEventListener('load',function(){
       var m=document.createElement('mark'); m.textContent=t.slice(h.pos,h.pos+q.length); s.appendChild(m);
       s.appendChild(document.createTextNode(t.slice(h.pos+q.length,to)+(to<t.length?'…':'')));
       b.appendChild(w); b.appendChild(s);
-      b.addEventListener('click',function(){ hide(); revealEl(h.item.el); h.item.el.classList.add('flash'); setTimeout(function(){h.item.el.classList.remove('flash')},2000); });
+      b.addEventListener('click',function(){
+        hide(); revealEl(h.item.el);
+        var mk=markHL(h.item.el,q);
+        /* 展開 details 之後版面高度才定下來，同一個 tick 捲會捲到舊位置 */
+        setTimeout(function(){ if(mk&&mk.scrollIntoView) mk.scrollIntoView({block:'center'}); },40);
+        h.item.el.classList.add('flash'); setTimeout(function(){h.item.el.classList.remove('flash')},2000);
+      });
       box.appendChild(b);
     });
     box.classList.add('on');
@@ -2579,6 +2635,7 @@ window.addEventListener('load',function(){
     clearTimeout(deb);
     var q=input.value.trim();
     var isAscii=/^[\x00-\x7F]*$/.test(q);
+    if(!q){ clearHL(); HLKW=''; }
     if(!q || (isAscii && q.length<2)){ hide(); return; }
     deb=setTimeout(function(){render(q)},120);
   });
