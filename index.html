@@ -2499,10 +2499,13 @@ function fallbackCopy(t){
 }
 
 /* ---------- anchor jumps open collapsed sections ---------- */
-function revealEl(el){
+function revealEl(el,marked){
   if(!el) return;
   var p=el;
   while(p){ if(p.tagName==='DETAILS') p.open=true; p=p.parentElement; }
+  /* 關鍵字已經標起來了：整段閃會蓋過那個字、2 秒後又全沒了，
+     捲動改對準標起來的字，由呼叫端做 */
+  if(marked) return;
   el.scrollIntoView({block:'start'});
   if(el.classList.contains('docpage')||el.closest('.doc')||el.tagName==='DETAILS'){
     el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
@@ -2619,11 +2622,20 @@ window.addEventListener('load',function(){
       s.appendChild(document.createTextNode(t.slice(h.pos+q.length,to)+(to<t.length?'…':'')));
       b.appendChild(w); b.appendChild(s);
       b.addEventListener('click',function(){
-        hide(); revealEl(h.item.el);
+        hide();
         var mk=markHL(h.item.el,q);
+        /* 同一列點第二次：字已經標過了，把既有的那一個升為這次的落點 */
+        if(!mk){ mk=h.item.el.querySelector('mark.hl');
+                 if(mk){ HLMARKS.forEach(function(o){ o.className='hl'; }); mk.className='hl first'; } }
+        revealEl(h.item.el,!!mk);
         /* 展開 details 之後版面高度才定下來，同一個 tick 捲會捲到舊位置 */
-        setTimeout(function(){ if(mk&&mk.scrollIntoView) mk.scrollIntoView({block:'center'}); },40);
-        h.item.el.classList.add('flash'); setTimeout(function(){h.item.el.classList.remove('flash')},2000);
+        setTimeout(function(){
+          if(mk&&mk.scrollIntoView) mk.scrollIntoView({block:'center'});
+          else if(h.item.el.scrollIntoView) h.item.el.scrollIntoView({block:'start'});
+        },40);
+        /* 一個字都沒標到才用整段閃指位置 */
+        if(!mk){ h.item.el.classList.add('flash');
+                 setTimeout(function(){h.item.el.classList.remove('flash')},2000); }
       });
       box.appendChild(b);
     });
