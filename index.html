@@ -53,6 +53,12 @@ h1{font-size:clamp(34px,6vw,52px); line-height:1.15; margin:0 0 6px; font-weight
 .fact .v{font-weight:700; font-variant-numeric:tabular-nums}
 
 /* ---------- alert ---------- */
+.closed{
+  margin:16px 0 0; padding:12px 16px; border:1px solid var(--line);
+  border-left:4px solid var(--ink); background:var(--card); border-radius:0 6px 6px 0;
+}
+.closed b{display:block; margin-bottom:4px; font-size:16px; color:var(--ink)}
+.closed p{margin:0; font-size:14px; line-height:1.7; color:var(--muted)}
 .alert{
   margin:16px 0 0; padding:14px 18px; border-left:4px solid var(--urgent);
   background:var(--urgent-soft); border-radius:0 6px 6px 0;
@@ -449,8 +455,13 @@ details.trace[open]>summary{color:var(--ink); border-color:var(--muted)}
     <div class="fact"><div class="k">大會窗口</div><div class="v">Tiffin Shing（Film Coordinator）</div></div>
   </div>
 
+  <div class="closed" id="fest-closed">
+    <b>這一屆已結束</b>
+    <p>最後一場放映 2026/9/20 12:50 多倫多時間（台灣 9/21 00:50）。本頁資料停在 2026/9/21，之後不再更新。頁面上的進度、期限與待辦是影展期間的紀錄。</p>
+  </div>
+
   <div class="alert" id="status-alert">
-    <b id="status-title">目前進度 · 更新至 9/16</b>
+    <b id="status-title">影展期間進度 · 最後更新 9/16</b>
 
 <div class="pgsec pghot">期限就在眼前</div>
 <ul class="pglog">
